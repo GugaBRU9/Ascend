@@ -1,0 +1,280 @@
+.
+├── DefaultVolumeProfile.asset
+├── DefaultVolumeProfile.asset.meta
+├── InputSystem_Actions.inputactions
+├── InputSystem_Actions.inputactions.meta
+├── _Recovery
+│   ├── 0.unity
+│   └── 0.unity.meta
+├── _Recovery.meta
+├── Scenes
+│   ├── SampleScene.unity
+│   └── SampleScene.unity.meta
+├── Scenes.meta
+├── Scripts
+│   ├── components
+│   │   ├── Attack.cs
+│   │   ├── Attack.cs.meta
+│   │   ├── Health.cs
+│   │   └── Health.cs.meta
+│   ├── components.meta
+│   ├── core
+│   │   ├── Entity.cs
+│   │   ├── Entity.cs.meta
+│   │   ├── IdManager.cs
+│   │   └── IdManager.cs.meta
+│   ├── core.meta
+│   ├── flow
+│   │   ├── BattleLoop.cs
+│   │   └── BattleLoop.cs.meta
+│   ├── flow.meta
+│   ├── systems
+│   │   ├── CombatSystem.cs
+│   │   └── CombatSystem.cs.meta
+│   ├── systems.meta
+│   ├── testing
+│   │   ├── CombatTest.cs
+│   │   └── CombatTest.cs.meta
+│   ├── testing.meta
+│   └── tree.txt
+├── Scripts.meta
+├── Settings
+│   ├── Lit2DSceneTemplate.scenetemplate
+│   ├── Lit2DSceneTemplate.scenetemplate.meta
+│   ├── Renderer2D.asset
+│   ├── Renderer2D.asset.meta
+│   ├── Scenes
+│   │   ├── URP2DSceneTemplate.unity
+│   │   └── URP2DSceneTemplate.unity.meta
+│   ├── Scenes.meta
+│   ├── UniversalRP.asset
+│   └── UniversalRP.asset.meta
+├── Settings.meta
+├── TextMesh Pro
+│   ├── Fonts
+│   │   ├── LiberationSans - OFL.txt
+│   │   ├── LiberationSans - OFL.txt.meta
+│   │   ├── LiberationSans.ttf
+│   │   └── LiberationSans.ttf.meta
+│   ├── Fonts.meta
+│   ├── Resources
+│   │   ├── Fonts & Materials
+│   │   │   ├── LiberationSans SDF.asset
+│   │   │   ├── LiberationSans SDF.asset.meta
+│   │   │   ├── LiberationSans SDF - Drop Shadow.mat
+│   │   │   ├── LiberationSans SDF - Drop Shadow.mat.meta
+│   │   │   ├── LiberationSans SDF - Fallback.asset
+│   │   │   ├── LiberationSans SDF - Fallback.asset.meta
+│   │   │   ├── LiberationSans SDF - Outline.mat
+│   │   │   └── LiberationSans SDF - Outline.mat.meta
+│   │   ├── Fonts & Materials.meta
+│   │   ├── LineBreaking Following Characters.txt
+│   │   ├── LineBreaking Following Characters.txt.meta
+│   │   ├── LineBreaking Leading Characters.txt
+│   │   ├── LineBreaking Leading Characters.txt.meta
+│   │   ├── Sprite Assets
+│   │   │   ├── EmojiOne.asset
+│   │   │   └── EmojiOne.asset.meta
+│   │   ├── Sprite Assets.meta
+│   │   ├── Style Sheets
+│   │   │   ├── Default Style Sheet.asset
+│   │   │   └── Default Style Sheet.asset.meta
+│   │   ├── Style Sheets.meta
+│   │   ├── TMP Settings.asset
+│   │   └── TMP Settings.asset.meta
+│   ├── Resources.meta
+│   ├── Shaders
+│   │   ├── SDFFunctions.hlsl
+│   │   ├── SDFFunctions.hlsl.meta
+│   │   ├── TMP_Bitmap-Custom-Atlas.shader
+│   │   ├── TMP_Bitmap-Custom-Atlas.shader.meta
+│   │   ├── TMP_Bitmap-Mobile.shader
+│   │   ├── TMP_Bitmap-Mobile.shader.meta
+│   │   ├── TMP_Bitmap.shader
+│   │   ├── TMP_Bitmap.shader.meta
+│   │   ├── TMPro.cginc
+│   │   ├── TMPro.cginc.meta
+│   │   ├── TMPro_Mobile.cginc
+│   │   ├── TMPro_Mobile.cginc.meta
+│   │   ├── TMPro_Properties.cginc
+│   │   ├── TMPro_Properties.cginc.meta
+│   │   ├── TMPro_Surface.cginc
+│   │   ├── TMPro_Surface.cginc.meta
+│   │   ├── TMP_SDF-HDRP LIT.shadergraph
+│   │   ├── TMP_SDF-HDRP LIT.shadergraph.meta
+│   │   ├── TMP_SDF-HDRP UNLIT.shadergraph
+│   │   ├── TMP_SDF-HDRP UNLIT.shadergraph.meta
+│   │   ├── TMP_SDF-Mobile-2-Pass.shader
+│   │   ├── TMP_SDF-Mobile-2-Pass.shader.meta
+│   │   ├── TMP_SDF-Mobile Masking.shader
+│   │   ├── TMP_SDF-Mobile Masking.shader.meta
+│   │   ├── TMP_SDF-Mobile Overlay.shader
+│   │   ├── TMP_SDF-Mobile Overlay.shader.meta
+│   │   ├── TMP_SDF-Mobile.shader
+│   │   ├── TMP_SDF-Mobile.shader.meta
+│   │   ├── TMP_SDF-Mobile SSD.shader
+│   │   ├── TMP_SDF-Mobile SSD.shader.meta
+│   │   ├── TMP_SDF Overlay.shader
+│   │   ├── TMP_SDF Overlay.shader.meta
+│   │   ├── TMP_SDF.shader
+│   │   ├── TMP_SDF.shader.meta
+│   │   ├── TMP_SDF SSD.shader
+│   │   ├── TMP_SDF SSD.shader.meta
+│   │   ├── TMP_SDF-Surface-Mobile.shader
+│   │   ├── TMP_SDF-Surface-Mobile.shader.meta
+│   │   ├── TMP_SDF-Surface.shader
+│   │   ├── TMP_SDF-Surface.shader.meta
+│   │   ├── TMP_SDF-URP Lit.shadergraph
+│   │   ├── TMP_SDF-URP Lit.shadergraph.meta
+│   │   ├── TMP_SDF-URP Unlit.shadergraph
+│   │   ├── TMP_SDF-URP Unlit.shadergraph.meta
+│   │   ├── TMP_Sprite.shader
+│   │   └── TMP_Sprite.shader.meta
+│   ├── Shaders.meta
+│   ├── Sprites
+│   │   ├── EmojiOne Attribution.txt
+│   │   ├── EmojiOne Attribution.txt.meta
+│   │   ├── EmojiOne.json
+│   │   ├── EmojiOne.json.meta
+│   │   ├── EmojiOne.png
+│   │   └── EmojiOne.png.meta
+│   └── Sprites.meta
+├── TextMesh Pro.meta
+├── UniversalRenderPipelineGlobalSettings.asset
+└── UniversalRenderPipelineGlobalSettings.asset.meta
+
+19 directories, 125 files
+.
+├── components
+│   ├── Attack.cs
+│   ├── Attack.cs.meta
+│   ├── Attributes.cs
+│   ├── Health.cs
+│   ├── Health.cs.meta
+│   ├── Mana.cs
+│   └── Progression.cs
+├── components.meta
+├── core
+│   ├── Entity.cs
+│   ├── Entity.cs.meta
+│   ├── IdManager.cs
+│   └── IdManager.cs.meta
+├── core.meta
+├── flow
+│   ├── BattleLoop.cs
+│   └── BattleLoop.cs.meta
+├── flow.meta
+├── systems
+│   ├── CombatSystem.cs
+│   └── CombatSystem.cs.meta
+├── systems.meta
+├── testing
+│   ├── CombatTest.cs
+│   └── CombatTest.cs.meta
+├── testing.meta
+├── tree.txt
+└── tree.txt.meta
+
+6 directories, 24 files
+.
+├── components
+│   ├── Attack.cs
+│   ├── Attack.cs.meta
+│   ├── Attributes.cs
+│   ├── Health.cs
+│   ├── Health.cs.meta
+│   ├── Mana.cs
+│   ├── Progression.cs
+│   └── Speed.cs
+├── components.meta
+├── core
+│   ├── Entity.cs
+│   ├── Entity.cs.meta
+│   ├── IdManager.cs
+│   └── IdManager.cs.meta
+├── core.meta
+├── flow
+│   ├── BattleLoop.cs
+│   └── BattleLoop.cs.meta
+├── flow.meta
+├── systems
+│   ├── AttributeSystem.cs
+│   ├── CombatSystem.cs
+│   └── CombatSystem.cs.meta
+├── systems.meta
+├── testing
+│   ├── CombatTest.cs
+│   └── CombatTest.cs.meta
+├── testing.meta
+├── tree.txt
+└── tree.txt.meta
+
+6 directories, 26 files
+.
+├── components
+│   ├── Attack.cs
+│   ├── Attack.cs.meta
+│   ├── Attributes.cs
+│   ├── Health.cs
+│   ├── Health.cs.meta
+│   ├── Mana.cs
+│   ├── Progression.cs
+│   └── Speed.cs
+├── components.meta
+├── core
+│   ├── Entity.cs
+│   ├── Entity.cs.meta
+│   ├── IdManager.cs
+│   └── IdManager.cs.meta
+├── core.meta
+├── flow
+│   ├── BattleLoop.cs
+│   └── BattleLoop.cs.meta
+├── flow.meta
+├── systems
+│   ├── AttributeSystem.cs
+│   ├── CombatSystem.cs
+│   └── CombatSystem.cs.meta
+├── systems.meta
+├── testing
+│   ├── CombatTest.cs
+│   └── CombatTest.cs.meta
+├── testing.meta
+├── tree.txt
+└── tree.txt.meta
+
+6 directories, 26 files
+.
+├── components
+│   ├── Attack.cs
+│   ├── Attack.cs.meta
+│   ├── Attributes.cs
+│   ├── Health.cs
+│   ├── Health.cs.meta
+│   ├── Mana.cs
+│   ├── Progression.cs
+│   └── Speed.cs
+├── components.meta
+├── core
+│   ├── Entity.cs
+│   ├── Entity.cs.meta
+│   ├── IdManager.cs
+│   └── IdManager.cs.meta
+├── core.meta
+├── flow
+│   ├── BattleLoop.cs
+│   └── BattleLoop.cs.meta
+├── flow.meta
+├── systems
+│   ├── AttributeSystem.cs
+│   ├── CombatSystem.cs
+│   └── CombatSystem.cs.meta
+├── systems.meta
+├── testing
+│   ├── CombatTest.cs
+│   └── CombatTest.cs.meta
+├── testing.meta
+├── tree.txt
+└── tree.txt.meta
+
+6 directories, 26 files
