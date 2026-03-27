@@ -39,7 +39,7 @@ Entregar combate por turnos legivel e profundo no mobile, com build rica e frame
 - O combate previsto e por turnos: protagonista age manualmente, aliados executam automaticamente por padrao, inimigos respondem e efeitos resolvem ao final do fluxo.
 - O jogo usa 6 atributos principais, um sistema hibrido de trilhas de habilidade, energia/esforco como recurso de combate, status temporarios e 11 tipos de dano com resistencias e vulnerabilidades.
 - Habilidades devem ser obtidas por exploracao, NPCs e reflexao do personagem, reforcando estilos diferentes de progressao.
-- Pontos ainda indefinidos e que devem virar Q&A quando necessario: escopo de conteudo do vertical slice, plataforma alvo primaria para benchmark, direcao artistica final, modelo de save/meta progressao, onboarding inicial, economia e calibracao exata de algumas regras (por exemplo 3 vs 4 habilidades ativas).
+- Pontos ainda indefinidos e que devem virar Q&A quando necessario: escopo exato de conteudo do vertical slice, plataforma e device alvo primarios para benchmark, modelo do campo tatico de combate, direcao artistica final, granularidade de save/resume, onboarding inicial, economia e calibracao exata de algumas regras (por exemplo 3 vs 4 habilidades ativas).
 
 ## Constraints
 
