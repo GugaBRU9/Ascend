@@ -10,7 +10,7 @@ Requirements for the initial vertical slice release. Each maps to exactly one ro
 ### Technical Foundation
 
 - [x] **TECH-01**: Project can produce a development build that boots on the chosen low-end benchmark mobile device into the playable slice.
-- [ ] **TECH-02**: Combat, progression and content definitions are authored through reusable data assets instead of scene-only values.
+- [x] **TECH-02**: Combat, progression and content definitions are authored through reusable data assets instead of scene-only values.
 - [ ] **TECH-03**: Team can capture CPU, memory and rendering baselines on device for every slice milestone build.
 
 ### Combat Loop
@@ -89,7 +89,7 @@ Which phases cover which requirements. Updated during roadmap creation.
 | Requirement | Phase | Status |
 |-------------|-------|--------|
 | TECH-01 | Phase 1 | Complete |
-| TECH-02 | Phase 1 | Pending |
+| TECH-02 | Phase 1 | Complete |
 | TECH-03 | Phase 1 | Pending |
 | COMB-01 | Phase 2 | Pending |
 | COMB-02 | Phase 2 | Pending |
