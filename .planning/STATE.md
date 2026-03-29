@@ -5,7 +5,7 @@ milestone_name: milestone
 status: planning
 stopped_at: Phase 1 context gathered
 last_updated: "2026-03-29T15:02:07.654Z"
-last_activity: 2026-03-27 - Project initialized, research completed and roadmap created
+last_activity: 2026-03-29 - Phase 1 context gathered and key implementation decisions captured
 progress:
   total_phases: 8
   completed_phases: 0
@@ -28,7 +28,7 @@ See: .planning/PROJECT.md (updated 2026-03-27)
 Phase: 1 of 8 (Foundation and Guardrails)
 Plan: 0 of 3 in current phase
 Status: Ready to plan
-Last activity: 2026-03-27 - Project initialized, research completed and roadmap created
+Last activity: 2026-03-29 - Phase 1 context gathered and key implementation decisions captured
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -60,6 +60,10 @@ Recent decisions affecting current work:
 
 - Init: v1 will be treated as a vertical slice, not the full game scope
 - Init: unresolved critical design points will be closed by targeted Q&A before they harden
+- Phase 1 baseline principal: Samsung Galaxy A15 at 30 FPS estaveis; Galaxy A10 remains secondary compatibility target
+- Tactical field model locked for the slice: fixed front/backline affecting target, range and protection
+- MVP combat density locked at 3 active skills; save/resume locked to checkpoints between nodes and combats
+- First playable sequence target: short tutorial + 2 combats + 1 rest/event node
 
 ### Pending Todos
 
@@ -67,11 +71,8 @@ None yet.
 
 ### Blockers/Concerns
 
-- Define the low-end benchmark device profile for performance gates
-- Define the tactical field model for combat
-- Confirm the active skill slot count (3 vs 4)
-- Confirm save/resume granularity for the first slice
-- Confirm the exact scope of the first encounter sequence
+- No active discuss-phase blockers remain; next step is translating `01-CONTEXT.md` into concrete Phase 1 plans
+- Keep Galaxy A10 visible as a later compatibility smoke target even though Galaxy A15 drives the current baseline
 
 ## Session Continuity
 
