@@ -93,6 +93,26 @@ if [[ -n "$device_serial" ]]; then
   adb_args=(-s "$device_serial")
 fi
 
+assert_device_ready() {
+  local devices_output
+  devices_output="$("$adb_bin" devices)"
+
+  if [[ -n "$device_serial" ]]; then
+    if ! printf '%s\n' "$devices_output" | awk 'NR > 1 && $2 == "device" { print $1 }' | grep -Fxq "$device_serial"; then
+      echo "Requested device '$device_serial' is not connected in adb devices output." >&2
+      printf '%s\n' "$devices_output" >&2
+      exit 1
+    fi
+    return 0
+  fi
+
+  if ! printf '%s\n' "$devices_output" | awk 'NR > 1 && $2 == "device" { found = 1 } END { exit found ? 0 : 1 }'; then
+    echo "No connected Android device detected in adb devices output." >&2
+    printf '%s\n' "$devices_output" >&2
+    exit 1
+  fi
+}
+
 timestamp="$(date -u +%Y%m%dT%H%M%SZ)"
 session_dir="$profile_output_root/${timestamp}-${scenario}"
 logs_dir="$session_dir/logs"
@@ -106,9 +126,11 @@ if $should_install; then
     exit 1
   fi
 
+  assert_device_ready
   "$adb_bin" "${adb_args[@]}" install -r "$apk_path"
 fi
 
+assert_device_ready
 "$adb_bin" "${adb_args[@]}" wait-for-device
 "$adb_bin" "${adb_args[@]}" logcat -c
 

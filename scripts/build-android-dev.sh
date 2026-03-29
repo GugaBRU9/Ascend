@@ -73,7 +73,7 @@ fi
 
 mkdir -p "$(dirname "$android_build_output")" "$build_logs_dir"
 
-generated_editor_dir="$unity_project_path/Assets/_Project/Bootstrap/Editor/__Generated"
+generated_editor_dir="$unity_project_path/Assets/Editor/__AscendGeneratedBuild"
 generated_builder="$generated_editor_dir/AscendAndroidDevBuilder.cs"
 generated_builder_meta="${generated_builder}.meta"
 unity_build_log="$build_logs_dir/android-dev-build.log"
