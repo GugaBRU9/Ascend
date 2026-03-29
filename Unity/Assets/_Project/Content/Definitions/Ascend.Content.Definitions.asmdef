@@ -1,0 +1,14 @@
+{
+  "name": "Ascend.Content.Definitions",
+  "rootNamespace": "Ascend.Content.Definitions",
+  "references": [],
+  "includePlatforms": [],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}
