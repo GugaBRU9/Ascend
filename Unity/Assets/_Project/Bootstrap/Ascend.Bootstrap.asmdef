@@ -3,6 +3,7 @@
   "rootNamespace": "Ascend.Bootstrap",
   "references": [
     "Ascend.Application",
+    "Ascend.Content.Definitions",
     "Ascend.Infrastructure",
     "Ascend.Presentation"
   ],
