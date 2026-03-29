@@ -37,7 +37,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 3 plans
 
 Plans:
-- [ ] 01-01: Normalize Unity baseline, packages and benchmark-device assumptions
+- [x] 01-01: Normalize Unity baseline, packages and benchmark-device assumptions
 - [ ] 01-02: Create runtime architecture, assemblies and authored-data catalog
 - [ ] 01-03: Add profiling, test and Q&A guardrails
 
@@ -173,7 +173,7 @@ Phases execute in numeric order: 1 -> 2 -> 2.1 -> 2.2 -> 3 -> 3.1 -> 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Foundation and Guardrails | 0/3 | Not started | - |
+| 1. Foundation and Guardrails | 1/3 | In Progress | - |
 | 2. Combat Core | 0/3 | Not started | - |
 | 3. Party Roles and AI | 0/3 | Not started | - |
 | 4. Progression and Derived Stats | 0/3 | Not started | - |
