@@ -1,0 +1,19 @@
+{
+  "name": "@ascend/cli",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "ascend-cli": "./dist/main.js"
+  },
+  "scripts": {
+    "build": "tsc -b",
+    "test": "vitest run apps/cli/src"
+  },
+  "dependencies": {
+    "@ascend/content": "workspace:*",
+    "@ascend/core": "workspace:*",
+    "@ascend/sim": "workspace:*",
+    "commander": "^14.0.1"
+  }
+}
