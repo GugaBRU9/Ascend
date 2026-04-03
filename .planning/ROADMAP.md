@@ -31,7 +31,7 @@ Ascend vai usar este milestone para sair de uma ideia ampla de RPG e chegar a um
 Plans:
 - [x] 01-01: Consolidar visao, publico, cortes de escopo e linguagem do milestone
 - [x] 01-02: Mapear sistemas core para modulos, classes e contratos agnosticos de plataforma
-- [ ] 01-03: Definir arquitetura C++, fluxo de build/teste e estrategia de validacao educativa
+- [x] 01-03: Definir arquitetura C++, fluxo de build/teste e estrategia de validacao educativa
 - [ ] 01-04: Registrar pendencias, riscos e proposta da proxima milestone de implementacao
 
 ## Progress
@@ -41,4 +41,4 @@ Phases execute in numeric order: 1
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Guia Canonico de Implementacao | 2/4 | In Progress|  |
+| 1. Guia Canonico de Implementacao | 3/4 | In Progress|  |
