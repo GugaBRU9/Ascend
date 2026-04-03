@@ -10,7 +10,7 @@ Ascend vai de documentacao canonica para um prototipo executavel de validacao de
 - Integer phases (1, 2, 3): Planned milestone work
 - Decimal phases (2.1, 2.2): Urgent insertions (marked with INSERTED)
 
-- [ ] **Phase 1: Base Canonica Reproduzivel** - carregar, validar e reexecutar o nucleo canonico com seed, logs e harness minimo
+- [x] **Phase 1: Base Canonica Reproduzivel** - carregar, validar e reexecutar o nucleo canonico com seed, logs e harness minimo
 - [ ] **Phase 2: Personagens Jogaveis de Nivel 1** - criar e executar fichas canonicas validas sem remendos manuais
 - [ ] **Phase 3: Loop Tatico de Combate** - entregar combate por zonas completo com encontros canonicamente jogaveis
 - [ ] **Phase 4: Loop Unificado de Cenas Nao-Combate** - provar `Progress x Pressure` como motor real de social, investigacao e exploracao
@@ -34,7 +34,7 @@ Ascend vai de documentacao canonica para um prototipo executavel de validacao de
 Plans:
 - [x] 01-01: Modelar dominio canonico, IDs estaveis e catalogos de conteudo
 - [x] 01-02: Implementar validacao de conteudo, RNG seedavel e resolucao base de testes
-- [ ] 01-03: Expor event log, replay e harness minimo para inspecao
+- [x] 01-03: Expor event log, replay e harness minimo para inspecao
 
 ### Phase 2: Personagens Jogaveis de Nivel 1
 **Goal**: Permitir que jogadores e testadores instanciem personagens canonicos validos sem remendo manual de regra.
@@ -114,7 +114,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Base Canonica Reproduzivel | 2/3 | In Progress|  |
+| 1. Base Canonica Reproduzivel | 3/3 | Completed | 2026-04-03 |
 | 2. Personagens Jogaveis de Nivel 1 | 0/3 | Not started | - |
 | 3. Loop Tatico de Combate | 0/3 | Not started | - |
 | 4. Loop Unificado de Cenas Nao-Combate | 0/2 | Not started | - |

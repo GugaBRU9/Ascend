@@ -7,10 +7,10 @@
 
 ### Engine
 
-- [ ] **ENGN-01**: Designer can define canonical content in versioned data files and receive actionable validation errors when content is invalid.
-- [ ] **ENGN-02**: System can resolve seeded tests using canonical modifiers, advantage/disadvantage and degrees of success.
+- [x] **ENGN-01**: Designer can define canonical content in versioned data files and receive actionable validation errors when content is invalid.
+- [x] **ENGN-02**: System can resolve seeded tests using canonical modifiers, advantage/disadvantage and degrees of success.
 - [ ] **ENGN-03**: System can apply canonical formulas for defenses, PE, fixed damage, resistances, vulnerabilities and condition effects.
-- [ ] **ENGN-04**: Team can replay a seeded command/event sequence and reproduce the same mechanical outcome.
+- [x] **ENGN-04**: Team can replay a seeded command/event sequence and reproduce the same mechanical outcome.
 
 ### Combat
 
@@ -34,14 +34,14 @@
 
 ### Content
 
-- [ ] **CONT-01**: System can load canonical origins, trails, skills, equipment, enemies and starter adventure data from the content catalog.
+- [x] **CONT-01**: System can load canonical origins, trails, skills, equipment, enemies and starter adventure data from the content catalog.
 - [ ] **CONT-02**: GM can prepare encounters using canonical `Valor de Ameaca` guidance and group-size inputs.
 - [ ] **CONT-03**: System can carry lightweight consequences between scenes in the starter adventure so earlier choices affect later scenes.
 
 ### Playtest
 
 - [ ] **PLYT-01**: Team can run the starter adventure end to end through a minimal playable adapter without depending on a final UI.
-- [ ] **PLYT-02**: System records command logs, seeds and outcome events for debugging and replay.
+- [x] **PLYT-02**: System records command logs, seeds and outcome events for debugging and replay.
 - [ ] **PLYT-03**: Team can capture core playtest signals including turn duration, PE usage, skill frequency, dominant patterns and confusion points.
 - [ ] **PLYT-04**: Team can generate a post-session report that helps decide whether cycle 1 validation criteria passed or failed.
 
@@ -79,10 +79,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| ENGN-01 | Phase 1 | Pending |
-| ENGN-02 | Phase 1 | Pending |
+| ENGN-01 | Phase 1 | Completed |
+| ENGN-02 | Phase 1 | Completed |
 | ENGN-03 | Phase 3 | Pending |
-| ENGN-04 | Phase 1 | Pending |
+| ENGN-04 | Phase 1 | Completed |
 | COMB-01 | Phase 3 | Pending |
 | COMB-02 | Phase 3 | Pending |
 | COMB-03 | Phase 3 | Pending |
@@ -94,11 +94,11 @@ Which phases cover which requirements. Updated during roadmap creation.
 | CHAR-02 | Phase 2 | Pending |
 | CHAR-03 | Phase 2 | Pending |
 | CHAR-04 | Phase 2 | Pending |
-| CONT-01 | Phase 1 | Pending |
+| CONT-01 | Phase 1 | Completed |
 | CONT-02 | Phase 3 | Pending |
 | CONT-03 | Phase 5 | Pending |
 | PLYT-01 | Phase 5 | Pending |
-| PLYT-02 | Phase 1 | Pending |
+| PLYT-02 | Phase 1 | Completed |
 | PLYT-03 | Phase 5 | Pending |
 | PLYT-04 | Phase 5 | Pending |
 
@@ -109,4 +109,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-04-03*
-*Last updated: 2026-04-03 after roadmap creation*
+*Last updated: 2026-04-03 after phase 1 execution*
