@@ -311,4 +311,71 @@ Como o plano exige declarar o gap real do ambiente observado, a conclusao operac
 
 ## 12. Estrategia de Validacao, Ordem Didatica e Decisoes em Aberto
 
-Os planos seguintes detalham esta secao com validacao, ordem didatica e handoff para a proxima milestone.
+`ARCH-03`, `EDUC-01`, `EDUC-02` e `EDUC-03`. Esta secao fecha o guia com o criterio de validacao do core, a ordem didatica da milestone 02 e o que continua aberto sem reabrir `D-01` a `D-16`.
+
+### 12.1 Validacao sem UI final
+
+O backend precisa provar comportamento antes de qualquer produto final. Por isso, a validacao principal do milestone 02 deve combinar quatro instrumentos complementares:
+
+- `replay`: grava `input -> resolve -> output/events` para reexecutar combate, criacao de personagem e cenarios de regra com os mesmos resultados.
+- `logs estruturados`: mostram custo, dano, aplicacao de efeito, expiracao, erros de validacao e snapshots relevantes sem depender de tela final.
+- `scenario tests`: exercitam fluxos de ponta a ponta do core, como montar o protagonista, iniciar um encontro e resolver um turno completo.
+- `CLI de estudo`: oferece uma superficie controlada para inspecao manual, cadastro minimo, execucao de acoes e leitura de estado, coerente com `D-15` e `D-16`.
+
+Leitura operacional: `ARCH-03` nao pede UX final; pede observabilidade suficiente para provar que o core esta correto. Se replay, logs estruturados e scenario tests falham, a CLI so exporia o mesmo problema de forma mais visivel.
+
+### 12.2 Ordem didatica da milestone 02
+
+`EDUC-01`. A ordem didatica oficial continua literal:
+
+`tipos -> regras -> criacao de personagem -> combate minimo`
+
+Essa ordem consome `D-14`, `D-15` e `D-16` sem trocar o foco do milestone:
+
+1. `tipos`: IDs, value objects, atributos, pools de recurso, estados e invariantes simples.
+2. `regras`: resolutores deterministicos de custo, dano, efeitos e ordem de turno.
+3. `criacao de personagem`: montagem e validacao do protagonista a partir do catalogo minimo.
+4. `combate minimo`: protagonista unico contra inimigos, com CLI de estudo e cenarios observaveis.
+
+O motivo dessa sequencia e didatico e arquitetural ao mesmo tempo: ela introduz primeiro os tipos mais simples, depois os contratos de regra, depois a orquestracao de `CharacterCreation` e so entao o fluxo mais pesado de combate. Isso reduz acoplamento acidental e facilita localizar erros cedo.
+
+### 12.3 Nao complicar agora
+
+`EDUC-02`. O primeiro milestone de codigo precisa preservar simplificacoes obrigatorias. Em outras palavras: `nao complicar agora`.
+
+- Sem `party` no caminho minimo.
+- Sem `IA tatica` para aliados ou inimigos alem do perfil basico necessario para o encontro.
+- Sem `parser proprio de regra`; `nao hand-roll` DSL, engine de scripting ou serializador de comportamento no primeiro recorte.
+- Sem persistencia final, save system ou banco de produto.
+- Sem balanceamento completo de todos os sistemas do rascunho.
+- Sem heranca profunda; preferir composicao, value objects e servicos de regra pequenos.
+- Sem produto final, UI definitiva, rendering, audio ou preocupacao de shell visual.
+
+Cada simplificacao acima protege `EDUC-02`: o estudante deve reconhecer quais abstracoes podem continuar intencionalmente simples para que o core seja implementavel, testavel e auditavel.
+
+### 12.4 Decisoes em aberto encaminhadas para 01-HANDOFF
+
+Esta secao registra o que ainda precisa de fechamento futuro sem reabrir as decisoes consumidas nesta fase. O detalhamento, dono e criterio de fechamento vao para `01-HANDOFF`.
+
+| Tema | Ja decidido? | Vai para 01-HANDOFF |
+| --- | --- | --- |
+| Formato inicial do catalogo (`yaml`, `json` ou outro) | Nao | Sim, com recomendacao e impacto na autoria progressiva |
+| Estrategia de obtencao de dependencias (`FetchContent`, submodule, package manager) | Nao | Sim, porque afeta setup da milestone 02 |
+| Presets exatos de debug, `asan` e `ubsan` | Parcialmente | Sim, para fechar nomes, flags e politica de CI futura |
+| Escopo inicial do catalogo minimo para a CLI de estudo | Parcialmente | Sim, para limitar quantas definicoes entram no primeiro recorte |
+| Formato do replay/log estruturado (texto, JSON lines, outro) | Nao | Sim, porque afeta inspecao e scenario tests |
+
+Decisoes em aberto encaminhadas para `01-HANDOFF` nao invalidam o guia. Elas existem para completar a transicao da fase documental para a milestone de implementacao sem reabrir `D-01` a `D-16`.
+
+### Rastreabilidade minima desta secao
+
+`EDUC-03`. O guia fica pronto para virar backlog tecnico porque os requisitos desta parte apontam para headings explicitas do proprio documento:
+
+| Requisito | Heading do guia | Papel |
+| --- | --- | --- |
+| `ARCH-01` | `## 10. Fronteiras de Arquitetura e Dependencias Permitidas` | Define fronteiras entre core, conteudo, sessao, adapters e validation. |
+| `ARCH-02` | `## 11. Baseline Tecnico e Workflow de Build/Teste` | Define stack, baseline e fluxo tecnico recomendado. |
+| `ARCH-03` | `### 12.1 Validacao sem UI final` | Define replay, logs estruturados, scenario tests e CLI de estudo como instrumentos principais. |
+| `EDUC-01` | `### 12.2 Ordem didatica da milestone 02` | Explicita a trilha `tipos -> regras -> criacao de personagem -> combate minimo`. |
+| `EDUC-02` | `### 12.3 Nao complicar agora` | Lista as simplificacoes intencionais do primeiro recorte. |
+| `EDUC-03` | `### 12.4 Decisoes em aberto encaminhadas para 01-HANDOFF` e `### Rastreabilidade minima desta secao` | Garante que a documentacao se converta em backlog sem suposicoes ocultas. |
