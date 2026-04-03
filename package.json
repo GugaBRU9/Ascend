@@ -1,0 +1,23 @@
+{
+  "name": "ascend",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@10.28.0",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "pnpm -r build",
+    "typecheck": "tsc -b --pretty false",
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.11",
+    "fast-check": "^4.3.0",
+    "tsx": "^4.20.5",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.0"
+  }
+}
+
