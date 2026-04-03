@@ -3,15 +3,15 @@ gsd_state_version: 1.0
 milestone: v1.0
 milestone_name: milestone
 status: executing
-stopped_at: Completed 01-01-PLAN.md
-last_updated: "2026-04-03T23:12:04.656Z"
-last_activity: 2026-04-03 -- Completed 01-01-PLAN.md
+stopped_at: Completed 01-02-PLAN.md
+last_updated: "2026-04-03T23:24:17Z"
+last_activity: 2026-04-03 -- Completed 01-02-PLAN.md
 progress:
   total_phases: 1
   completed_phases: 0
   total_plans: 4
-  completed_plans: 1
-  percent: 25
+  completed_plans: 2
+  percent: 50
 ---
 
 # Project State
@@ -26,32 +26,33 @@ See: .planning/PROJECT.md (updated 2026-04-03)
 ## Current Position
 
 Phase: 01 (guia-canonico-de-implementacao) — EXECUTING
-Plan: 2 of 4
+Plan: 3 of 4
 Status: Ready to execute
-Last activity: 2026-04-03 -- Completed 01-01-PLAN.md
+Last activity: 2026-04-03 -- Completed 01-02-PLAN.md
 
-Progress: [███░░░░░░░] 25%
+Progress: [█████░░░░░] 50%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 1
-- Average duration: 4 min
-- Total execution time: 4 min
+- Total plans completed: 2
+- Average duration: 3.5 min
+- Total execution time: 7 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| Phase 01 | 1 | 4 min | 4 min |
+| Phase 01 | 2 | 7 min | 3.5 min |
 
 **Recent Trend:**
 
-- Last 5 plans: 01-01 (4 min)
-- Trend: Baseline established
+- Last 5 plans: 01-01 (4 min), 01-02 (3 min)
+- Trend: Stable
 
 | Phase 01-guia-canonico-de-implementacao P01 | 4min | 2 tasks | 4 files |
+| Phase 01-guia-canonico-de-implementacao P02 | 3 min | 3 tasks | 4 files |
 
 ## Accumulated Context
 
@@ -68,6 +69,9 @@ Recent decisions affecting current work:
 - [Phase 01-guia-canonico-de-implementacao]: Sections 1-5 of 01-GUIA-CANONICO.md are now the canonical framing for milestone scope and audience.
 - [Phase 01-guia-canonico-de-implementacao]: Estruturacao.md is now normalized into core minimo, primeira expansao, deferred, and platform concern buckets.
 - [Phase 01-guia-canonico-de-implementacao]: Save System and Gameplay Loop remain outside the immediate backlog as platform concerns.
+- [Phase 01-guia-canonico-de-implementacao]: milestone 02 aprofunda apenas os namespaces marcados como Sim; items, progression, quests, npcs e world systems permanecem extensoes nomeadas.
+- [Phase 01-guia-canonico-de-implementacao]: Definition, State e AuthoringService foram separados explicitamente, mantendo CharacterCreation no core/session.
+- [Phase 01-guia-canonico-de-implementacao]: criacao de personagem e combate foram registrados como regras deterministic e replayaveis via input -> resolve -> output/events.
 
 ### Pending Todos
 
@@ -76,11 +80,11 @@ None yet.
 ### Blockers/Concerns
 
 - `Estruturação.md` still mixes core systems, advanced systems and platform-side concerns.
-- The first implementation milestone still needs explicit cuts for which systems enter first.
+- The first implementation milestone still needs architecture, build/validation guidance and the final handoff split.
 - The future content format is intentionally unresolved at this stage.
 
 ## Session Continuity
 
-Last session: 2026-04-03T23:12:04.653Z
-Stopped at: Completed 01-01-PLAN.md
+Last session: 2026-04-03T23:22:42.411Z
+Stopped at: Completed 01-02-PLAN.md
 Resume file: None
