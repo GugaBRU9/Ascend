@@ -1,77 +1,63 @@
 # Requirements: Ascend
 
 **Defined:** 2026-04-03
-**Core Value:** As mecanicas centrais de Ascend precisam ser interessantes, legiveis e testaveis independentemente da midia em que forem apresentadas.
+**Core Value:** O nucleo de regras precisa ser compreensivel, testavel e adaptavel como classes, metodos e contratos C++ independentes de plataforma.
 
 ## v1 Requirements
 
-### Engine
+### Framing
 
-- [x] **ENGN-01**: Designer can define canonical content in versioned data files and receive actionable validation errors when content is invalid.
-- [x] **ENGN-02**: System can resolve seeded tests using canonical modifiers, advantage/disadvantage and degrees of success.
-- [ ] **ENGN-03**: System can apply canonical formulas for defenses, PE, fixed damage, resistances, vulnerabilities and condition effects.
-- [x] **ENGN-04**: Team can replay a seeded command/event sequence and reproduce the same mechanical outcome.
+- [x] **FRAM-01**: Reader can understand in one pass what Ascend is, why this milestone is documental, and who this material is for.
+- [x] **FRAM-02**: Reader can identify which ideas from `Estruturação.md` are core candidates, deferred systems, or platform concerns.
 
-### Combat
+### Domain
 
-- [ ] **COMB-01**: GM can run initiative and full round order for all actors in a combat scene.
-- [ ] **COMB-02**: Player can use action, movement, reaction and pressure attack rules in zone-based combat.
-- [ ] **COMB-03**: System can resolve canonical combat interactions including attacks, cover, movement, skill activation, condition application and downed recovery.
-- [ ] **COMB-04**: GM can run common, elite and boss encounters using canonical enemy definitions.
+- [x] **DOMN-01**: Reader can map the selected core systems to bounded modules or namespaces for a future C++ backend.
+- [x] **DOMN-02**: Reader can identify the main classes, value objects, and service families needed for characters, combat, attributes, skills, items, quests, NPCs, and progression.
+- [x] **DOMN-03**: Reader can distinguish runtime state from content definitions and know which mechanics should remain data-driven.
+- [x] **DOMN-04**: Reader can identify which rules must be deterministic and therefore testable through stable inputs and outputs.
 
-### Scenes
+### Architecture
 
-- [ ] **SCEN-01**: GM can configure a non-combat scene with objective, risk, ND, progress target and pressure limit.
-- [ ] **SCEN-02**: Player can resolve social, investigative and exploratory actions through the same core test engine used by the rest of the system.
-- [ ] **SCEN-03**: System can advance `Progress x Pressure` and apply visible success or failure consequences to scene state.
+- [x] **ARCH-01**: Reader can understand the boundary between core rules, content/catalog, session/application services, and platform adapters.
+- [x] **ARCH-02**: Reader can understand the recommended build, test, and static-analysis workflow for the future C++ implementation.
+- [x] **ARCH-03**: Reader can see how replay, logs, and scenario tests will validate the implementation without depending on a final UI.
 
-### Characters
+### Education
 
-- [ ] **CHAR-01**: Player can create a level 1 character using canonical origins, attributes, trained skills, primary and secondary trails, starting abilities and initial equipment.
-- [ ] **CHAR-02**: Team can load and run the documented level 1 pregens without manual rule patches.
-- [ ] **CHAR-03**: System can derive Vida, PE, Defesa, Fortitude, Reflexos and Vontade from canonical formulas.
-- [ ] **CHAR-04**: System enforces level 1 build rules including tier access, prepared active skill limits and starting load constraints.
+- [x] **EDUC-01**: Student can follow a clear learning path that starts from simpler modules before orchestration-heavy systems.
+- [x] **EDUC-02**: Student can identify which abstractions should stay intentionally simple in the first implementation milestone.
+- [x] **EDUC-03**: Documentation is direct enough to become a technical backlog without requiring hidden assumptions from the original author.
 
-### Content
+### Handoff
 
-- [x] **CONT-01**: System can load canonical origins, trails, skills, equipment, enemies and starter adventure data from the content catalog.
-- [ ] **CONT-02**: GM can prepare encounters using canonical `Valor de Ameaca` guidance and group-size inputs.
-- [ ] **CONT-03**: System can carry lightweight consequences between scenes in the starter adventure so earlier choices affect later scenes.
-
-### Playtest
-
-- [ ] **PLYT-01**: Team can run the starter adventure end to end through a minimal playable adapter without depending on a final UI.
-- [x] **PLYT-02**: System records command logs, seeds and outcome events for debugging and replay.
-- [ ] **PLYT-03**: Team can capture core playtest signals including turn duration, PE usage, skill frequency, dominant patterns and confusion points.
-- [ ] **PLYT-04**: Team can generate a post-session report that helps decide whether cycle 1 validation criteria passed or failed.
+- [x] **HNDF-01**: Reader can list the open decisions that must be closed before or during the next implementation milestone.
+- [x] **HNDF-02**: Reader can start the next milestone with a recommended phase split for the first real implementation work.
 
 ## v2 Requirements
 
-### Campaign
+### Implementation
 
-- **CAMP-01**: GM can run multi-session campaign progression with persistent faction, NPC and world-state consequences beyond the starter session.
-- **CAMP-02**: Player can advance beyond the first validation band with broader progression, talents and trail depth.
+- **IMPL-01**: Team can implement the first bounded modules of the C++ core according to the documented architecture.
+- **IMPL-02**: Team can choose and wire the first content format and loader strategy.
 
 ### Delivery
 
-- **DLVR-01**: Team can provide a richer interactive adapter beyond the minimal validation interface.
-- **DLVR-02**: Team can expose projections or inspectors tailored to future web, mobile or terminal experiences.
+- **DLVR-01**: Team can expose the core through a CLI or tabletop-helper adapter.
+- **DLVR-02**: Team can define platform-specific adapters for web, app, mobile or console without changing core rules.
 
-### Systems Expansion
+### Expansion
 
-- **SYST-01**: Player can use deeper economy and crafting systems without breaking the validated core loop.
-- **SYST-02**: GM can use optional companion or small-party support modules as structured add-ons.
+- **EXPN-01**: Team can add advanced systems such as save, crafting depth, economy detail or world persistence after the core is stable.
 
 ## Out of Scope
 
 | Feature | Reason |
 |---------|--------|
-| Polished consumer UI | Not needed to validate the mechanics-first hypothesis |
-| Save system, codex, journal and lore archive | Product-layer concerns explicitly deferred by canonical docs |
-| Companion AI and solo protagonist mode | Conflict with the current canonical group model and inflate scope |
-| Mandatory node-map progression and exploration energy | Explicitly deferred until playtests prove the need |
-| Deep economy, shops and advanced crafting | Secondary systems that do not reduce the main project risk right now |
-| Large-scale content expansion before loop validation | More content would hide balance and clarity problems instead of solving them |
+| Gameplay implementation in this milestone | The current goal is to prepare the implementation, not start it blindly |
+| UI, rendering, audio, engine integration or app shell | These are platform concerns and would distort the core-first goal |
+| Multiplayer, networking, live infrastructure or online persistence | They do not reduce the current architectural risk |
+| Final balancing of every mechanic in `Estruturação.md` | First the project needs boundaries and contracts, then balancing |
 
 ## Traceability
 
@@ -79,34 +65,26 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| ENGN-01 | Phase 1 | Completed |
-| ENGN-02 | Phase 1 | Completed |
-| ENGN-03 | Phase 3 | Pending |
-| ENGN-04 | Phase 1 | Completed |
-| COMB-01 | Phase 3 | Pending |
-| COMB-02 | Phase 3 | Pending |
-| COMB-03 | Phase 3 | Pending |
-| COMB-04 | Phase 3 | Pending |
-| SCEN-01 | Phase 4 | Pending |
-| SCEN-02 | Phase 4 | Pending |
-| SCEN-03 | Phase 4 | Pending |
-| CHAR-01 | Phase 2 | Pending |
-| CHAR-02 | Phase 2 | Pending |
-| CHAR-03 | Phase 2 | Pending |
-| CHAR-04 | Phase 2 | Pending |
-| CONT-01 | Phase 1 | Completed |
-| CONT-02 | Phase 3 | Pending |
-| CONT-03 | Phase 5 | Pending |
-| PLYT-01 | Phase 5 | Pending |
-| PLYT-02 | Phase 1 | Completed |
-| PLYT-03 | Phase 5 | Pending |
-| PLYT-04 | Phase 5 | Pending |
+| FRAM-01 | Phase 1 | Completed |
+| FRAM-02 | Phase 1 | Completed |
+| DOMN-01 | Phase 1 | Completed |
+| DOMN-02 | Phase 1 | Completed |
+| DOMN-03 | Phase 1 | Completed |
+| DOMN-04 | Phase 1 | Completed |
+| ARCH-01 | Phase 1 | Completed |
+| ARCH-02 | Phase 1 | Completed |
+| ARCH-03 | Phase 1 | Completed |
+| EDUC-01 | Phase 1 | Completed |
+| EDUC-02 | Phase 1 | Completed |
+| EDUC-03 | Phase 1 | Completed |
+| HNDF-01 | Phase 1 | Completed |
+| HNDF-02 | Phase 1 | Completed |
 
 **Coverage:**
-- v1 requirements: 22 total
-- Mapped to phases: 22
-- Unmapped: 0 ✓
+- v1 requirements: 14 total
+- Mapped to phases: 14
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-04-03*
-*Last updated: 2026-04-03 after phase 1 execution*
+*Last updated: 2026-04-03 after phase 01 completion*
