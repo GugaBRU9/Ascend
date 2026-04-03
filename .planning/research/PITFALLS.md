@@ -1,201 +1,103 @@
-# Pitfalls Research
+# Pitfalls Research: Ascend
 
-**Domain:** Mobile turn-based RPG in Unity
-**Researched:** 2026-03-27
-**Confidence:** HIGH
+**Date:** 2026-04-03
+**Context:** avoid building product surface area before proving the mechanics loop
 
-## Critical Pitfalls
+## Top pitfalls
 
-### Pitfall 1: Combat rules trapped in scenes and animations
+### 1. Coupling the prototype to the delivery medium
 
-**What goes wrong:**
-Battle logic becomes distributed across scene references, animation callbacks and `MonoBehaviour` state, making fixes slow and regressions common.
+Starting with UI, persistence or product shell concerns turns every rule change into interface rework.
 
-**Why it happens:**
-Unity prototypes often start inside scenes because it feels faster.
+### 2. Inflating scope before proving the loop
 
-**How to avoid:**
-Keep combat phases, action resolution, damage and status logic in pure C# systems from the beginning.
+Adding crafting, economy, node maps, companions, saves or broad content expansion too early hides the main risk: whether the core system actually works.
 
-**Warning signs:**
-You cannot run combat tests without loading a scene, or changing a rule requires editing several unrelated objects.
+### 3. Letting deterministic combat become solved and repetitive
 
-**Phase to address:**
-Phase 1 and Phase 2
+If positioning, PE pressure, reactions, cover and enemy roles are weak, fixed damage can collapse into one dominant pattern.
 
----
+### 4. Claiming one unified engine but only validating combat
 
-### Pitfall 2: GC spikes during combat
+If social, investigative and exploratory scenes remain improvised or trivial, the project only validates half of the design.
 
-**What goes wrong:**
-Low-end devices hitch whenever turns resolve, tooltips open or repeated effects spawn.
+### 5. Pushing missing rigor onto the GM
 
-**Why it happens:**
-Frequent allocations from LINQ, string churn, temporary collections and instantiate/destroy loops accumulate quickly.
+Unclear timing, triggers, condition semantics and exception handling turn the GM into a live patch layer instead of a user of the system.
 
-**How to avoid:**
-Profile on device, preallocate hot-path collections, pool repeated objects and watch GC allocs every combat step.
+### 6. Balancing from intuition instead of evidence
 
-**Warning signs:**
-Profiler shows regular GC allocations in the turn loop or frame hitches during repeated actions.
+Without structured logs, seed replay and playtest metrics, balance discussions stay subjective.
 
-**Phase to address:**
-Phase 1, Phase 2 and Phase 8
+### 7. Using starter content that does not stress the hypotheses
 
----
+If the starter adventure does not force PE spending, positioning, condition play and meaningful non-combat resolution, a passing playtest says little.
 
-### Pitfall 3: UI that is visually simple on paper but expensive in practice
+## Warning signs
 
-**What goes wrong:**
-Menus and combat HUD look minimal yet still drop frames because of overdraw, texture churn or too many moving elements.
+- rule changes require UI or persistence changes
+- roadmap conversations drift toward deferred modules before one full session works
+- players hoard PE and repeat the same optimal action
+- non-combat scenes resolve in one roll or do not alter the group's state
+- the GM keeps inventing rule clarifications every few minutes
+- balance tweaks happen without logs, timing or usage data
+- pregens look different on paper but occupy the same role in play
 
-**Why it happens:**
-Teams treat UI simplicity as an art choice, not a rendering-budget rule.
+## Prevention strategies
 
-**How to avoid:**
-Use atlas-friendly assets, keep moving UI elements limited, validate draw calls and batches, and profile every important screen on target devices.
+### Core first
 
-**Warning signs:**
-Frame drops happen when the HUD updates, menus open, or status icons multiply.
+Start with canonical rule models, deterministic execution and a harness for testing/playtesting.
 
-**Phase to address:**
-Phase 1, Phase 7 and Phase 8
+### Explicit scope gates
 
----
+Do not pull deferred modules into scope until cycle 1 validation criteria pass.
 
-### Pitfall 4: Companion AI that feels random or untrustworthy
+### Tactical sandbox before content breadth
 
-**What goes wrong:**
-Players stop engaging with the system because companions waste turns, ignore priorities or sabotage the player's plan.
+Validate combat in focused encounters before expanding adventure breadth.
 
-**Why it happens:**
-AI rules remain implicit and are tuned only by feel instead of being made observable.
+### Make `Progress x Pressure` genuinely playable
 
-**How to avoid:**
-Implement explicit tactical-role rules, focus-target logic and debug-friendly traces for chosen actions.
+Implement social, investigative and exploratory scene templates with real cost and consequence.
 
-**Warning signs:**
-Testers cannot explain why an ally chose an action, or the same setup produces surprising outcomes repeatedly.
+### Formalize rule semantics early
 
-**Phase to address:**
-Phase 3
+Every skill and condition should have explicit fields for trigger, target, cost, duration and resolution behavior.
 
----
+### Instrument playtests
 
-### Pitfall 5: Scope blow-up from optional systems
+Track turn time, skill usage, PE spending, confusion points and structural GM interventions.
 
-**What goes wrong:**
-The team starts building manual full-party control, broad campaign content or meta systems before the core loop is stable.
+### Use content as a hypothesis vehicle
 
-**Why it happens:**
-Optional features feel harmless until they triple UI, balance and content complexity.
+Every starter scene should exist to test a mechanic, a role or a pacing assumption.
 
-**How to avoid:**
-Treat the first roadmap as a validation slice and defer optional expansion explicitly in requirements.
+## Phase mapping
 
-**Warning signs:**
-New menus or secondary systems appear before the first clean combat session is playable on device.
+| Pitfall | Primary Phase | Reinforcement |
+|---------|---------------|---------------|
+| Medium coupling | Phase 1 | Phase 5 |
+| Scope inflation | Phase 1 | Phase 5 |
+| Solved combat loop | Phase 2 | Phase 5 |
+| Non-unified engine | Phase 3 | Phase 4 |
+| GM carrying the system | Phase 1 | Phase 4 |
+| Evidence-free balancing | Phase 4 | Phase 5 |
+| Weak starter content | Phase 3 | Phase 5 |
 
-**Phase to address:**
-Phase 5 onward, enforced at roadmap level
+## Confidence
 
----
-
-### Pitfall 6: Undefined design edges turning into rework
-
-**What goes wrong:**
-Systems are implemented twice because critical values, loops or priorities were never decided clearly enough.
-
-**Why it happens:**
-Teams "fill in the blanks" under schedule pressure instead of forcing a decision.
-
-**How to avoid:**
-Use targeted Q&A when a missing rule blocks implementation, and log the answer as a project decision immediately.
-
-**Warning signs:**
-Repeated debate around the same unresolved topic, such as active slot count, target platform baseline or save structure.
-
-**Phase to address:**
-All phases, especially Phase 1 through Phase 5
-
-## Technical Debt Patterns
-
-| Shortcut | Immediate Benefit | Long-term Cost | When Acceptable |
-|----------|-------------------|----------------|-----------------|
-| Hardcode balance numbers in scene scripts | Faster prototype | Painful tuning and hidden regressions | Only for throwaway spikes |
-| Use `Resources/` for everything | Zero setup | Weak memory control and messy asset growth | Small temporary prototypes only |
-| Skip device profiling until later | Short-term speed | Late discovery of fatal performance issues | Never for this project |
-
-## Integration Gotchas
-
-| Integration | Common Mistake | Correct Approach |
-|-------------|----------------|------------------|
-| Save system | Serialize live scene objects directly | Save compact versioned runtime state instead |
-| UI assets | Load textures ad hoc per screen | Reuse atlases and verify batching behavior |
-| Content bundles | Add Addressables too late and migrate in panic | Introduce them only when needed, but keep data boundaries ready |
-
-## Performance Traps
-
-| Trap | Symptoms | Prevention | When It Breaks |
-|------|----------|------------|----------------|
-| Per-turn allocations | Random hitches in repeated combat | Preallocate, reuse and pool | Immediately on older devices |
-| HUD overdraw / texture churn | Menus or combat overlays tank FPS | Atlas discipline and simple layout rules | As soon as UI density grows |
-| Synchronous bulk loading | Long hangs entering encounters | Keep the slice small, then add staged loading | Once multiple encounters/assets exist |
-
-## Security Mistakes
-
-| Mistake | Risk | Prevention |
-|---------|------|------------|
-| Trusting save data shape blindly | Corrupted saves and broken progression | Version and validate saved payloads |
-| Mixing debug cheats into shipping flows | Progression exploits and invalid test data | Gate cheats behind dev-only flags |
-| Hiding critical state in scene-only objects | Save/load inconsistencies | Centralize persistent state in a runtime model |
-
-## UX Pitfalls
-
-| Pitfall | User Impact | Better Approach |
-|---------|-------------|-----------------|
-| Too many taps to take a turn | Combat feels slow despite being turn-based | Keep action selection shallow and predictable |
-| Status effects without readable feedback | Player cannot reason about outcomes | Show source, duration and impact clearly |
-| Companion behavior without explanation | Player loses trust in automation | Surface role and target priority rules clearly |
-
-## "Looks Done But Isn't" Checklist
-
-- [ ] **Combat loop:** turn order is visible, costs are correct and end-of-turn effects resolve in the right place
-- [ ] **Companion AI:** allies respect tactical role and focus target in repeated scenarios
-- [ ] **Mobile UI:** main combat actions are usable on a phone without hidden overflow flows
-- [ ] **Performance:** the slice has been profiled on the target device, not only in the Editor
-- [ ] **Save/resume:** interruption and return paths are validated at least once on device
-
-## Recovery Strategies
-
-| Pitfall | Recovery Cost | Recovery Steps |
-|---------|---------------|----------------|
-| Scene-owned combat logic | HIGH | Freeze features, extract rules into domain layer, backfill tests |
-| GC spikes in combat | MEDIUM | Capture profiles, remove hot-path allocations, pool repeated objects |
-| UI overdraw / batching issues | MEDIUM | Audit atlases, simplify visual tree, re-profile on device |
-| Scope blow-up | HIGH | Cut back to validated slice and move extras to future requirements |
-
-## Pitfall-to-Phase Mapping
-
-| Pitfall | Prevention Phase | Verification |
-|---------|------------------|--------------|
-| Scene-owned combat logic | Phase 1 | Domain rules run without scene dependencies |
-| GC spikes in combat | Phase 1 / 2 / 8 | Profiler shows clean hot path in core encounters |
-| Expensive UI | Phase 1 / 7 / 8 | HUD and menus stay responsive on target device |
-| Untrustworthy companion AI | Phase 3 | Repeated scenarios produce explainable ally actions |
-| Scope blow-up | Roadmap governance / Phase 5+ | Deferred items stay out of MVP implementation |
-| Undefined design edges | All phases | Blocking questions are answered and logged before coding |
+- High: pitfalls tied to Ascend's documented strategy
+- Medium: external generalization from game design practice
 
 ## Sources
 
-- Internal design source: `Estruturacao.md`
-- Project context: `.planning/PROJECT.md`
-- Unity Manual, Garbage collector overview: https://docs.unity3d.com/Manual/performance-garbage-collector.html
-- Unity Manual, Performance consideration for runtime UI: https://docs.unity3d.com/Manual/UIE-performance-consideration-runtime.html
-- Unity Manual, Control textures of the dynamic atlas: https://docs.unity3d.com/Manual/UIE-control-textures-of-the-dynamic-atlas.html
-- Unity Manual, Collecting performance data: https://docs.unity3d.com/Manual/profiler-profiling-applications.html
-- Unity Learn, Object pooling: https://learn.unity.com/course/design-patterns-unity-6/tutorial/use-object-pooling-to-boost-performance-of-c-scripts-in-unity
-
----
-*Pitfalls research for: mobile turn-based RPG in Unity*
-*Researched: 2026-03-27*
+- Project docs: `README.md`, `docs/00-visao-do-sistema.md`, `docs/01-nucleo-de-regras.md`, `docs/05-playtest.md`, `docs/07-modulos-adiados.md`, `.planning/PROJECT.md`
+- Supplemental reading used by research agent:
+  - `https://www.gamedeveloper.com/design/howto-develop-a-prototyping-mindset`
+  - `https://www.gamedeveloper.com/design/building-an-rpg-battle-system---part-2`
+  - `https://www.gamedeveloper.com/design/criteria-for-strategy-game-design`
+  - `https://www.gamedeveloper.com/design/developing-a-tabletop-game`
+  - `https://www.gamedeveloper.com/game-platforms/reflections-on-playtesting-and-puzzledorf`
+  - `https://www.gamedeveloper.com/design/the-logic-behind-violence-a-primer-on-combat-system-design`
+  - `https://thealexandrian.net/wordpress/1118/roleplaying-games/three-clue-rule`

@@ -1,132 +1,89 @@
-# Feature Research
+# Features Research: Ascend
 
-**Domain:** Mobile turn-based RPG
-**Researched:** 2026-03-27
-**Confidence:** MEDIUM
+**Date:** 2026-04-03
+**Context:** v1 is a mechanics-validation prototype, not a polished player-facing product
 
-## Feature Landscape
+## Table stakes for v1
 
-### Table Stakes (Users Expect These)
+### Rules execution
 
-| Feature | Why Expected | Complexity | Notes |
-|---------|--------------|------------|-------|
-| Short playable combat loop | Mobile RPG players expect a complete encounter in a reasonable session | MEDIUM | Must validate the promised ~10 minute session target. |
-| Small end-to-end mission slice | A vertical slice is stronger when it includes at least one full run shape, not only disconnected battles | MEDIUM | The exact mission structure is still open and should be closed by Q&A before implementation hardens. |
-| Clear turn readability | Turn-based combat fails fast if order, target and effect feedback are unclear | MEDIUM | UI simplicity is part of the product promise, not polish-only work. |
-| Character progression with meaningful choices | Build depth is central to retention in this genre | HIGH | Needs attributes, skills and equipment working together. |
-| Party roles and companion usefulness | A 5-character party feels broken if allies are passive or incoherent | HIGH | Automation must feel intentional, not random. |
-| Save/resume on mobile | Sessions get interrupted; losing progress breaks trust quickly | MEDIUM | Safe-point scope is enough for the first vertical slice. |
-| Stable low-end performance | The stated audience includes older phones | HIGH | Performance is a launch requirement, not a post-launch optimization task. |
+- faithful execution of tests, modifiers, advantage/disadvantage and degrees of success
+- static defenses, resource handling, fixed damage, resistances and conditions
+- death/downed and recovery flows
 
-### Differentiators (Competitive Advantage)
+### Tactical combat
 
-| Feature | Value Proposition | Complexity | Notes |
-|---------|-------------------|------------|-------|
-| One deep protagonist + 4 auto-managed companions | Preserves build depth without overwhelming mobile UI | HIGH | Strong product identity versus "manage 5 full builds" designs. |
-| Hybrid skill acquisition from exploration, NPCs and reflection | Gives three distinct ways to grow without forcing one playstyle | HIGH | Reflection unlocks need telemetry or rule tracking. |
-| Limited active slots with unlimited unlocked passives | Keeps turns fast while allowing long-term build complexity | HIGH | Needs disciplined balance and status/scaling clarity. |
-| Optional full manual party control | Advanced-mode depth for expert players | HIGH | Valuable differentiator, but likely post-MVP due UI/scope cost. |
+- initiative and turn order
+- action, movement and reaction economy
+- zones, pressure attacks, cover and positioning
+- skill usage by players and enemies
+- support for common, elite and boss encounters
 
-### Anti-Features (Commonly Requested, Often Problematic)
+### Non-combat scenes
 
-| Feature | Why Requested | Why Problematic | Alternative |
-|---------|---------------|-----------------|-------------|
-| Full build management for all companions in MVP | Sounds "deeper" on paper | Explodes UI, balancing and content authoring cost immediately | Keep archetype-led companions with tactical roles |
-| Real-time / hybrid combat layers | Feels modern and flashy | Conflicts with readability, input simplicity and low-end performance | Stay fully turn-based and optimize pacing instead |
-| Heavy VFX, post-processing and shader spectacle | Looks premium in screenshots | Directly hurts the low-end phone goal | Prefer strong silhouettes, timing and readable effects |
-| Live-service systems before core validation | Feels like future-proofing | Distracts from validating combat/build value | Ship an offline-first vertical slice first |
+- playable `Progress x Pressure` loop
+- visible objective, risk, ND and consequence
+- support for social, investigative and exploratory scene templates
 
-## Feature Dependencies
+### Character and content support
 
-```text
-[Short session loop]
-    └──requires──> [Save/resume]
-    └──requires──> [Readable combat UI]
+- load and run level 1 pregens
+- create or edit level 1 characters from canonical docs
+- load origins, trails, equipment, enemies and the starter adventure from canonical content
 
-[Companion automation]
-    └──requires──> [Party structure]
-    └──requires──> [Tactical roles]
-    └──requires──> [Target priority rules]
+### GM and playtest support
 
-[Hybrid skill acquisition]
-    └──requires──> [Skill system]
-    └──requires──> [Progress tracking / reflection triggers]
-    └──requires──> [Exploration/NPC encounter hooks]
+- prepare scenes and encounters without inventing missing system rules
+- run the starter package repeatedly
+- record signals needed for balance iteration: PE use, turn duration, skill frequency, confusion points and dominant patterns
 
-[Optional manual party control]
-    └──conflicts early with──> [Simple UI MVP]
-```
+### Light persistence
 
-### Dependency Notes
+- carry consequences between scenes inside the session
+- allow preparation choices to affect the boss encounter
 
-- **Short session loop requires save/resume:** mobile interruption is normal, so "10 minute sessions" are not credible without safe resume behavior.
-- **Companion automation requires explicit tactical rules:** otherwise allies feel random and break trust in the system.
-- **Hybrid skill acquisition requires instrumentation:** reflection unlocks depend on tracking recurring player behavior.
-- **Optional manual control conflicts early with simple UI:** it can be added later, but it should not shape the first vertical slice.
+## Differentiators to keep in sight
 
-## MVP Definition
+- truly data-driven unified engine for combat and non-combat scenes
+- campaign consequence tracking for factions, NPCs and world state
+- richer telemetry for balancing and build comparison
+- short progression loop beyond level 1 after the first validation round
+- optional recurring ally module for small groups
+- later adapters beyond CLI, if derived from the same core
 
-### Launch With (v1)
+## Anti-features for v1
 
-- [ ] Playable turn-based combat loop on mobile — validates the core promise
-- [ ] Protagonist progression via attributes, skills and equipment — validates build depth
-- [ ] Four companions with tactical role presets and reliable auto-actions — validates low-friction party play
-- [ ] Status, resistance, damage-type and energy systems — validates tactical depth
-- [ ] Minimal acquisition hooks for exploration/NPC/reflection rewards — validates long-term growth shape
-- [ ] Save/resume and performance verification on low-end hardware — validates mobile viability
+- polished final product UI
+- save system, codex, journal or lore archive
+- deep economy, shops and advanced crafting
+- solo mode with full companion management
+- tactical AI for companions
+- mandatory node map progression
+- mobile-session pacing constraints
+- exploration energy system
+- large-scale content expansion before the core loop is stable
 
-### Add After Validation (v1.x)
+## Dependencies
 
-- [ ] Optional full manual party control — add once the base UI is proven
-- [ ] Broader encounter catalog and richer archetype roster — add after combat readability is stable
-- [ ] Deeper exploration spaces and stronger NPC teaching loop — add once core progression pacing is tuned
+- rules core before any UI, analytics or automation layer
+- character model before builder and balance testing
+- combat runner depends on zones, actions, conditions, enemies and skills
+- non-combat runner depends on tests plus the `Progress x Pressure` protocol
+- starter adventure depends on both combat and non-combat execution plus light consequence tracking
+- deeper instrumentation only matters after the base loop runs end to end
 
-### Future Consideration (v2+)
+## Practical assumptions for roadmap input
 
-- [ ] Full campaign content breadth — defer until the vertical slice proves the combat/build loop
-- [ ] Cloud sync or online services — defer until offline-first loop is solid
-- [ ] Meta progression, monetization and live content cadence — defer until product direction is validated
+- v1 should support both pregens and level 1 custom character creation
+- first playable surface should be CLI plus automated simulation/test harness
+- first delivery should validate one end-to-end starter session, not the full 3-5 session campaign arc
 
-## Feature Prioritization Matrix
+## Confidence
 
-| Feature | User Value | Implementation Cost | Priority |
-|---------|------------|---------------------|----------|
-| Readable combat loop | HIGH | HIGH | P1 |
-| Protagonist build depth | HIGH | HIGH | P1 |
-| Companion automation | HIGH | HIGH | P1 |
-| Save/resume | HIGH | MEDIUM | P1 |
-| Reflection-based skill unlocks | MEDIUM | HIGH | P2 |
-| Optional manual party control | MEDIUM | HIGH | P2 |
-| Broad content library | MEDIUM | HIGH | P3 |
-
-**Priority key:**
-- P1: Must have for launch
-- P2: Should have, add when possible
-- P3: Nice to have, future consideration
-
-## Competitor Feature Analysis
-
-| Feature | Competitor A | Competitor B | Our Approach |
-|---------|--------------|--------------|--------------|
-| Party combat | Common in mobile RPGs | Common in mobile RPGs | Keep the party, but collapse companion micromanagement by default |
-| Build depth | Often spread across many characters | Often tied to roster collection | Concentrate build depth in the protagonist first |
-| Session pacing | Often elongated by grind loops | Often elongated by meta layers | Protect the 10-minute session target as a product rule |
-| Auto/manual control | Often one-button auto-battle | Often full manual or full auto | Use tactical-role automation with optional manual expansion later |
+- High: mandatory v1 scope and exclusions
+- Medium: how much creator UX is needed in the first playable build
+- Medium: how much campaign progression enters before post-playtest iteration
 
 ## Sources
 
-- Internal design source: `Estruturacao.md`
-- Project context source: `.planning/PROJECT.md`
-- Genre conventions inferred from the product direction and constraints documented above
-
-## Open Questions To Carry Into Planning
-
-- What is the tactical field model for the slice: grid, lanes, hex, fixed front/backline or another layout?
-- What is the exact shape of the first mission slice: number of combats, rest/event nodes and boss structure?
-- Does the MVP lock to 3 or 4 active skill slots?
-- Which skill acquisition source is mandatory in the first playable slice, and which can stay stubbed?
-- Is save/resume allowed only between nodes or also during an active combat?
-
----
-*Feature research for: mobile turn-based RPG*
-*Researched: 2026-03-27*
+- Project docs: `README.md`, `docs/00-visao-do-sistema.md`, `docs/03-guia-do-mestre-e-campanha.md`, `docs/04-conteudo-inicial.md`, `docs/05-playtest.md`, `.planning/PROJECT.md`
