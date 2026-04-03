@@ -1,0 +1,66 @@
+starterAdventure:
+  id: adventure.o_sinal_sob_o_obelisco
+  name: O Sinal sob o Obelisco
+  premise: uma coluna antiga voltou a pulsar nos arredores de Vesper e uma patrulha enviada para investigar nao retornou
+  objectives:
+    - localizar a patrulha desaparecida
+    - identificar quem esta usando o obelisco
+    - impedir a abertura de uma nova fenda
+  scenes:
+    - id: scene.posto_de_vigia_de_vesper
+      name: Posto de Vigia de Vesper
+      types:
+        - social
+        - investigativa
+      summary: o grupo fala com Capitao Iven e Sera para reunir pistas iniciais antes da expedicao
+      progressTarget: 3
+      pressureLimit: 3
+      risks:
+        - informacao truncada
+        - pressao politica
+        - envio de uma segunda patrulha despreparada
+    - id: scene.trilha_das_cinzas_frias
+      name: Trilha das Cinzas Frias
+      types:
+        - exploracao
+      summary: rastrear a patrulha, evitar residuos misticos e decidir entre velocidade ou sigilo
+      complications:
+        - emboscada de Saqueadores
+        - equipamento contaminado
+        - pista falsa deixada por Cultistas
+    - id: scene.cripta_rachada
+      name: Cripta Rachada
+      types:
+        - combate
+        - infiltracao
+      summary: confronto leve ou infiltracao contra saqueadores e um cultista em torno da cripta
+      recommendedEnemies:
+        - enemyId: enemy.saqueador_errante
+          count: 2
+        - enemyId: enemy.cultista_de_eco
+          count: 1
+      rewards:
+        - diarios da patrulha
+        - selo quebrado que prova manipulacao ritual
+    - id: scene.galeria_do_obelisco
+      name: Galeria do Obelisco
+      types:
+        - investigacao
+      summary: investigar a fissura sob pressao, sabotar focos e enfraquecer o boss final
+      rewards:
+        - cada foco destruido reduz em 1 a resistencia universal do Arauto, minimo 0
+    - id: scene.camara_central
+      name: Camara Central
+      types:
+        - boss_fight
+      summary: confronto final contra o Arauto do Limiar na camara central
+      recommendedEnemies:
+        - enemyId: enemy.arauto_do_limiar
+          count: 1
+        - enemyId: enemy.parasita_psiquico
+          count: 1
+  rewards:
+    - 1 Marco de Ascensao
+    - acesso a uma faccao interessada no obelisco
+    - 1 item raro do mestre
+    - uma nova pergunta sobre o passado do mundo

@@ -1,0 +1,136 @@
+skills:
+  - id: skill.vanguarda.guarda_alta
+    trailId: trail.vanguarda
+    name: Guarda Alta
+    type: passive
+    tier: I
+    effect: enquanto usar escudo ou arma pesada, ganha +1 Defesa
+    extra: a primeira vez em cada cena que sofreria deslocamento forcado, pode ignorar
+  - id: skill.vanguarda.investida
+    trailId: trail.vanguarda
+    name: Investida
+    type: action
+    tier: I
+    costPe: 1
+    effect: mova 1 zona e faca um ataque corpo a corpo
+    success: dano normal +2
+    critical: alem do dano extra normal, o alvo fica Caido
+  - id: skill.vanguarda.provocacao_tatica
+    trailId: trail.vanguarda
+    name: Provocacao Tatica
+    type: action
+    tier: I
+    costPe: 1
+    test: 1d20 + Carisma + Convencimento contra Vontade do alvo
+    effect: em sucesso, ate o fim do proximo turno do alvo ele sofre -2 ao atacar qualquer um que nao seja voce
+    success: sucesso forte tambem deixa o alvo Abalado
+  - id: skill.vanguarda.muralha_de_ferro
+    trailId: trail.vanguarda
+    name: Muralha de Ferro
+    type: reaction
+    tier: II
+    costPe: 2
+    trigger: um aliado na sua zona ou em zona adjacente sofre um ataque acertado
+    effect: reduza o dano em 2 + Vigor e mova para a zona do aliado, se quiser
+
+  - id: skill.cacador.posicionamento_rapido
+    trailId: trail.cacador
+    name: Posicionamento Rapido
+    type: passive
+    tier: I
+    effect: uma vez por rodada, depois de acertar um ataque com arma leve ou a distancia, mova 1 zona
+  - id: skill.cacador.disparo_preciso
+    trailId: trail.cacador
+    name: Disparo Preciso
+    type: action
+    tier: I
+    costPe: 1
+    requirement: nao estar engajado
+    effect: faca um ataque a distancia com +2 no teste
+    success: dano normal +2
+  - id: skill.cacador.marca_de_caca
+    trailId: trail.cacador
+    name: Marca de Caca
+    type: free
+    tier: I
+    costPe: 1
+    effect: marque um alvo visivel ate o fim da cena
+    extra: a primeira vez em cada rodada que voce acerta o alvo marcado, causa +2 dano
+  - id: skill.cacador.execucao_fria
+    trailId: trail.cacador
+    name: Execucao Fria
+    type: action
+    tier: II
+    costPe: 2
+    requirement: alvo marcado ou Exposto
+    effect: faca um ataque
+    success: dano normal +Agilidade
+    critical: o alvo tambem fica Sangrando
+
+  - id: skill.arcanista.foco_elemental
+    trailId: trail.arcanista
+    name: Foco Elemental
+    type: passive
+    tier: I
+    effect: no inicio de cada cena, escolha Fogo, Gelo, Eletrico ou Arcano
+    extra: suas habilidades misticas causam esse tipo de dano e ganham 1 penetracao
+  - id: skill.arcanista.rajada_arcana
+    trailId: trail.arcanista
+    name: Rajada Arcana
+    type: action
+    tier: I
+    costPe: 1
+    test: 1d20 + Intelecto + Ocultismo contra Defesa
+    effect: 3 + Presenca dano do tipo escolhido em Foco Elemental
+  - id: skill.arcanista.campo_instavel
+    trailId: trail.arcanista
+    name: Campo Instavel
+    type: action
+    tier: I
+    costPe: 2
+    effect: crie uma zona instavel em sua zona ou adjacente ate o inicio do seu proximo turno
+    trigger: a primeira criatura inimiga que entrar ou comecar o turno ali sofre 2 + Presenca dano e fica Abalado
+  - id: skill.arcanista.ruptura_do_limiar
+    trailId: trail.arcanista
+    name: Ruptura do Limiar
+    type: action
+    tier: II
+    costPe: 3
+    test: 1d20 + Intelecto + Ocultismo contra Reflexos de todos os inimigos na zona alvo
+    effect: 4 + Presenca dano e empurra 1 zona
+    success: sucesso forte tambem deixa o alvo Caido
+
+  - id: skill.condutor.elo_de_comando
+    trailId: trail.condutor
+    name: Elo de Comando
+    type: passive
+    tier: I
+    effect: quando voce usa Ajudar, o bonus passa a ser +3
+    extra: uma vez por cena, o aliado ajudado recupera 1 PE
+  - id: skill.condutor.pulso_restaurador
+    trailId: trail.condutor
+    name: Pulso Restaurador
+    type: action
+    tier: I
+    costPe: 1
+    effect: um aliado na mesma zona ou zona adjacente recupera 4 + Presenca Vida
+    extra: remova Abalado ou Exposto do alvo
+  - id: skill.condutor.palavra_de_peso
+    trailId: trail.condutor
+    name: Palavra de Peso
+    type: action
+    tier: I
+    costPe: 1
+    test: 1d20 + Carisma + Convencimento contra Vontade de um alvo que possa ouvir voce
+    effect: escolha Hesitar, Recuar ou Revelar conforme o texto canonico
+    extra: Hesitar remove a proxima reacao; Recuar move 1 zona; Revelar entrega uma resposta curta e verdadeira
+  - id: skill.condutor.intervencao
+    trailId: trail.condutor
+    name: Intervencao
+    type: reaction
+    tier: II
+    costPe: 2
+    trigger: um aliado em ate 1 zona falha em um teste ou e alvo de um efeito hostil
+    effect: conceda +2 ao resultado ou a defesa/resistencia relevante apos ver a rolagem
+    success: se a conversao evitar uma falha, o aliado tambem recupera 1 PE
+

@@ -1,0 +1,37 @@
+origins:
+  - id: origin.sobrevivente
+    name: Sobrevivente
+    trainedSkills:
+      - Fortitude
+      - Sobrevivencia
+    narrativeEdge: conhece rotas improvisadas, esconderijos e formas de manter o grupo de pe
+    oncePerSession: ignorar a primeira complicacao ambiental menor da cena
+  - id: origin.ex_militar
+    name: Ex-Militar
+    trainedSkills:
+      - Luta
+      - Pontaria
+    narrativeEdge: reconhece taticas, hierarquias e sinais de combate
+    oncePerSession: conceder +2 em iniciativa para si ou para um aliado que siga sua ordem
+  - id: origin.erudito
+    name: Erudito
+    trainedSkills:
+      - Investigacao
+      - Conhecimento
+    narrativeEdge: sabe interpretar ruinas, simbolos e registros
+    oncePerSession: fazer ao mestre uma pergunta objetiva sobre a cena e receber uma verdade util
+  - id: origin.diplomata
+    name: Diplomata
+    trainedSkills:
+      - Convencimento
+      - Enganacao
+    narrativeEdge: entende etiqueta, disputas de poder e leitura de humor social
+    oncePerSession: transformar uma falha social em sucesso com custo
+  - id: origin.sensitivo
+    name: Sensitivo
+    trainedSkills:
+      - Vontade
+      - Ocultismo
+    narrativeEdge: percebe residuos misticos, presencas e alteracoes do ambiente
+    oncePerSession: sentir a principal anomalia ou emocao dominante de um local
+

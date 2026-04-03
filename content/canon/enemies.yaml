@@ -1,0 +1,172 @@
+enemies:
+  - id: enemy.saqueador_errante
+    name: Saqueador Errante
+    threatValue: 1
+    role: agressor comum
+    life: 12
+    defense: 11
+    fortitude: 11
+    reflexes: 12
+    will: 10
+    initiative: 2
+    actions:
+      - name: Facao serrilhada
+        test: +4 contra Defesa
+        effect: 4 dano Fisico
+    traits:
+      - se se moveu antes do ataque, causa +2 dano
+
+  - id: enemy.batedor_das_fendas
+    name: Batedor das Fendas
+    threatValue: 1
+    role: atirador movel
+    life: 10
+    defense: 12
+    fortitude: 10
+    reflexes: 13
+    will: 10
+    initiative: 4
+    actions:
+      - name: Arco curto
+        test: +5 contra Defesa
+        effect: 3 dano Fisico
+    traits:
+      - se comecar a rodada sem inimigo na mesma zona, recebe vantagem no primeiro ataque da rodada
+
+  - id: enemy.brutamontes_ferrugem
+    name: Brutamontes Ferrugem
+    threatValue: 1
+    role: bruiser
+    life: 18
+    defense: 11
+    fortitude: 13
+    reflexes: 9
+    will: 10
+    initiative: 0
+    actions:
+      - name: Marreta de sucata
+        test: +5 contra Defesa
+        effect: 6 dano Fisico
+    traits:
+      - em sucesso forte, o alvo fica Caido
+
+  - id: enemy.cultista_de_eco
+    name: Cultista de Eco
+    threatValue: 1
+    role: conjurador hostil
+    life: 11
+    defense: 11
+    fortitude: 10
+    reflexes: 11
+    will: 12
+    initiative: 1
+    actions:
+      - name: Dardo arcano
+        test: +4 contra Defesa
+        effect: 4 dano Arcano
+      - name: Selo de desgaste
+        test: +4 contra Vontade
+        effect: o alvo fica Exposto
+
+  - id: enemy.parasita_psiquico
+    name: Parasita Psiquico
+    threatValue: 1
+    role: perturbador
+    life: 9
+    defense: 13
+    fortitude: 9
+    reflexes: 13
+    will: 12
+    initiative: 3
+    actions:
+      - name: Picada neural
+        test: +4 contra Vontade
+        effect: 2 dano Trevas e o alvo fica Abalado
+    traits:
+      - quando sofre dano corpo a corpo, pode mover 1 zona como reacao
+
+  - id: enemy.guardiao_de_pedra
+    name: Guardiao de Pedra
+    threatValue: 1
+    role: ancoragem defensiva
+    life: 20
+    defense: 13
+    fortitude: 14
+    reflexes: 8
+    will: 11
+    initiative: -1
+    resistance: 2 contra dano Fisico
+    actions:
+      - name: Golpe de bloco
+        test: +5 contra Defesa
+        effect: 5 dano Fisico
+    traits:
+      - nao pode ser empurrado por efeitos comuns
+
+  - id: enemy.sentinela_corrompida
+    name: Sentinela Corrompida
+    threatValue: 3
+    role: elite controladora
+    life: 26
+    defense: 13
+    fortitude: 13
+    reflexes: 12
+    will: 13
+    initiative: 2
+    actions:
+      - name: Lanca ritual
+        test: +6 contra Defesa
+        effect: 6 dano Fisico ou Arcano
+      - name: Rajada de corrupcao
+        test: +5 contra Reflexos de todos na zona
+        effect: 3 dano Arcano e Exposto
+    traits:
+      - quando um inimigo entra na mesma zona, faz um ataque basico como reacao
+
+  - id: enemy.sacerdotisa_da_fenda
+    name: Sacerdotisa da Fenda
+    threatValue: 3
+    role: elite de suporte e ritual
+    life: 22
+    defense: 12
+    fortitude: 11
+    reflexes: 11
+    will: 14
+    initiative: 1
+    actions:
+      - name: Canto de erosao
+        test: +6 contra Vontade
+        effect: 4 dano Trevas e Abalado
+      - name: Reforco ritual
+        test: efeito automatico
+        effect: um aliado na cena recupera 4 Vida e recebe +2 no proximo ataque
+      - name: Campo de silencio
+        test: efeito automatico
+        effect: cria Silenciado em uma zona ate o inicio do proximo turno dela
+
+  - id: enemy.arauto_do_limiar
+    name: Arauto do Limiar
+    threatValue: 5
+    role: boss de arco inicial
+    life: 54
+    defense: 14
+    fortitude: 14
+    reflexes: 12
+    will: 15
+    initiative: 3
+    resistance: 1 contra todos os danos, exceto Luz
+    actions:
+      - name: Lamina de eco
+        test: +7 contra Defesa
+        effect: 7 dano Arcano
+      - name: Comando de ruptura
+        test: +6 contra Vontade em ate 2 alvos
+        effect: 4 dano Trevas e Recuar 1 zona
+      - name: Onda de fenda
+        test: +6 contra Reflexos de todos em uma zona
+        effect: 5 dano Arcano e Exposto
+    traits:
+      - acima de metade da Vida usa Lamina de eco e Comando de ruptura
+      - na metade da Vida ou menos ganha uma segunda Onda de fenda a cada duas rodadas
+      - quando sofre Luz ou um sucesso forte em Investigacao identifica uma fissura, perde a resistencia universal ate o fim da rodada seguinte
+
