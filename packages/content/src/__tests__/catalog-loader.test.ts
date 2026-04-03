@@ -124,18 +124,20 @@ describe("loadCanonicalCatalog", () => {
           file: "trails.yaml",
           entryId: "trail.teste",
           field: "skillIds[0]",
+          severity: "error",
         }),
         expect.objectContaining({
           file: "skills.yaml",
           entryId: "skill.teste",
           field: "trailId",
+          message: "Skill references missing trail id 'trail.ausente'",
         }),
         expect.objectContaining({
           file: "starter-adventure.yaml",
           entryId: "adventure.teste",
+          field: "scenes[0].recommendedEnemies[0].enemyId",
         }),
       ]),
     );
   });
 });
-
