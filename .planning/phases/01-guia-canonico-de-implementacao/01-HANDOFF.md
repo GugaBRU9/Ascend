@@ -58,3 +58,78 @@ Riscos operacionais a vigiar desde o primeiro plano da milestone 02:
 - crescer o pacote inicial de conteudo ate virar problema de balanceamento e nao de arquitetura;
 - criar logs insuficientes para explicar diferencas entre um replay esperado e um replay real;
 - esconder estados invalidos atras de defaults silenciosos em vez de falhar com mensagens rastreaveis.
+
+## 4. Milestone 02 Recomendada
+
+`HNDF-02`. O faseamento abaixo materializa `D-13`, `D-14`, `D-15` e `D-16` sem alterar o recorte ja travado. A ordem oficial continua literal: `tipos -> regras -> criacao de personagem -> combate minimo`.
+
+### 02-01 Fundacao de Tipos e Invariantes
+
+`objetivo`: abrir o core com IDs, value objects e estados minimos que sustentam a trilha inteira sem depender de adaptadores ou parser definitivo.
+
+`escopo`: tipos base de atributos, pools de recurso, status/efeitos aplicados, personagem base, inimigo base e invariantes de dominio visiveis.
+
+`entradas`: `01-GUIA-CANONICO.md`, este handoff, decisoes `D-13` e `D-14`, naming inicial de namespaces e baseline tecnico recomendado.
+
+`saidas`: modulos `domain` criados, testes unitarios simples para invariantes, fronteira clara entre `Definition` e `State` e DTOs minimos estaveis para a etapa seguinte.
+
+`gate de validacao`: compilar o nucleo de tipos, provar invariantes basicas via testes e manter dependencia zero do core em `CLI estruturada`, parser definitivo ou concerns de produto.
+
+### 02-02 Regras Deterministicas e Resolutores
+
+`objetivo`: transformar o nucleo de tipos em regras executaveis e observaveis, com foco em custo, dano, aplicacao de efeito e ordem de resolucao.
+
+`escopo`: resolvers deterministicos, DTOs de resultado, eventos, logs estruturados e replay inicial suficiente para explicar `input -> resolve -> output/events`.
+
+`entradas`: saidas de `02-01`, inventario de regras do guia, decisao `a fechar` sobre granularidade inicial do replay e logs e recorte de combate basico definido por `D-13`.
+
+`saidas`: modulo `rules` funcional, contratos de `validation`, scenario tests basicos de resolucao e base de replay/log pronta para os fluxos seguintes.
+
+`gate de validacao`: repetir a mesma entrada e obter a mesma saida, com eventos suficientes para diagnosticar falha de custo, dano ou efeito sem depender de interface final.
+
+### 02-03 Criacao de Personagem e Catalogo Minimo
+
+`objetivo`: conectar definicoes externas minimas ao core e validar o caminho de montagem do protagonista sem misturar autoria com runtime.
+
+`escopo`: formato inicial do catalogo externo, loader de conteudo, `AuthoringService` por tipo de entidade, `CharacterCreation` e pacote minimo de skills, efeitos, templates e inimigos.
+
+`entradas`: saidas de `02-01` e `02-02`, default `recomendado` para formato inicial do catalogo, decisao `a fechar` sobre loader de conteudo e recorte minimo de conteudo definido neste handoff.
+
+`saidas`: protagonista montado a partir de definicoes cadastradas, validacoes rastreaveis de criacao de personagem, erros explicitos de conteudo e catalogo minimo versionado no repo.
+
+`gate de validacao`: conseguir cadastrar conteudo minimo, criar um personagem valido e explicar qualquer falha de definicao ou restricao sem introduzir parser definitivo complexo.
+
+### 02-04 Combate Minimo e CLI de Estudo
+
+`objetivo`: fechar o primeiro caminho jogavel de estudo com combate basico protagonista versus inimigos e uma `CLI estruturada` de inspecao.
+
+`escopo`: montagem de encontro simples, execucao de turno, comandos controlados de CLI, leitura de estado, exibicao de logs/replay e scenario smoke do fluxo completo.
+
+`entradas`: saidas das fases anteriores, recorte de conteudo minimo, regras deterministicas verdes e papel da `CLI estruturada` travado por `D-15` e `D-16`.
+
+`saidas`: combate minimo funcional, replay/log consultavel, comandos da CLI para cadastrar conteudo minimo, criar personagem, iniciar encontro e disparar acoes, mais testes leves de ponta a ponta.
+
+`gate de validacao`: executar a trilha completa `tipos -> regras -> criacao de personagem -> combate minimo`, com `CLI estruturada` usada como ferramenta de estudo e inspecao, nao como jogo final.
+
+## 5. Definition of Ready para Abrir Codigo
+
+`Definition of Ready`. A milestone 02 so deve abrir implementacao quando todos os itens abaixo estiverem claros e aceitos:
+
+- [ ] `01-GUIA-CANONICO.md` e `01-HANDOFF.md` continuam coerentes entre si e sem reabrir `D-01` a `D-16`.
+- [ ] O time aceita a ordem `tipos -> regras -> criacao de personagem -> combate minimo` como trilha oficial do milestone 02.
+- [ ] O baseline tecnico minimo para C++20, CMake, CTest, GoogleTest, `clang-tidy` e sanitizers esta entendido como prerequisito, mesmo que o ambiente ainda precise instalacao.
+- [ ] As decisoes `a fechar` deste handoff tem janela de fechamento clara e nao vao contaminar `02-01` com discussao de parser, UI ou produto.
+- [ ] O recorte de `CLI estruturada` esta entendido como ferramenta de estudo, cadastro minimo, execucao controlada e inspecao de estado.
+- [ ] O primeiro pacote de conteudo foi aceito como pequeno o bastante para validar o core sem puxar balanceamento, party, items ou progression.
+- [ ] O time aceita que falhas de conteudo, validacao e regra devem ser explicitas e rastreaveis desde o primeiro commit de codigo.
+
+### Gatilhos de replanejamento
+
+A milestone 02 deve pausar e replanejar se algum destes gatilhos aparecer:
+
+- necessidade de introduzir `party`, companheiros ou IA tatica antes de `02-04`;
+- pressao para transformar a `CLI estruturada` em shell de jogo final, UI rica ou fluxo de produto;
+- necessidade de parser definitivo, DSL de regras ou pipeline de autoria sofisticado antes de provar o core minimo;
+- descoberta de que o pacote minimo de conteudo precisa crescer tanto que o milestone deixa de validar arquitetura e passa a validar balanceamento;
+- qualquer tentativa de mover `CharacterCreation` para fora do core/session ou de misturar `AuthoringService` com runtime;
+- exigencia de aleatoriedade real antes de o replay e os logs terem contrato estavel para aceitar `seed` como input explicito.
