@@ -104,7 +104,23 @@ Leitura operacional: o milestone 02 aprofunda tudo que esta marcado como `Sim`, 
 
 ## 7. Tipos Representativos e Familias de Servico
 
-Os planos seguintes detalham esta secao com tipos representativos e familias de servico.
+`DOMN-02`. Per `D-04` e `D-05`, os nomes abaixo sao exemplos representativos para guiar design, teste e backlog. Eles descrevem familias de tipos e operacoes esperadas, nao um contrato definitivo de headers ou assinaturas.
+
+| Sistema | Tipos representativos | Familias de servico | Nivel de detalhe nesta fase | Observacoes |
+| --- | --- | --- | --- | --- |
+| atributos | `AttributeId`, `AttributeSet`, `AttributeModifier`, `AttributeAllocation` | `AttributeAllocationService`, `AttributeScalingService`, `AttributeInvariantChecker` | alto | Base do `core minimo`; precisa sustentar criacao do protagonista e escalonamento do dano sem ainda modelar progressao completa. |
+| recursos | `ResourceId`, `ResourcePool`, `ResourceCost`, `ResourceRegenProfile` | `ResourceCostService`, `ResourceRegenService`, `ResourceCapValidator` | alto | Energia, mana ou stamina entram como pools observaveis para custo, recuperacao e limite. |
+| efeitos/status | `StatusEffectDefinition`, `StatusEffectState`, `AppliedStatusEffect`, `EffectDuration` | `EffectApplicationService`, `EffectTickService`, `EffectExpirationService`, `CleanseService` | alto | Reaplicacao renova duracao por padrao; stacking permanece excepcional e explicito. |
+| personagens | `CharacterId`, `CharacterTemplate`, `CharacterState`, `CharacterLoadout` | `CharacterAssemblyService`, `CharacterValidationService`, `StartingStateFactory` | alto | O foco e o protagonista de `D-12`; party e companheiros continuam fora do primeiro aprofundamento. |
+| habilidades | `SkillDefinition`, `LearnedSkill`, `EquippedSkillSlot`, `SkillCostProfile` | `SkillEligibilityService`, `SkillLoadoutService`, `SkillCostPreviewService` | alto | Aquisicao profunda por mundo/NPC/comportamento continua futura, mas uso e validacao em runtime entram agora. |
+| combate | `CombatSnapshot`, `ActionCommand`, `TurnOrder`, `DamagePacket`, `CombatEvent` | `ActionValidationService`, `TurnOrderService`, `CombatResolutionService` | alto | O fluxo precisa cobrir protagonista unico vs inimigos, sem party controlavel e sem UX de jogo final. |
+| inimigos | `EnemyArchetype`, `EnemyState`, `EnemyTier`, `EnemyIntent` | `EnemyAssemblyService`, `EnemyStateFactory`, `EnemyCombatProfileService` | alto | `EnemyArchetype` nomeia o conteudo; `EnemyState` existe para o encontro atual. IA tatica fica fora. |
+| itens | `InventoryItemDefinition`, `InventoryItemState`, `EquipmentRequirement`, `ConsumableEffectRef` | `InventoryValidationService`, `EquipmentEligibilityService`, `ConsumableUseService` | baixo | Extensao nomeada apenas. Itens nao competem com combate/personagem neste milestone de codigo. |
+| quests | `QuestDefinition`, `QuestState`, `QuestTaskDefinition`, `QuestRewardDefinition` | `QuestTriggerService`, `QuestProgressService`, `QuestRewardService` | baixo | Necessario apenas para o leitor reconhecer a fronteira futura do sistema; sem backlog imediato. |
+| NPCs | `NpcDefinition`, `NpcState`, `InteractionOption`, `TrainerOffer` | `NpcInteractionService`, `NpcOfferResolutionService`, `NpcRelationshipService` | baixo | Trainer, merchant e quest giver aparecem como papeis futuros, nao como parte do caminho minimo. |
+| progression | `ProgressionTrackDefinition`, `LevelState`, `XpLedger`, `SkillProficiencyState` | `XpAwardService`, `LevelUpService`, `ProgressionGateService` | medio-baixo | Primeira expansao apos o core. Deve existir como extensao nomeada, mas sem o mesmo nivel de concretude de atributos, combate ou criacao de personagem. |
+
+Leitura operacional: o leitor deve usar os tipos de detalhe `alto` para abrir backlog do milestone 02 e os tipos `baixo` ou `medio-baixo` apenas para manter a arquitetura preparada para extensao. Isso satisfaz `DOMN-02` sem transformar `itens`, `quests`, `NPCs` ou `progression` em pseudo-escopo do `core minimo`.
 
 ## 8. Runtime vs Content Definitions
 
