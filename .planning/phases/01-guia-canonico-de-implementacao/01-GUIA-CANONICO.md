@@ -195,7 +195,66 @@ Leitura operacional: o leitor deve usar os tipos de detalhe `alto` para abrir ba
 
 ## 10. Fronteiras de Arquitetura e Dependencias Permitidas
 
-Os planos seguintes detalham esta secao com camadas, limites e dependencias permitidas.
+`ARCH-01`. Esta secao transforma `D-08`, `D-11` e `D-12` em fronteiras operacionais para a primeira milestone de codigo. A regra central e simples: `Definition` continua orientado a dados, `State` continua orientado a runtime, `session` orquestra casos de uso como `CharacterCreation`, `adapters` apenas traduzem I/O e `validation` concentra replay, eventos e logs estruturados. O core nao depende de produto final para existir ou ser validado.
+
+| Camada | Papel | Pode depender de | Nao pode depender de | Rastreabilidade |
+| --- | --- | --- | --- | --- |
+| `domain` | Value objects, IDs, estados de runtime e invariantes visiveis de personagem, inimigo, recursos e combate. | apenas outros tipos base de `domain` estritamente necessarios | `adapters`, framework, rede, banco, persistencia de produto | `ARCH-01`, `D-12` |
+| `rules` | Resolutores deterministicos de custo, dano, efeitos e ordem de turno. | `domain` | `content`, `session`, `adapters`, UI final | `ARCH-01`, `DOMN-04` |
+| `content` | Definicoes orientadas a dados, contratos de carregamento e catalogo minimo consumido pelo core. | IDs e value objects minimos de `domain` para referenciar conteudo | `rules`, `session`, `adapters`, estado mutavel de runtime | `ARCH-01`, `D-08`, `D-11` |
+| `session` | Casos de uso e orquestracao, incluindo `CharacterCreation`, montagem de encontro e validacoes de entrada. | `content`, `domain`, `rules` | UI final, framework, engine, banco, persistencia de produto | `ARCH-01`, `D-12` |
+| `adapters` | Traducao de I/O para CLI e futuros ports de produto. Apenas converte comandos, argumentos, arquivos e saidas. | `session`, `content`, `validation` | logica de regra embutida, estado core proprio, dependencia invertida do core para UI | `ARCH-01`, `D-15`, `D-16` |
+| `validation` | Contratos de replay, snapshots, eventos e logs estruturados para provar reproducibilidade do core. | `domain`, `rules`, `session` | UI final, engine, concerns de entrega do produto | `ARCH-01`, `ARCH-03` |
+
+Leitura operacional da fronteira:
+
+- `content` publica `Definition` e contratos de carregamento; ele nao vira o lugar onde dano, custo, stack ou ordem de turno sao calculados.
+- `session` orquestra casos de uso como `CharacterCreation`, consumindo definicoes cadastradas sem absorver o papel do catalogo.
+- `adapters` apenas traduzem I/O. A CLI de estudo pede comandos ao core; ela nao reimplementa regra, nao guarda estado paralelo e nao dita o design do dominio.
+- `validation` observa o core por replay, eventos e logs estruturados, permitindo provar comportamento sem UI final.
+
+### Dependencias proibidas
+
+As proibicoes abaixo sao mandatarias desde o primeiro commit de codigo:
+
+- `nao acoplar o core a UI`, engine ou shell visual de produto.
+- `rules`, `domain`, `content` e `session` nao dependem de adapters concretos.
+- O core nao depende de framework, rede, banco ou persistencia de produto.
+- `content` nao carrega logica de runtime; ele descreve definicoes e contratos, respeitando a separacao entre `Definition` e `State`.
+- `session` nao substitui `content` nem embute parser definitivo de regra; ele apenas orquestra fluxos do caso de uso.
+- `adapters` nao guardam verdade de negocio, nao implementam calculo de combate e nao se tornam fachada para persistencia final.
+
+### Layout futuro recomendado
+
+O layout abaixo existe para tornar as fronteiras acima visiveis no filesystem e impedir mistura precoce entre core, adaptadores e validacao:
+
+```text
+include/ascend/
+|-- domain/
+|-- rules/
+|-- content/
+|-- session/
+|-- validation/
+`-- adapters/
+
+src/
+|-- domain/
+|-- rules/
+|-- content/
+|-- session/
+|-- validation/
+`-- adapters/
+
+tests/
+|-- unit/
+|-- integration/
+`-- scenarios/
+
+apps/
+`-- cli/
+```
+
+`apps/cli` fica fora do core para reforcar que a shell de estudo e um consumidor do backend, nao a definicao dele. `tests/scenarios` conversa com `validation` para exercitar replay e logs. `content` permanece separado de `session` porque `D-08` e `D-11` pedem definicoes orientadas a dados e autoria apartada do runtime, enquanto `D-12` mantem a criacao de personagem dentro do core/session.
 
 ## 11. Baseline Tecnico e Workflow de Build/Teste
 
