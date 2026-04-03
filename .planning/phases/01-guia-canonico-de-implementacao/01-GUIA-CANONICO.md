@@ -124,11 +124,74 @@ Leitura operacional: o leitor deve usar os tipos de detalhe `alto` para abrir ba
 
 ## 8. Runtime vs Content Definitions
 
-Os planos seguintes detalham esta secao com as fronteiras entre definicoes, estado e autoria.
+`DOMN-03`. Esta fronteira consome `D-08`, `D-09`, `D-10`, `D-11` e `D-12`: conteudo continua `data-driven`, mas regra central continua no codigo; `Definition` nunca e o mesmo objeto que `State`; e `AuthoringService` fica fora do runtime.
+
+| Par | O que vive em `Definition` | O que vive em `State` | Dono operacional da fronteira | Observacoes |
+| --- | --- | --- | --- | --- |
+| `SkillDefinition` vs `LearnedSkill` | custo base, perfil de dano, refs de efeitos, requisitos e tags de uso | vinculo com o personagem, slot equipado, desbloqueio atual, cooldown e restricoes contextuais | `AuthoringService` cadastra `SkillDefinition`; runtime le `SkillDefinition` e atualiza `LearnedSkill` | O runtime nao edita metadado da skill; ele apenas consome definicoes. |
+| `EnemyArchetype` vs `EnemyState` | tier, atributos base, perfil de resistencia, repertorio de skills e papeis de combate | HP atual, recursos atuais, efeitos ativos, intencao corrente e flags do encontro | `AuthoringService` cadastra `EnemyArchetype`; factories de runtime montam `EnemyState` para cada encontro | O mesmo arquetipo pode gerar varios estados de runtime sem mutar o catalogo. |
+| `StatusEffectDefinition` vs `AppliedStatusEffect` | politica de stack, duracao maxima, tipo de tick, tags de cleanse e limites de reaplicacao | origem, stacks atuais, turnos restantes, alvos afetados e marcadores de expiracao | `AuthoringService` cadastra `StatusEffectDefinition`; resolvers de efeito atualizam `AppliedStatusEffect` | A fronteira evita que duracao restante vire dado autoral. |
+| `CharacterTemplate` vs `CharacterState` | opcoes iniciais, pools de recurso base, limites de distribuicao e opcoes de skill inicial | atributos escolhidos, recursos atuais, skills equipadas, efeitos ativos e progresso do protagonista | `AuthoringService` cadastra `CharacterTemplate`; `CharacterCreation` monta e valida `CharacterState` no core | `CharacterCreation` continua dentro do core/session por `D-12`, mesmo com catalogo separado. |
+
+`AuthoringService` e externo ao runtime per `D-10` e `D-11`. Isso implica fluxos separados por tipo de entidade, em vez de um cadastro generico que mistura tudo:
+
+- `register_skill_definition`
+- `register_status_effect_definition`
+- `register_enemy_archetype`
+- `register_character_template`
+- futuros `register_item_definition`, `register_quest_definition` e `register_npc_definition`
+
+`D-09` trava `autoria progressiva`: cada fluxo cadastra apenas o conteudo minimo necessario para o caso atual. Nesta fase e no milestone 02 nao existe exigencia de `catalogo exaustivo upfront`; o sistema deve aceitar crescer o catalogo aos poucos, conforme novos casos de teste, comandos da CLI e cenarios de estudo pedirem mais definicoes.
 
 ## 9. Inventario de Regras Deterministicas
 
-Os planos seguintes detalham esta secao com as regras que precisam permanecer observaveis e testaveis.
+`DOMN-04`. As regras abaixo precisam permanecer `deterministic`, observaveis e reexecutaveis por replay. No recorte atual, todas operam `sem variancia aleatoria`; portanto nenhuma depende de `seed`. Se um dia houver aleatoriedade controlada, a `seed` entra como input explicito da regra, nunca como efeito colateral oculto.
+
+- **Custo de habilidade**
+  `input -> resolve -> output/events`
+  Input: `CharacterState`, `LearnedSkill`, `SkillDefinition`, contexto da acao.
+  Resolve: valida recursos, slot e restricoes de uso.
+  Output/events: pools atualizados ou rejeicao explicita, mais eventos de custo consumido.
+- **Calculo de dano**
+  `input -> resolve -> output/events`
+  Input: `DamagePacket`, atacante, alvo, atributos, resistencias, vulnerabilidades e penetracao.
+  Resolve: aplica escalonamento, mitigacao e multiplicadores previstos.
+  Output/events: dano final, alteracoes de HP e eventos de dano aplicado.
+- **Aplicacao de efeitos**
+  `input -> resolve -> output/events`
+  Input: `StatusEffectDefinition`, fonte, alvo e estado atual do alvo.
+  Resolve: checa imunidades, tags, stack permitido e cria/atualiza `AppliedStatusEffect`.
+  Output/events: efeito aplicado, renovado ou rejeitado com motivo observavel.
+- **Tick de efeitos**
+  `input -> resolve -> output/events`
+  Input: `AppliedStatusEffect`, estado do alvo e momento do turno.
+  Resolve: executa dano over time, regeneracao, bloqueios ou modificadores previstos.
+  Output/events: estado apos tick e eventos emitidos pelo efeito.
+- **Expiracao e cleanse de efeitos**
+  `input -> resolve -> output/events`
+  Input: lista de `AppliedStatusEffect`, contador de turnos e comando de limpeza.
+  Resolve: reduz duracao, remove efeitos expirados e aplica cleanse especifico/geral quando permitido.
+  Output/events: inventario final de efeitos e eventos de expiracao/remocao.
+- **Ordem de resolucao do turno**
+  `input -> resolve -> output/events`
+  Input: `CombatSnapshot`, `ActionCommand`, velocidades e prioridades validas.
+  Resolve: ordena acoes, escolhe a proxima resolucao valida e preserva o fluxo protagonista vs inimigos.
+  Output/events: ordem final, comandos aceitos/rejeitados e trilha de eventos do turno.
+- **Validacao de criacao de personagem**
+  `input -> resolve -> output/events`
+  Input: `CharacterTemplate`, alocacao de atributos, escolhas de skill e restricoes iniciais.
+  Resolve: checa limites, pontos disponiveis, requisitos e coerencia minima do build inicial.
+  Output/events: validacao aprovada/reprovada com motivos rastreaveis.
+- **Montagem do protagonista a partir de definicoes**
+  `input -> resolve -> output/events`
+  Input: `CharacterTemplate`, `SkillDefinition`, `StatusEffectDefinition` inicial e escolhas do jogador.
+  Resolve: `CharacterCreation` monta `CharacterState`, inicializa pools e aplica referencias do catalogo.
+  Output/events: protagonista pronto para sessao e eventos de montagem/validacao.
+- **Resolucao de combate sem variancia aleatoria**
+  `input -> resolve -> output/events`
+  Input: `CombatSnapshot`, comandos, estados de personagem/inimigo, definicoes consultadas e ordem do turno.
+  Resolve: encadeia custo, dano, efeitos e encerramento do turno na mesma sequencia sempre que o input for igual.
+  Output/events: novo snapshot, HP/recursos/efeitos atualizados e log estruturado do combate.
 
 ## 10. Fronteiras de Arquitetura e Dependencias Permitidas
 
