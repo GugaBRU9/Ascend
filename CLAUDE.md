@@ -3,90 +3,80 @@
 
 **Ascend**
 
-Ascend e um RPG tatico mobile por turnos, inspirado em RPGs de mesa, com foco em sessoes curtas de aproximadamente 10 minutos. O loop principal combina um protagonista altamente customizavel com quatro companheiros automatizados para manter profundidade de build sem exigir microgerenciamento constante. O projeto prioriza UI simples, leitura rapida de combate e desempenho consistente mesmo em celulares mais antigos.
+Ascend e um projeto para implementar um RPG tatico com base agnostica de midia, validado primeiro pelas mecanicas e pela experiencia de mesa. O ciclo atual nao busca um produto final de web, app, mobile ou terminal; ele busca transformar a documentacao canonica em um nucleo implementavel, testavel e pronto para playtest de mecanicas.
 
-**Core Value:** Entregar combate por turnos legivel e profundo no mobile, com build rica e frame-time estavel mesmo em hardware antigo.
+O produto inicial deve priorizar um core de regras fiel aos documentos canonicos, com suporte a prototipagem jogavel e verificacao rapida de balanceamento antes de qualquer investimento pesado em interface final.
+
+**Core Value:** As mecanicas centrais de Ascend precisam ser interessantes, legiveis e testaveis independentemente da midia em que forem apresentadas.
 
 ### Constraints
 
-- **Tech stack**: C# + Unity — definido pelo usuario e alinhado ao projeto Unity ja iniciado no repositorio.
-- **Platform**: Mobile-first — o jogo precisa nascer para touch, sessoes curtas e restricoes reais de hardware.
-- **Performance**: Suporte forte a celulares antigos — requer baixo GC, pouca sobrecarga de UI, controle de draw calls e perfilagem em device.
-- **UX**: UI simples e legivel — combate e build precisam ser compreensiveis sem menus densos ou excesso de passos.
-- **Session design**: Turnos decididos em 5-10 segundos e sessoes de ~10 minutos — o jogo nao pode depender de loops longos ou interfaces lentas.
-- **Design maturity**: Ha lacunas no design — decisoes criticas devem ser fechadas via Q&A antes de virar implementacao irreversivel.
+- **Produto**: Validacao de mecanicas primeiro — o projeto deve provar o loop base antes de considerar adaptacao para uma midia final.
+- **Canon**: `docs/` e a fonte de verdade — a implementacao deve seguir a documentacao canonica, nao o arquivo legado.
+- **Arquitetura**: Base agnostica de midia — regras, dados e validacao nao podem depender de UI especifica.
+- **Escopo**: Ciclo 1 enxuto — foco em regras, conteudo inicial, encontro, progressao curta e playtest.
+- **Qualidade**: Regras precisam ser verificaveis — o projeto precisa permitir testes automatizados e validacao manual estruturada.
 <!-- GSD:project-end -->
 
 <!-- GSD:stack-start source:research/STACK.md -->
 ## Technology Stack
 
-## Recommended Stack
-### Core Technologies
-| Technology | Version | Purpose | Why Recommended |
-|------------|---------|---------|-----------------|
-| Unity Editor | 6000.3 LTS | Engine, tooling and mobile runtime | Unity docs currently expose the supported line as Unity 6.3 LTS, and the local project already exists on `6000.3.2f1`, reducing migration risk early. |
-| C# | Built into Unity 6000.3 | Gameplay, simulation and tooling code | Best fit for testable domain logic separated from scene objects, with mature Unity integration. |
-| Unity Input System | 1.17.0 | Touch and input abstraction | Already present in the local manifest and is the modern input path for mobile and optional controller support. |
-| uGUI + TextMeshPro | uGUI 2.0.0 | Primary runtime UI for HUD, combat overlays and menus | Current Unity docs still recommend uGUI as the general runtime UI baseline, and it is the most pragmatic path for GameObject-heavy game HUD flows. |
-| URP 17.3.0 (conditional) | From local manifest | Rendering pipeline if 2D lights/shaders are actually needed | Acceptable if kept lean, but should remain optional and benchmarked against the low-end device target before heavy adoption. |
-### Supporting Libraries
-| Library | Version | Purpose | When to Use |
-|---------|---------|---------|-------------|
-| Addressables | 2.7.6 | Asset loading and memory control | Add once the project starts loading content sets beyond a tiny vertical slice; useful for memory discipline on mobile. |
-| Unity Test Framework | 1.6.0 | EditMode and PlayMode tests | Use from Phase 1 onward for combat rules, AI decisions and regression coverage. |
-| UI Toolkit | Unity 6.3 built-in | Optional menu/overlay UI alternative | Consider only if later menus benefit from document-style authoring without increasing runtime complexity in combat screens. |
-| Sprite Atlas / dynamic atlas | Built-in | Reduce texture-driven batch breaks in UI and 2D assets | Use as soon as multiple UI or sprite textures appear on the same screen. |
-| Unity built-in object pooling | Unity 6.x | Reuse combat UI widgets, VFX and transient objects | Use for any repeated runtime spawn/despawn path that would otherwise allocate during combat. |
-### Development Tools
-| Tool | Purpose | Notes |
-|------|---------|-------|
-| Unity Profiler | CPU, memory and frame-time inspection | Must be used on target devices, not only in the Editor. |
-| Frame Debugger | Batch and overdraw investigation | Especially important for combat HUD and menu screens. |
-| Memory Profiler / managed memory tools | Detect leaks and heap growth | Use when combat turns or loading flow show increasing memory pressure. |
-## Installation
-- Keep the project on Unity 6000.3 LTS unless a later patch is explicitly validated.
-- Keep C# gameplay code in pure runtime assemblies where possible.
-- Add Addressables only when content loading complexity justifies it.
-- Keep Test Framework enabled for EditMode/PlayMode validation.
-- Use Sprite Atlas / UI Toolkit atlas settings before adding UI-heavy content.
-## Alternatives Considered
-| Recommended | Alternative | When to Use Alternative |
-|-------------|-------------|-------------------------|
-| uGUI 2.0.0 | UI Toolkit Runtime | Consider UI Toolkit later for menu-heavy overlays if it measurably improves authoring and does not complicate combat/UI event flow. |
-| Lean URP usage | Built-in Render Pipeline | Consider Built-in only if the final art direction stays extremely simple and URP overhead fails low-end benchmarks. |
-| ScriptableObject-authored data + pure C# runtime state | MonoBehaviour-heavy logic and scene-owned data | Only acceptable for throwaway prototypes, not for a production vertical slice. |
-## What NOT to Use
-| Avoid | Why | Use Instead |
-|-------|-----|-------------|
-| Visual Scripting for core combat logic | Harder to diff, test and refactor, especially with many rule interactions | Pure C# systems with tests |
-| `Resources/` as the main content pipeline | Weak memory control and poor long-term asset organization | Explicit references early, Addressables when content scales |
-| Heavy post-processing and renderer features by default | Conflicts with low-end mobile performance target | Minimal renderer setup, art-first optimization budget |
-| Reflection-heavy service locators / DI frameworks early | Adds startup/runtime overhead and debugging complexity with little MVP benefit | Explicit composition roots and simple constructors |
-## Stack Patterns by Variant
-- Use uGUI as the default runtime UI system.
-- Because Unity still documents uGUI as the general runtime recommendation and it is straightforward to wire from `MonoBehaviour` presenters.
-- Evaluate UI Toolkit for those specific screens only.
-- Because mixing UI systems too early adds event/input complexity without helping the first slice.
-- Introduce Addressables for encounter bundles, skill content and large asset groups.
-- Because the current mobile target values controlled memory and predictable loading.
-## Version Compatibility
-| Package A | Compatible With | Notes |
-|-----------|-----------------|-------|
-| Unity `6000.3.2f1` | Input System `1.17.0` | Observed in local `Unity/Packages/manifest.json`. |
-| Unity `6000.3.2f1` | UGUI `2.0.0` | Observed in local manifest; available as fallback UI path. |
-| Unity `6000.3.2f1` | URP `17.3.0` | Observed in local manifest; keep renderer features lean. |
-| Unity `6000.3` | Addressables `2.7.6` docs | Current package docs are available and emphasize memory management discipline. |
+## Recommendation
+- `Node.js 24 LTS`
+- `TypeScript 5.9` in strict mode
+- `pnpm` workspaces with TypeScript project references
+- `Zod 4` for schema validation at the content boundary
+- `Vitest 4` for unit, integration and regression tests
+- `fast-check` for property-based tests
+- `pure-rand` or equivalent seedable PRNG
+- minimal `CLI` surface first, using `Commander`
+- `tsx` for local script execution
+## Recommended workspace shape
+## Why this fits Ascend
+- The canonical docs define a rules engine first, not a visual product shell.
+- The system needs one rules spine for combat, exploration, investigation and social scenes.
+- Deterministic damage, explicit costs and zone-based combat benefit from automated tests and replayable simulations.
+- Data-driven content keeps iteration fast while preserving media agnosticism.
+- A CLI is enough to validate mechanics without locking the project into a UI stack too early.
+## Alternatives considered
+### `node:test`
+- multi-project test organization
+- snapshots for event logs
+- better TypeScript ergonomics
+- easier bench/regression workflow
+### `boardgame.io`
+- solves multiplayer/session infrastructure more than rules validation
+- introduces abstractions that do not reduce the current project risk
+### `Rust core + JS adapters`
+- higher integration cost
+- slower content iteration
+- no current evidence that performance is the bottleneck
+## What to avoid early
+- Unity, Godot, Phaser or rich web UI as the first implementation target
+- ECS before concrete composition/performance pain exists
+- database or CMS-backed content management
+- a custom rules DSL before the shape of the core is stable
+- networking, multiplayer sync or persistent service architecture
+- TUI/React terminal frameworks before a plain CLI proves insufficient
+## Open questions
+- Will content be edited mostly by developers or by designers/writers too
+- Should the first adapter be only CLI + automated harness, or CLI + interactive session runner
+- How much scripted scenario behavior belongs in data versus code handlers
+## Confidence
+- High: runtime, typing, testing, seedable simulation, package separation
+- Medium: YAML vs JSONC for authored content
+- Medium: how interactive the first adapter should be
 ## Sources
-- Local file `Unity/ProjectSettings/ProjectVersion.txt` — current editor version observed in repo
-- Local file `Unity/Packages/manifest.json` — current packages observed in repo
-- Unity Manual, Comparison of UI systems: https://docs.unity3d.com/6000.0/Documentation/Manual/UI-system-compare.html
-- Unity uGUI package manual: https://docs.unity3d.com/Packages/com.unity.ugui%402.0/manual/index.html
-- Unity Input System manual: https://docs.unity3d.com/Packages/com.unity.inputsystem%401.17/manual/index.html
-- Unity ScriptableObject API: https://docs.unity3d.com/ScriptReference/ScriptableObject.html
-- Unity Manual, Garbage collector overview: https://docs.unity3d.com/Manual/performance-garbage-collector.html
-- Unity Manual, Collecting performance data: https://docs.unity3d.com/Manual/profiler-profiling-applications.html
-- Unity Addressables, Memory management: https://docs.unity3d.com/Packages/com.unity.addressables%402.7/manual/MemoryManagement.html
-- Unity Learn, Object pooling: https://learn.unity.com/course/design-patterns-unity-6/tutorial/use-object-pooling-to-boost-performance-of-c-scripts-in-unity
+- Project docs: `README.md`, `docs/00-visao-do-sistema.md`, `docs/01-nucleo-de-regras.md`, `docs/02-personagens-e-progressao.md`, `.planning/PROJECT.md`
+- Node.js releases: `https://nodejs.org/en/about/previous-releases`
+- TypeScript 5.9 notes: `https://www.typescriptlang.org/docs/handbook/release-notes/typescript-5-9.html`
+- Project references: `https://www.typescriptlang.org/docs/handbook/project-references`
+- pnpm workspaces: `https://pnpm.io/workspaces`
+- Zod: `https://zod.dev/`
+- Vitest: `https://vitest.dev/guide/features`
+- fast-check: `https://fast-check.dev/docs/introduction/why-property-based/`
+- Commander: `https://github.com/tj/commander.js`
+- tsx: `https://tsx.is/`
 <!-- GSD:stack-end -->
 
 <!-- GSD:conventions-start source:CONVENTIONS.md -->

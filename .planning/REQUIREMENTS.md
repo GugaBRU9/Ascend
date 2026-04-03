@@ -79,34 +79,34 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| ENGN-01 | TBD | Pending |
-| ENGN-02 | TBD | Pending |
-| ENGN-03 | TBD | Pending |
-| ENGN-04 | TBD | Pending |
-| COMB-01 | TBD | Pending |
-| COMB-02 | TBD | Pending |
-| COMB-03 | TBD | Pending |
-| COMB-04 | TBD | Pending |
-| SCEN-01 | TBD | Pending |
-| SCEN-02 | TBD | Pending |
-| SCEN-03 | TBD | Pending |
-| CHAR-01 | TBD | Pending |
-| CHAR-02 | TBD | Pending |
-| CHAR-03 | TBD | Pending |
-| CHAR-04 | TBD | Pending |
-| CONT-01 | TBD | Pending |
-| CONT-02 | TBD | Pending |
-| CONT-03 | TBD | Pending |
-| PLYT-01 | TBD | Pending |
-| PLYT-02 | TBD | Pending |
-| PLYT-03 | TBD | Pending |
-| PLYT-04 | TBD | Pending |
+| ENGN-01 | Phase 1 | Pending |
+| ENGN-02 | Phase 1 | Pending |
+| ENGN-03 | Phase 3 | Pending |
+| ENGN-04 | Phase 1 | Pending |
+| COMB-01 | Phase 3 | Pending |
+| COMB-02 | Phase 3 | Pending |
+| COMB-03 | Phase 3 | Pending |
+| COMB-04 | Phase 3 | Pending |
+| SCEN-01 | Phase 4 | Pending |
+| SCEN-02 | Phase 4 | Pending |
+| SCEN-03 | Phase 4 | Pending |
+| CHAR-01 | Phase 2 | Pending |
+| CHAR-02 | Phase 2 | Pending |
+| CHAR-03 | Phase 2 | Pending |
+| CHAR-04 | Phase 2 | Pending |
+| CONT-01 | Phase 1 | Pending |
+| CONT-02 | Phase 3 | Pending |
+| CONT-03 | Phase 5 | Pending |
+| PLYT-01 | Phase 5 | Pending |
+| PLYT-02 | Phase 1 | Pending |
+| PLYT-03 | Phase 5 | Pending |
+| PLYT-04 | Phase 5 | Pending |
 
 **Coverage:**
 - v1 requirements: 22 total
-- Mapped to phases: 0
-- Unmapped: 22 ⚠️
+- Mapped to phases: 22
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-04-03*
-*Last updated: 2026-04-03 after initial definition*
+*Last updated: 2026-04-03 after roadmap creation*
