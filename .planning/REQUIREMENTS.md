@@ -1,86 +1,77 @@
 # Requirements: Ascend
 
-**Defined:** 2026-03-27
-**Core Value:** Entregar combate por turnos legivel e profundo no mobile, com build rica e frame-time estavel mesmo em hardware antigo.
+**Defined:** 2026-04-03
+**Core Value:** As mecanicas centrais de Ascend precisam ser interessantes, legiveis e testaveis independentemente da midia em que forem apresentadas.
 
 ## v1 Requirements
 
-Requirements for the initial vertical slice release. Each maps to exactly one roadmap phase.
+### Engine
 
-### Technical Foundation
+- [ ] **ENGN-01**: Designer can define canonical content in versioned data files and receive actionable validation errors when content is invalid.
+- [ ] **ENGN-02**: System can resolve seeded tests using canonical modifiers, advantage/disadvantage and degrees of success.
+- [ ] **ENGN-03**: System can apply canonical formulas for defenses, PE, fixed damage, resistances, vulnerabilities and condition effects.
+- [ ] **ENGN-04**: Team can replay a seeded command/event sequence and reproduce the same mechanical outcome.
 
-- [x] **TECH-01**: Project can produce a development build that boots on the chosen low-end benchmark mobile device into the playable slice.
-- [x] **TECH-02**: Combat, progression and content definitions are authored through reusable data assets instead of scene-only values.
-- [ ] **TECH-03**: Team can capture CPU, memory and rendering baselines on device for every slice milestone build.
+### Combat
 
-### Combat Loop
+- [ ] **COMB-01**: GM can run initiative and full round order for all actors in a combat scene.
+- [ ] **COMB-02**: Player can use action, movement, reaction and pressure attack rules in zone-based combat.
+- [ ] **COMB-03**: System can resolve canonical combat interactions including attacks, cover, movement, skill activation, condition application and downed recovery.
+- [ ] **COMB-04**: GM can run common, elite and boss encounters using canonical enemy definitions.
 
-- [ ] **COMB-01**: Turn order is based on speed and clearly displayed to the player.
-- [ ] **COMB-02**: Combat resolves in the sequence protagonist -> allies -> enemies -> end-of-turn effects.
-- [ ] **COMB-03**: Actions consume and regenerate energy/effort in a way that enables combos without constant skill spam.
+### Scenes
 
-### Party Automation
+- [ ] **SCEN-01**: GM can configure a non-combat scene with objective, risk, ND, progress target and pressure limit.
+- [ ] **SCEN-02**: Player can resolve social, investigative and exploratory actions through the same core test engine used by the rest of the system.
+- [ ] **SCEN-03**: System can advance `Progress x Pressure` and apply visible success or failure consequences to scene state.
 
-- [ ] **PART-01**: Player controls one customizable protagonist and brings four companions into battle.
-- [ ] **PART-02**: Player can assign a tactical role to each companion before battle.
-- [ ] **PART-03**: Companions prioritize the protagonist's focused target and fall back predictably when it is unavailable.
+### Characters
 
-### Progression
+- [ ] **CHAR-01**: Player can create a level 1 character using canonical origins, attributes, trained skills, primary and secondary trails, starting abilities and initial equipment.
+- [ ] **CHAR-02**: Team can load and run the documented level 1 pregens without manual rule patches.
+- [ ] **CHAR-03**: System can derive Vida, PE, Defesa, Fortitude, Reflexos and Vontade from canonical formulas.
+- [ ] **CHAR-04**: System enforces level 1 build rules including tier access, prepared active skill limits and starting load constraints.
 
-- [ ] **PROG-01**: Leveling the protagonist grants +3 distributable attribute points across the six core attributes.
-- [ ] **PROG-02**: Equipment, level and attribute choices immediately update derived combat stats.
+### Content
 
-### Skills
+- [ ] **CONT-01**: System can load canonical origins, trails, skills, equipment, enemies and starter adventure data from the content catalog.
+- [ ] **CONT-02**: GM can prepare encounters using canonical `Valor de Ameaca` guidance and group-size inputs.
+- [ ] **CONT-03**: System can carry lightweight consequences between scenes in the starter adventure so earlier choices affect later scenes.
 
-- [ ] **SKIL-01**: Player can build the protagonist across multiple skill tracks at the same time.
-- [ ] **SKIL-02**: Combat limits equipped active skills to a small slot set while unlocked passives stay active automatically.
-- [ ] **SKIL-03**: Skill acquisition supports exploration, NPC rewards and reflection rules, with at least two of these paths exercised in the first slice.
+### Playtest
 
-### Tactical Systems
-
-- [ ] **SYST-01**: Buffs, debuffs and crowd-control effects apply, refresh duration on reapplication and obey defined stacking rules.
-- [ ] **SYST-02**: Supported cleanse actions remove the correct effect groups without breaking status state.
-- [ ] **SYST-03**: The damage system is authored around the 11 defined damage types, while the first slice exercises only the subset needed for its encounters.
-
-### Session Flow
-
-- [ ] **SESS-01**: Player can complete a short encounter sequence that fits the intended ~10 minute session target.
-- [ ] **SESS-02**: Player can save and resume progress safely at defined checkpoints in the slice.
-
-### Mobile UX
-
-- [ ] **UX-01**: Combat and build UI remain readable on phone screens with shallow, touch-first flows.
-- [ ] **UX-02**: The playable slice runs responsively on the chosen low-end mobile device profile without noticeable hitching during normal combat.
+- [ ] **PLYT-01**: Team can run the starter adventure end to end through a minimal playable adapter without depending on a final UI.
+- [ ] **PLYT-02**: System records command logs, seeds and outcome events for debugging and replay.
+- [ ] **PLYT-03**: Team can capture core playtest signals including turn duration, PE usage, skill frequency, dominant patterns and confusion points.
+- [ ] **PLYT-04**: Team can generate a post-session report that helps decide whether cycle 1 validation criteria passed or failed.
 
 ## v2 Requirements
 
-Deferred until the vertical slice proves the combat/build loop.
+### Campaign
 
-### Party Expansion
+- **CAMP-01**: GM can run multi-session campaign progression with persistent faction, NPC and world-state consequences beyond the starter session.
+- **CAMP-02**: Player can advance beyond the first validation band with broader progression, talents and trail depth.
 
-- **PART-04**: Player can switch to full manual control of all party members during battle.
+### Delivery
 
-### World and Content
+- **DLVR-01**: Team can provide a richer interactive adapter beyond the minimal validation interface.
+- **DLVR-02**: Team can expose projections or inspectors tailored to future web, mobile or terminal experiences.
 
-- **WRLD-01**: Player can explore a broader world with richer ruins, dungeons, puzzles and NPC hubs.
-- **WRLD-02**: The game offers a materially larger catalog of encounters, bosses, archetypes and skill content than the validation slice.
+### Systems Expansion
 
-### Product Expansion
-
-- **META-01**: Player has access to broader meta progression, economy and campaign systems.
-- **PLAT-01**: Player can use cloud-linked or online-dependent features across sessions and devices.
+- **SYST-01**: Player can use deeper economy and crafting systems without breaking the validated core loop.
+- **SYST-02**: GM can use optional companion or small-party support modules as structured add-ons.
 
 ## Out of Scope
 
-Explicitly excluded from the first roadmap to prevent scope creep.
-
 | Feature | Reason |
 |---------|--------|
-| Multiplayer / PvP / guild systems | Not required to validate the combat + build core value |
-| Live ops, gacha or monetization loops | Add major product complexity before the core loop is proven |
-| Full build management for all companions | Conflicts with the low-friction party concept and mobile UI simplicity |
-| Heavy visual fidelity requirements (expensive post-process, dense VFX, shader-heavy scenes) | Directly conflicts with the low-end mobile performance target |
-| Broad campaign breadth and long-form narrative content | Too large for the first validation slice |
+| Polished consumer UI | Not needed to validate the mechanics-first hypothesis |
+| Save system, codex, journal and lore archive | Product-layer concerns explicitly deferred by canonical docs |
+| Companion AI and solo protagonist mode | Conflict with the current canonical group model and inflate scope |
+| Mandatory node-map progression and exploration energy | Explicitly deferred until playtests prove the need |
+| Deep economy, shops and advanced crafting | Secondary systems that do not reduce the main project risk right now |
+| Large-scale content expansion before loop validation | More content would hide balance and clarity problems instead of solving them |
 
 ## Traceability
 
@@ -88,33 +79,34 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| TECH-01 | Phase 1 | Complete |
-| TECH-02 | Phase 1 | Complete |
-| TECH-03 | Phase 1 | Pending |
-| COMB-01 | Phase 2 | Pending |
-| COMB-02 | Phase 2 | Pending |
-| COMB-03 | Phase 2 | Pending |
-| PART-01 | Phase 3 | Pending |
-| PART-02 | Phase 3 | Pending |
-| PART-03 | Phase 3 | Pending |
-| PROG-01 | Phase 4 | Pending |
-| PROG-02 | Phase 4 | Pending |
-| SKIL-01 | Phase 5 | Pending |
-| SKIL-02 | Phase 5 | Pending |
-| SKIL-03 | Phase 5 | Pending |
-| SYST-01 | Phase 6 | Pending |
-| SYST-02 | Phase 6 | Pending |
-| SYST-03 | Phase 6 | Pending |
-| SESS-01 | Phase 7 | Pending |
-| SESS-02 | Phase 7 | Pending |
-| UX-01 | Phase 7 | Pending |
-| UX-02 | Phase 8 | Pending |
+| ENGN-01 | TBD | Pending |
+| ENGN-02 | TBD | Pending |
+| ENGN-03 | TBD | Pending |
+| ENGN-04 | TBD | Pending |
+| COMB-01 | TBD | Pending |
+| COMB-02 | TBD | Pending |
+| COMB-03 | TBD | Pending |
+| COMB-04 | TBD | Pending |
+| SCEN-01 | TBD | Pending |
+| SCEN-02 | TBD | Pending |
+| SCEN-03 | TBD | Pending |
+| CHAR-01 | TBD | Pending |
+| CHAR-02 | TBD | Pending |
+| CHAR-03 | TBD | Pending |
+| CHAR-04 | TBD | Pending |
+| CONT-01 | TBD | Pending |
+| CONT-02 | TBD | Pending |
+| CONT-03 | TBD | Pending |
+| PLYT-01 | TBD | Pending |
+| PLYT-02 | TBD | Pending |
+| PLYT-03 | TBD | Pending |
+| PLYT-04 | TBD | Pending |
 
 **Coverage:**
-- v1 requirements: 21 total
-- Mapped to phases: 21
-- Unmapped: 0
+- v1 requirements: 22 total
+- Mapped to phases: 0
+- Unmapped: 22 ⚠️
 
 ---
-*Requirements defined: 2026-03-27*
-*Last updated: 2026-03-27 after initial definition*
+*Requirements defined: 2026-04-03*
+*Last updated: 2026-04-03 after initial definition*
