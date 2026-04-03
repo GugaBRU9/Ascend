@@ -20,8 +20,10 @@
       ],
       "@ascend/content": [
         "packages/content/src/index.ts"
+      ],
+      "@ascend/sim": [
+        "packages/sim/src/index.ts"
       ]
     }
   }
 }
-
