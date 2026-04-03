@@ -2,76 +2,83 @@
 
 ## What This Is
 
-Ascend e um projeto para implementar um RPG tatico com base agnostica de midia, validado primeiro pelas mecanicas e pela experiencia de mesa. O ciclo atual nao busca um produto final de web, app, mobile ou terminal; ele busca transformar a documentacao canonica em um nucleo implementavel, testavel e pronto para playtest de mecanicas.
+Ascend agora e um projeto de definicao de um backend de RPG em C++ focado em estudo, testes e reuso entre plataformas. Neste ciclo, o objetivo nao e entregar um jogo executavel nem escolher uma midia final; o objetivo e transformar os topicos centrais de `Estruturação.md` em uma base de arquitetura, dominio e mecanicas que possa depois ser implementada para mesa, mobile, web, app ou console.
 
-O produto inicial deve priorizar um core de regras fiel aos documentos canonicos, com suporte a prototipagem jogavel e verificacao rapida de balanceamento antes de qualquer investimento pesado em interface final.
+O produto imediato deste milestone e documental. Ao final, o estudante deve ter um guia claro para saber o que implementar, como separar responsabilidades e quais decisoes ainda precisam ser fechadas antes da proxima milestone de implementacao.
 
 ## Core Value
 
-As mecanicas centrais de Ascend precisam ser interessantes, legiveis e testaveis independentemente da midia em que forem apresentadas.
+O nucleo de regras precisa ser compreensivel, testavel e adaptavel como classes, metodos e contratos C++ independentes de plataforma.
 
 ## Requirements
 
 ### Validated
 
-(None yet — ship to validate)
+- [x] Phase 01 validou Ascend como um backend C++ educacional e agnostico de plataforma, com milestone inicial puramente documental.
+- [x] Phase 01 traduziu o rascunho em um guia canonico com modulos, tipos, fronteiras arquiteturais e contratos de regra rastreaveis.
+- [x] Phase 01 fechou stack, estrategia de validacao e handoff para abrir a milestone 02 sem reabrir as decisoes de framing.
 
 ### Active
 
-- [ ] Implementar um nucleo de regras que codifique com fidelidade os sistemas canonicos de testes, combate, condicoes, recursos e resolucao de cenas.
-- [ ] Disponibilizar uma forma jogavel de validacao de mecanicas que permita executar personagens, inimigos, cenas e a miniaventura inicial sem depender de uma interface final de produto.
-- [ ] Estruturar conteudo inicial e fluxos de verificacao para iterar balanceamento, clareza de regras e qualidade de playtest de forma repetivel.
+- [ ] Abrir a milestone 02 seguindo `01-HANDOFF.md` e a ordem `tipos -> regras -> criacao de personagem -> combate minimo`.
+- [ ] Instalar a toolchain minima (`cmake`, `ctest`, `clang++`, `clang-tidy` e `ninja`) para sair da validacao puramente documental.
+- [ ] Fechar o formato inicial do catalogo, o loader minimo e a granularidade inicial de replay/logs sem reabrir o recorte da fase 01.
 
 ### Out of Scope
 
-- Produto digital final para web, app, mobile ou terminal neste primeiro ciclo — a prioridade atual e validar mecanicas antes de investir em camada de entrega.
-- Features herdadas do rascunho legacy como energia de exploracao, save, codex digital, economia detalhada, crafting profundo e companions com IA — esses modulos foram explicitamente adiados nos docs canonicos.
-- Polimento de UX, onboarding visual, progressao expandida e conteudo de escala ampla antes da aprovacao do loop base — aumentam escopo sem reduzir o risco principal do projeto.
+- Implementar gameplay, interface, renderizacao ou qualquer shell de produto neste milestone - o foco atual e documentacao e decisao.
+- Escolher plataforma final, engine, framework de UI ou formato de entrega ao usuario - o core deve nascer desacoplado dessas decisoes.
+- Fechar todos os detalhes de conteudo, balanceamento e escala do mundo agora - primeiro precisamos de um modelo consistente do sistema.
+- Comecar por save system, multiplayer, networking, economia profunda ou pipelines de deploy - esses temas nao reduzem o risco principal deste ciclo.
 
 ## Context
 
-- A fonte canonica do projeto esta em `README.md` e nos arquivos em `docs/`.
-- `Estruturação.md` existe apenas como legado consultivo. Ele pode inspirar modulos futuros, mas nao define o escopo atual.
-- O ciclo 1 define Ascend como um sistema de mesa com 1 personagem por jogador, 3 a 5 jogadores por grupo, 1 mestre e campanha curta inicial de 3 a 5 sessoes.
-- A documentacao ja fixa o motor central de jogo: `1d20 + atributo + treinamento + modificadores`, dano deterministico, combate por zonas, PE como recurso de habilidades e cenas fora de combate baseadas em `Progresso x Pressao`.
-- O pacote inicial documentado ja inclui atributos, pericias, trilhas, equipamentos, inimigos, boss, miniaventura e roteiro de playtest.
-- O risco principal do projeto nao e "como apresentar o jogo", e sim "como provar que o sistema e divertido, coerente e implementavel".
-- O repositorio esta efetivamente greenfield do ponto de vista de implementacao ativa: no estado atual, a fonte de verdade e documental.
+- `Estruturação.md` concentra uma ideia ampla de RPG com combate em turnos, progressao profunda, party, atributos, habilidades, itens, quests, NPCs, crafting, economia, mapa em nos e persistencia.
+- A intencao atual mudou: em vez de desenhar um jogo preso a uma plataforma, o projeto quer extrair o que e core e reescrever isso como um backend C++ adaptavel a multiplas midias.
+- O trabalho precisa servir de estudo para um estudante de Ciencia da Computacao. Isso favorece arquitetura explicita, nomes claros, invariantes documentadas, fluxo deterministico e validacao cedo.
+- A primeira fase deve ser uma fase de decisoes. Ela precisa produzir arquivos simples e diretos que definam tanto o que implementar quanto como implementar.
+- Ao fim da fase 1, o esperado nao e iniciar codigo sem criterio; o esperado e sair com uma proposta madura para abrir a proxima milestone, dedicada ao recorte da implementacao.
+- Nem todo topico de `Estruturação.md` precisa entrar no primeiro recorte de implementacao. O milestone atual deve separar core, extensoes futuras e dependencias de plataforma.
 
 ## Constraints
 
-- **Produto**: Validacao de mecanicas primeiro — o projeto deve provar o loop base antes de considerar adaptacao para uma midia final.
-- **Canon**: `docs/` e a fonte de verdade — a implementacao deve seguir a documentacao canonica, nao o arquivo legado.
-- **Arquitetura**: Base agnostica de midia — regras, dados e validacao nao podem depender de UI especifica.
-- **Escopo**: Ciclo 1 enxuto — foco em regras, conteudo inicial, encontro, progressao curta e playtest.
-- **Qualidade**: Regras precisam ser verificaveis — o projeto precisa permitir testes automatizados e validacao manual estruturada.
+- **Linguagem**: Backend em C++ - a documentacao precisa preparar um projeto estudavel nessa stack.
+- **Arquitetura**: Base agnostica de plataforma - regras, estado e catalogos nao podem depender de UI, engine ou ambiente de execucao especifico.
+- **Produto**: Milestone atual documental - a entrega e um guia operacional, nao um jogo funcional.
+- **Didatica**: Material voltado a estudo - o design deve privilegiar clareza, modularidade e testabilidade sobre sofisticacao prematura.
+- **Escopo**: Phase 1 orientada a decisoes - pendencias, cortes e principios de implementacao precisam ficar explicitos.
+- **Qualidade**: A documentacao precisa ser rastreavel - um leitor deve conseguir converter o plano em backlog tecnico sem adivinhar lacunas centrais.
 
 ## Key Decisions
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Documentacao canonica em `docs/` e a fonte de verdade | O repositorio ja separa claramente o que e canonico e o que e legado | — Pending |
-| O primeiro objetivo implementavel e um prototipo de validacao de mecanicas, nao um produto final | Reduz risco e evita travar decisao de interface cedo demais | — Pending |
-| O core deve ser agnostico de midia | O projeto explicitamente quer adaptar o sistema para qualquer midia depois | — Pending |
-| O modelo jogavel de referencia e mesa em grupo com 1 personagem por jogador | Essa e a forma canonica do ciclo 1 definida na documentacao | — Pending |
-| Modulos de produto digital e sistemas profundos secundarios ficam fora do primeiro roadmap | Crafting profundo, economia detalhada, saves e similares nao ajudam a responder o risco principal agora | — Pending |
+| O milestone atual sera documental, nao implementacional | O usuario pediu uma base que instrua a criacao futura do projeto antes de qualquer codigo | Validated in Phase 01 (`01-GUIA-CANONICO.md`) |
+| O core sera modelado como backend C++ agnostico de plataforma | A mesma base deve poder sustentar mesa, mobile, web, app e console depois | Validated in Phase 01 (`01-GUIA-CANONICO.md`) |
+| `Estruturação.md` sera tratada como materia-prima, nao como contrato direto de implementacao | O arquivo mistura mecanicas centrais, extensoes e decisoes ainda abertas | Validated in Phase 01 (`01-GUIA-CANONICO.md`) |
+| A primeira fase deve encerrar com pendencias e proxima milestone sugerida | O usuario quer uma fase 1 mais reflexiva, que alinhe expectativa pedagogica e tecnica | Validated in Phase 01 (`01-HANDOFF.md`) |
+| Sistemas de produto e adaptadores ficam explicitamente adiados | Sem esse corte, o projeto corre o risco de confundir arquitetura de dominio com arquitetura de entrega | Validated in Phase 01 (`01-GUIA-CANONICO.md`) |
+
+## Current State
+
+Phase 01 foi concluida e verificada. O repositorio agora tem um guia canonico fechado em `01-GUIA-CANONICO.md` e um handoff executavel em `01-HANDOFF.md` para abrir a milestone 02 com escopo, ordem didatica e guardrails explicitos.
 
 ## Evolution
 
 This document evolves at phase transitions and milestone boundaries.
 
 **After each phase transition** (via `$gsd-transition`):
-1. Requirements invalidated? → Move to Out of Scope with reason
-2. Requirements validated? → Move to Validated with phase reference
-3. New requirements emerged? → Add to Active
-4. Decisions to log? → Add to Key Decisions
-5. "What This Is" still accurate? → Update if drifted
+1. Requirements invalidated? -> Move to Out of Scope with reason
+2. Requirements validated? -> Move to Validated with phase reference
+3. New requirements emerged? -> Add to Active
+4. Decisions to log? -> Add to Key Decisions
+5. "What This Is" still accurate? -> Update if drifted
 
 **After each milestone** (via `$gsd-complete-milestone`):
 1. Full review of all sections
-2. Core Value check — still the right priority?
-3. Audit Out of Scope — reasons still valid?
+2. Core Value check - still the right priority?
+3. Audit Out of Scope - reasons still valid?
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-03 after initialization*
+*Last updated: 2026-04-03 after phase 01 completion*
