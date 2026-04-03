@@ -33,7 +33,7 @@ Ascend vai de documentacao canonica para um prototipo executavel de validacao de
 
 Plans:
 - [x] 01-01: Modelar dominio canonico, IDs estaveis e catalogos de conteudo
-- [ ] 01-02: Implementar validacao de conteudo, RNG seedavel e resolucao base de testes
+- [x] 01-02: Implementar validacao de conteudo, RNG seedavel e resolucao base de testes
 - [ ] 01-03: Expor event log, replay e harness minimo para inspecao
 
 ### Phase 2: Personagens Jogaveis de Nivel 1
@@ -114,7 +114,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4 → 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Base Canonica Reproduzivel | 1/3 | In Progress|  |
+| 1. Base Canonica Reproduzivel | 2/3 | In Progress|  |
 | 2. Personagens Jogaveis de Nivel 1 | 0/3 | Not started | - |
 | 3. Loop Tatico de Combate | 0/3 | Not started | - |
 | 4. Loop Unificado de Cenas Nao-Combate | 0/2 | Not started | - |

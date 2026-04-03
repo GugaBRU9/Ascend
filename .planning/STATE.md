@@ -4,14 +4,14 @@ milestone: v1.0
 milestone_name: milestone
 status: executing
 stopped_at: Roadmap and initialization artifacts completed; next step is discussing Phase 1
-last_updated: "2026-04-03T20:03:57.650Z"
-last_activity: 2026-04-03 -- Plan 01 complete; Plan 02 ready
+last_updated: "2026-04-03T20:15:35.000Z"
+last_activity: 2026-04-03 -- Plan 02 complete; Plan 03 ready
 progress:
   total_phases: 5
   completed_phases: 0
   total_plans: 3
-  completed_plans: 1
-  percent: 33
+  completed_plans: 2
+  percent: 67
 ---
 
 # Project State
@@ -26,30 +26,32 @@ See: .planning/PROJECT.md (updated 2026-04-03)
 ## Current Position
 
 Phase: 01 (base-canonica-reproduzivel) — EXECUTING
-Plan: 2 of 3
+Plan: 3 of 3
 Status: Ready to execute
-Last activity: 2026-04-03 -- Plan 01 complete; Plan 02 ready
+Last activity: 2026-04-03 -- Plan 02 complete; Plan 03 ready
 
-Progress: [███░░░░░░░] 33%
+Progress: [███████░░░] 67%
 
 ## Performance Metrics
 
 **Velocity:**
 
 - Total plans completed: 1
-- Average duration: -
-- Total execution time: 0.0 hours
+- Average duration: 10 min
+- Total execution time: 0.3 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| Phase 01 | 1 | 15 min | 15 min |
+| Phase 01 | 2 | 20 min | 10 min |
 
 **Recent Trend:**
 
-- Last 5 plans: 01-01
+- Last 5 plans: 01-01, 01-02
 - Trend: Stable
+
+| Phase 01 P02 | 5 min | 3 tasks | 13 files |
 
 ## Accumulated Context
 
@@ -64,6 +66,8 @@ Recent decisions affecting current work:
 - Plan 01: monorepo TypeScript inicializado com `pnpm`, `tsc -b` e fronteira explicita entre `@ascend/core` e `@ascend/content`
 - Plan 01: IDs canonicos estaveis e contratos base de catalogo foram fixados antes de loader e replay
 - Plan 01: o pacote inicial de conteudo foi autorado em YAML por dominio sob `content/canon/`
+- Plan 02: o loader de catalogo agrega erros de schema e referencia sem fail-fast, preservando `file`, `entryId`, `field` e `severity`
+- Plan 02: o motor de testes base foi fixado em `resolveTest` com PRNG seedavel, breakdown de modificadores e ajustes por `20` e `1` naturais
 
 ### Pending Todos
 
