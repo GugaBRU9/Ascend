@@ -258,7 +258,56 @@ apps/
 
 ## 11. Baseline Tecnico e Workflow de Build/Teste
 
-Os planos seguintes detalham esta secao com stack, validacao e fluxo tecnico recomendado.
+`ARCH-02`. O baseline abaixo define a stack minima recomendada para a milestone 02 sem travar gerenciador de dependencias, parser definitivo de conteudo ou shell final de produto. A meta aqui e padronizar o fluxo de build, teste e analise estatica do backend C++ educacional.
+
+| Ferramenta | Baseline | Papel | Obrigatoria na milestone 02? | Observacoes |
+| --- | --- | --- | --- | --- |
+| Linguagem | `C++20` | Base do core, dos value objects e dos resolutores deterministicos. | Sim | O guia nao exige modules, coroutines ou features mais novas para o primeiro recorte. |
+| Build system | `CMake 3.28+` | Configuracao do projeto, presets e geracao de build graph. | Sim | Mantem o projeto reprodutivel e simples de portar. |
+| Test runner | `CTest` | Execucao de suites unitarias, integracao leve e cenarios. | Sim | Deve acompanhar os presets do CMake. |
+| Test framework | `GoogleTest 1.17.0` | Testes unitarios e de integracao do core. | Sim | Continua suficiente para o papel educacional e para cenarios deterministicos. |
+| Compile database | `compile_commands.json` | Alimentar tooling, navegacao e `clang-tidy`. | Sim | Gerar via `CMAKE_EXPORT_COMPILE_COMMANDS=ON`. |
+| Analise estatica | `clang-tidy` | Encontrar smells estruturais e problemas de API cedo. | Sim | Rodar sobre o compile database, sem espalhar flags manuais pelo repo. |
+| Sanitizer de memoria | `AddressSanitizer` | Detectar misuse de memoria no milestone de codigo. | Sim | Entrar em preset/debug separado, nao em release. |
+| Sanitizer de UB | `UndefinedBehaviorSanitizer` | Detectar undefined behavior em runtime. | Sim | Complementa `AddressSanitizer` em cenarios e testes. |
+| Build executor | `Ninja` opcional | Build mais rapido e feedback curto durante estudo. | Nao | Se nao estiver disponivel, `Unix Makefiles` continua aceitavel. |
+
+### Workflow recomendado para a milestone 02
+
+O fluxo tecnico deve seguir sempre a mesma ordem:
+
+`configure preset -> build preset -> ctest --preset -> clang-tidy -> sanitizers`
+
+```bash
+cmake --preset dev
+cmake --build --preset dev
+ctest --preset dev
+clang-tidy -p build/dev compile_commands.json
+ASAN_OPTIONS=detect_leaks=1 ctest --preset asan
+UBSAN_OPTIONS=print_stacktrace=1 ctest --preset ubsan
+```
+
+Leitura operacional do workflow:
+
+- `configure preset` gera o ambiente de compilacao e o `compile_commands.json`.
+- `build preset` confirma que o core, a CLI de estudo e os testes continuam compilando juntos.
+- `ctest --preset` cobre suites unitarias, integracao leve e cenarios deterministicos.
+- `clang-tidy` revisa o design com o mesmo banco de compilacao usado pelo build.
+- `sanitizers` entram depois que o fluxo basico esta verde para capturar erros de memoria e UB.
+
+O milestone 02 pode escolher depois como adquirir dependencias de terceiros, desde que preserve esse fluxo. Este guia nao trava `apt`, `brew`, `vcpkg`, `conan` ou parser definitivo de conteudo; ele trava apenas o baseline tecnico e a ordem minima de validacao.
+
+### Gap atual do ambiente desta fase
+
+O ambiente observado nesta fase confirma apenas `g++ 13.3.0`. Os comandos abaixo falharam por ausencia da ferramenta, o que mantem a fase 01 em validacao documental:
+
+- `cmake nao esta instalado`
+- `ctest nao esta instalado`
+- `clang++ nao esta instalado`
+- `clang-tidy nao esta instalado`
+- `ninja nao esta instalado`
+
+Como o plano exige declarar o gap real do ambiente observado, a conclusao operacional e objetiva: ainda nao ha toolchain minima para executar `configure -> build -> test -> static analysis` dentro deste repositorio. Portanto, `ARCH-02` fica satisfeito nesta fase por rastreabilidade e consistencia documental, nao por build real de C++.
 
 ## 12. Estrategia de Validacao, Ordem Didatica e Decisoes em Aberto
 
