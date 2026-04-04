@@ -2,9 +2,9 @@
 
 ## What This Is
 
-Ascend agora e um projeto de definicao de um backend de RPG em C++ focado em estudo, testes e reuso entre plataformas. Neste ciclo, o objetivo nao e entregar um jogo executavel nem escolher uma midia final; o objetivo e transformar os topicos centrais de `Estruturação.md` em uma base de arquitetura, dominio e mecanicas que possa depois ser implementada para mesa, mobile, web, app ou console.
+Ascend agora tem o milestone `v1.0` encerrado e arquivado como uma fundacao documental para um backend de RPG em C++ focado em estudo, testes e reuso entre plataformas. O repositorio esta entre milestones: os artefatos de `v1.0` foram preservados em `.planning/milestones/`, e o proximo passo e abrir o primeiro milestone de implementacao seguindo `01-HANDOFF.md`.
 
-O produto imediato deste milestone e documental. Ao final, o estudante deve ter um guia claro para saber o que implementar, como separar responsabilidades e quais decisoes ainda precisam ser fechadas antes da proxima milestone de implementacao.
+O produto entregue ate aqui nao e um jogo executavel. O que existe agora e uma base canonica que define escopo, dominio, arquitetura, validacao e handoff suficientes para transformar a ideia bruta em backlog tecnico executavel.
 
 ## Core Value
 
@@ -16,52 +16,56 @@ O nucleo de regras precisa ser compreensivel, testavel e adaptavel como classes,
 
 - [x] Phase 01 validou Ascend como um backend C++ educacional e agnostico de plataforma, com milestone inicial puramente documental.
 - [x] Phase 01 traduziu o rascunho em um guia canonico com modulos, tipos, fronteiras arquiteturais e contratos de regra rastreaveis.
-- [x] Phase 01 fechou stack, estrategia de validacao e handoff para abrir a milestone 02 sem reabrir as decisoes de framing.
+- [x] Phase 01 fechou stack, estrategia de validacao, UAT e handoff para abrir a milestone 02 sem reabrir as decisoes de framing.
 
 ### Active
 
-- [ ] Abrir a milestone 02 seguindo `01-HANDOFF.md` e a ordem `tipos -> regras -> criacao de personagem -> combate minimo`.
-- [ ] Instalar a toolchain minima (`cmake`, `ctest`, `clang++`, `clang-tidy` e `ninja`) para sair da validacao puramente documental.
-- [ ] Fechar o formato inicial do catalogo, o loader minimo e a granularidade inicial de replay/logs sem reabrir o recorte da fase 01.
+- [ ] Abrir o proximo milestone com `02-01 Fundacao de Tipos e Invariantes` como primeiro recorte executavel.
+- [ ] Fechar o formato inicial do catalogo externo, o loader minimo e a granularidade inicial de replay/logs sem desviar para parser definitivo cedo demais.
+- [ ] Entregar a trilha `tipos -> regras -> criacao de personagem -> combate minimo` via `CLI estruturada` de estudo e inspecao.
 
 ### Out of Scope
 
-- Implementar gameplay, interface, renderizacao ou qualquer shell de produto neste milestone - o foco atual e documentacao e decisao.
-- Escolher plataforma final, engine, framework de UI ou formato de entrega ao usuario - o core deve nascer desacoplado dessas decisoes.
-- Fechar todos os detalhes de conteudo, balanceamento e escala do mundo agora - primeiro precisamos de um modelo consistente do sistema.
-- Comecar por save system, multiplayer, networking, economia profunda ou pipelines de deploy - esses temas nao reduzem o risco principal deste ciclo.
+- UI de produto, rendering, audio, engine integration ou qualquer shell final de entrega no proximo recorte inicial.
+- Save system, multiplayer, networking, persistencia online ou infraestrutura de deploy antes de estabilizar o core.
+- Party, companions e IA tatica antes de validar protagonista unico, regras deterministicas e combate minimo.
+- Balanceamento profundo ou volume amplo de conteudo antes de provar a arquitetura e o fluxo basico de estudo.
 
 ## Context
 
-- `Estruturação.md` concentra uma ideia ampla de RPG com combate em turnos, progressao profunda, party, atributos, habilidades, itens, quests, NPCs, crafting, economia, mapa em nos e persistencia.
-- A intencao atual mudou: em vez de desenhar um jogo preso a uma plataforma, o projeto quer extrair o que e core e reescrever isso como um backend C++ adaptavel a multiplas midias.
-- O trabalho precisa servir de estudo para um estudante de Ciencia da Computacao. Isso favorece arquitetura explicita, nomes claros, invariantes documentadas, fluxo deterministico e validacao cedo.
-- A primeira fase deve ser uma fase de decisoes. Ela precisa produzir arquivos simples e diretos que definam tanto o que implementar quanto como implementar.
-- Ao fim da fase 1, o esperado nao e iniciar codigo sem criterio; o esperado e sair com uma proposta madura para abrir a proxima milestone, dedicada ao recorte da implementacao.
-- Nem todo topico de `Estruturação.md` precisa entrar no primeiro recorte de implementacao. O milestone atual deve separar core, extensoes futuras e dependencias de plataforma.
+- `Estruturação.md` continua sendo materia-prima de ideacao. Ele nao deve voltar a ser tratado como backlog literal.
+- `v1.0` entregou `01-GUIA-CANONICO.md`, `01-HANDOFF.md`, verificacao formal da fase e UAT `5/5` para o milestone documental.
+- A toolchain local agora esta disponivel para o proximo ciclo: `gcc`, `g++`, `make`, `cmake`, `ctest`, `clang++`, `clang-tidy` e `ninja` foram confirmados no ambiente.
+- O proximo milestone ainda precisa decidir o formato inicial do catalogo, o loader minimo e a granularidade inicial de replay/logs, mas nao precisa reabrir escopo, dominios base ou ordem didatica.
+- O trabalho continua voltado a estudo de Ciencia da Computacao. Isso preserva a prioridade em arquitetura explicita, invariantes visiveis, fluxo deterministico e validacao rastreavel.
 
 ## Constraints
 
-- **Linguagem**: Backend em C++ - a documentacao precisa preparar um projeto estudavel nessa stack.
-- **Arquitetura**: Base agnostica de plataforma - regras, estado e catalogos nao podem depender de UI, engine ou ambiente de execucao especifico.
-- **Produto**: Milestone atual documental - a entrega e um guia operacional, nao um jogo funcional.
-- **Didatica**: Material voltado a estudo - o design deve privilegiar clareza, modularidade e testabilidade sobre sofisticacao prematura.
-- **Escopo**: Phase 1 orientada a decisoes - pendencias, cortes e principios de implementacao precisam ficar explicitos.
-- **Qualidade**: A documentacao precisa ser rastreavel - um leitor deve conseguir converter o plano em backlog tecnico sem adivinhar lacunas centrais.
+- **Linguagem**: O proximo milestone continua em C++ moderno, com implementacao estudavel e testavel.
+- **Arquitetura**: O core deve permanecer agnostico de plataforma e desacoplado de concerns de produto.
+- **Sequenciamento**: A ordem oficial segue `tipos -> regras -> criacao de personagem -> combate minimo`.
+- **Didatica**: A `CLI estruturada` continua sendo ferramenta de estudo e inspecao, nao produto final.
+- **Qualidade**: Falhas de conteudo, validacao e regra devem ser explicitas e rastreaveis desde o primeiro commit de codigo.
 
 ## Key Decisions
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| O milestone atual sera documental, nao implementacional | O usuario pediu uma base que instrua a criacao futura do projeto antes de qualquer codigo | Validated in Phase 01 (`01-GUIA-CANONICO.md`) |
-| O core sera modelado como backend C++ agnostico de plataforma | A mesma base deve poder sustentar mesa, mobile, web, app e console depois | Validated in Phase 01 (`01-GUIA-CANONICO.md`) |
-| `Estruturação.md` sera tratada como materia-prima, nao como contrato direto de implementacao | O arquivo mistura mecanicas centrais, extensoes e decisoes ainda abertas | Validated in Phase 01 (`01-GUIA-CANONICO.md`) |
-| A primeira fase deve encerrar com pendencias e proxima milestone sugerida | O usuario quer uma fase 1 mais reflexiva, que alinhe expectativa pedagogica e tecnica | Validated in Phase 01 (`01-HANDOFF.md`) |
-| Sistemas de produto e adaptadores ficam explicitamente adiados | Sem esse corte, o projeto corre o risco de confundir arquitetura de dominio com arquitetura de entrega | Validated in Phase 01 (`01-GUIA-CANONICO.md`) |
+| O milestone atual seria documental, nao implementacional | Era necessario fechar vocabulario, recorte e arquitetura antes de qualquer codigo | ✓ Validated in v1.0 |
+| O core seria modelado como backend C++ agnostico de plataforma | A mesma base deve poder sustentar CLI, mesa e futuros adapters sem contaminar o dominio | ✓ Validated in v1.0 |
+| `Estruturação.md` seria tratado como materia-prima, nao como contrato direto de implementacao | O arquivo mistura core, expansoes e concerns de plataforma | ✓ Validated in v1.0 |
+| A primeira fase encerraria com handoff e milestone seguinte sugerida | O projeto precisava sair de ideia ampla para trilha concreta de implementacao | ✓ Validated in v1.0 |
+| Sistemas de produto e adaptadores ficariam explicitamente adiados | Isso reduz risco arquitetural e evita acoplamento prematuro | ✓ Validated in v1.0 |
 
 ## Current State
 
-Phase 01 foi concluida e verificada. O repositorio agora tem um guia canonico fechado em `01-GUIA-CANONICO.md` e um handoff executavel em `01-HANDOFF.md` para abrir a milestone 02 com escopo, ordem didatica e guardrails explicitos.
+`v1.0 Documentation Foundation` foi arquivado em `2026-04-04`. Os artefatos canonicos do milestone estao em `.planning/milestones/v1.0-ROADMAP.md` e `.planning/milestones/v1.0-REQUIREMENTS.md`, enquanto o historico bruto de execucao continua em `.planning/phases/01-guia-canonico-de-implementacao/`.
+
+## Next Milestone Goals
+
+- Definir requisitos frescos para o primeiro milestone de implementacao usando `01-HANDOFF.md` como referencia.
+- Abrir os modulos base de tipos e invariantes antes de qualquer loader sofisticado ou shell de produto.
+- Validar o caminho minimo via regras deterministicas, criacao de personagem e combate minimo com observabilidade suficiente para replay/logs.
 
 ## Evolution
 
@@ -81,4 +85,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-03 after phase 01 completion*
+*Last updated: 2026-04-04 after v1.0 milestone archival*
