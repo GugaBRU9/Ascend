@@ -5,21 +5,10 @@
 - [x] **v1.0 Documentation Foundation** - Milestone documental concluido em 2026-04-04 com a `Phase 1` arquivada em `.planning/milestones/v1.0-ROADMAP.md`.
 - [ ] **v1.1 Core Foundation** - Milestone atual que abre o primeiro caminho de codigo do core C++ como uma unica `Phase 2`.
 
-## Phases
-
-### v1.0 Documentation Foundation
+<details>
+<summary>✅ v1.0 Documentation Foundation (Phase 1) - SHIPPED 2026-04-04</summary>
 
 - [x] **Phase 1: Guia Canonico de Implementacao** - Fechou framing, arquitetura, validacao e handoff do milestone documental.
-
-### v1.1 Core Foundation
-
-- [ ] **Phase 2: Core Foundation** - Implementa o caminho `tipos -> regras -> criacao de personagem -> combate minimo`, com `CLI estruturada` apenas para estudo e inspecao.
-
-## Phase Details
-
-### Milestone v1.0: Documentation Foundation
-**Status**: Completed 2026-04-04
-**Summary**: Base documental arquivada com handoff executavel para o milestone `v1.1 Core Foundation`.
 
 ### Phase 1: Guia Canonico de Implementacao
 **Goal**: Fechar um guia completo, direto e didatico que transforme o rascunho atual em base de implementacao C++ agnostica de plataforma.
@@ -37,9 +26,13 @@
 - [x] 01-03: Definir arquitetura C++, fluxo de build/teste e estrategia de validacao educativa
 - [x] 01-04: Registrar pendencias, riscos e proposta da proxima milestone de implementacao
 
-### Milestone v1.1: Core Foundation
-**Status**: Current milestone
-**Summary**: Primeiro milestone de implementacao do backend C++, preservando o recorte core-first e a ordem oficial definida pelo handoff.
+</details>
+
+## 🚧 v1.1 Core Foundation
+
+**Milestone Goal:** Abrir o primeiro caminho implementado e estudavel do backend C++ sem reabrir framing, escopo ou o papel da `CLI estruturada`.
+
+- [ ] **Phase 2: Core Foundation** - Implementa o caminho `tipos -> regras -> criacao de personagem -> combate minimo`, com `CLI estruturada` apenas para estudo e inspecao.
 
 ### Phase 2: Core Foundation
 **Goal**: Abrir um caminho implementado e estudavel do backend C++ com tipos e invariantes explicitos, resolutores deterministicos observaveis, catalogo minimo, criacao de personagem e combate minimo acessiveis por uma `CLI estruturada` de estudo.
