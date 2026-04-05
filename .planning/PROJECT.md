@@ -2,9 +2,18 @@
 
 ## What This Is
 
-Ascend agora tem o milestone `v1.0` encerrado e arquivado como uma fundacao documental para um backend de RPG em C++ focado em estudo, testes e reuso entre plataformas. O repositorio esta entre milestones: os artefatos de `v1.0` foram preservados em `.planning/milestones/`, e o proximo passo e abrir o primeiro milestone de implementacao seguindo `01-HANDOFF.md`.
+Ascend entrou no milestone `v1.1 Core Foundation`, o primeiro ciclo de implementacao do backend de RPG em C++ focado em estudo, testes e reuso entre plataformas. `v1.0` segue arquivado como fundacao documental em `.planning/milestones/`, enquanto o trabalho atual transforma esse material em codigo executavel sem acoplar o core a concerns de produto.
 
-O produto entregue ate aqui nao e um jogo executavel. O que existe agora e uma base canonica que define escopo, dominio, arquitetura, validacao e handoff suficientes para transformar a ideia bruta em backlog tecnico executavel.
+O produto ainda nao e um jogo final. O recorte ativo continua sendo um backend educacional, testavel e agnostico de plataforma, agora seguindo a trilha `tipos -> regras -> criacao de personagem -> combate minimo`, com `CLI estruturada` apenas para estudo e inspecao.
+
+## Current Milestone: v1.1 Core Foundation
+
+**Goal:** Abrir o primeiro caminho implementado do core C++ com invariantes explicitas, regras deterministicas observaveis, catalogo minimo e `CLI estruturada` de estudo.
+
+**Target features:**
+- Tipos base, IDs, value objects e invariantes para atributos, recursos, efeitos, personagens e inimigos.
+- Resolutores deterministicos com eventos, logs estruturados e replay inicial para explicar entrada, saida e invariantes.
+- Catalogo minimo externo, loader explicito, criacao de personagem e combate minimo acessiveis por uma `CLI estruturada` de estudo.
 
 ## Core Value
 
@@ -20,9 +29,11 @@ O nucleo de regras precisa ser compreensivel, testavel e adaptavel como classes,
 
 ### Active
 
-- [ ] Abrir o proximo milestone com `02-01 Fundacao de Tipos e Invariantes` como primeiro recorte executavel.
-- [ ] Fechar o formato inicial do catalogo externo, o loader minimo e a granularidade inicial de replay/logs sem desviar para parser definitivo cedo demais.
-- [ ] Entregar a trilha `tipos -> regras -> criacao de personagem -> combate minimo` via `CLI estruturada` de estudo e inspecao.
+- [ ] Entregar `02-01 Fundacao de Tipos e Invariantes` como primeiro recorte executavel do core C++.
+- [ ] Fechar `02-02 Regras Deterministicas e Resolutores` com observabilidade suficiente para replay/logs e scenario tests.
+- [ ] Fechar `02-03 Criacao de Personagem e Catalogo Minimo` com loader simples, erros explicitos e fronteira clara entre autoria e runtime.
+- [ ] Fechar `02-04 Combate Minimo e CLI de Estudo` provando o caminho `tipos -> regras -> criacao de personagem -> combate minimo`.
+- [ ] Decidir apenas as aberturas legitimas do handoff: formato inicial do catalogo, loader minimo e granularidade inicial de replay/logs.
 
 ### Out of Scope
 
@@ -35,8 +46,9 @@ O nucleo de regras precisa ser compreensivel, testavel e adaptavel como classes,
 
 - `Estruturação.md` continua sendo materia-prima de ideacao. Ele nao deve voltar a ser tratado como backlog literal.
 - `v1.0` entregou `01-GUIA-CANONICO.md`, `01-HANDOFF.md`, verificacao formal da fase e UAT `5/5` para o milestone documental.
-- A toolchain local agora esta disponivel para o proximo ciclo: `gcc`, `g++`, `make`, `cmake`, `ctest`, `clang++`, `clang-tidy` e `ninja` foram confirmados no ambiente.
-- O proximo milestone ainda precisa decidir o formato inicial do catalogo, o loader minimo e a granularidade inicial de replay/logs, mas nao precisa reabrir escopo, dominios base ou ordem didatica.
+- A toolchain local agora esta disponivel para o ciclo de implementacao: `gcc`, `g++`, `make`, `cmake`, `ctest`, `clang++`, `clang-tidy` e `ninja` foram confirmados no ambiente.
+- `01-HANDOFF.md` e a fonte operacional para `v1.1`: ele trava a ordem `02-01` a `02-04`, explicita guardrails e limita as decisoes ainda abertas ao catalogo inicial, loader minimo e granularidade inicial de replay/logs.
+- O milestone atual nao precisa reabrir escopo, dominios base, papel da `CLI estruturada` ou as decisoes `D-01` a `D-16`.
 - O trabalho continua voltado a estudo de Ciencia da Computacao. Isso preserva a prioridade em arquitetura explicita, invariantes visiveis, fluxo deterministico e validacao rastreavel.
 
 ## Constraints
@@ -59,13 +71,13 @@ O nucleo de regras precisa ser compreensivel, testavel e adaptavel como classes,
 
 ## Current State
 
-`v1.0 Documentation Foundation` foi arquivado em `2026-04-04`. Os artefatos canonicos do milestone estao em `.planning/milestones/v1.0-ROADMAP.md` e `.planning/milestones/v1.0-REQUIREMENTS.md`, enquanto o historico bruto de execucao continua em `.planning/phases/01-guia-canonico-de-implementacao/`.
+`v1.1 Core Foundation` foi aberto em `2026-04-05` como o primeiro milestone de codigo do projeto. Os artefatos canonicos de `v1.0` seguem preservados em `.planning/milestones/v1.0-ROADMAP.md` e `.planning/milestones/v1.0-REQUIREMENTS.md`, enquanto o historico bruto da fase documental continua em `.planning/phases/01-guia-canonico-de-implementacao/`.
 
-## Next Milestone Goals
+## Current Milestone Goals
 
-- Definir requisitos frescos para o primeiro milestone de implementacao usando `01-HANDOFF.md` como referencia.
-- Abrir os modulos base de tipos e invariantes antes de qualquer loader sofisticado ou shell de produto.
-- Validar o caminho minimo via regras deterministicas, criacao de personagem e combate minimo com observabilidade suficiente para replay/logs.
+- Abrir os modulos base de `domain`, `rules`, `content`, `session`, `validation` e `adapters::cli` sem quebrar a fronteira core-first.
+- Validar o caminho minimo com regras deterministicas, replay/logs iniciais, criacao de personagem e combate minimo.
+- Encerrar o milestone com uma base executavel e estudavel, ainda pequena o bastante para nao puxar `party`, balanceamento profundo, parser definitivo ou shell de produto.
 
 ## Evolution
 
@@ -85,4 +97,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-04 after v1.0 milestone archival*
+*Last updated: 2026-04-05 after starting v1.1 Core Foundation*

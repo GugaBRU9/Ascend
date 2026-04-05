@@ -1,36 +1,36 @@
 ---
 gsd_state_version: 1.0
-milestone: v1.0
-milestone_name: documentation-foundation
-status: milestone complete
-stopped_at: v1.0 archived; ready for next milestone
-last_updated: 2026-04-04T09:31:18Z
-last_activity: 2026-04-04 -- archived v1.0 documentation-foundation; between milestones
+milestone: v1.1
+milestone_name: core-foundation
+status: defining requirements
+stopped_at: roadmap pending
+last_updated: 2026-04-05T11:49:22Z
+last_activity: 2026-04-05 -- started v1.1 Core Foundation and drafted milestone requirements
 progress:
-  total_phases: 1
+  total_phases: 2
   completed_phases: 1
   total_plans: 4
-  completed_plans: 4
-  percent: 100
+  completed_plans: 0
+  percent: 0
 ---
 
 # Project State
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-04-04)
+See: .planning/PROJECT.md (updated 2026-04-05)
 
 **Core value:** O nucleo de regras precisa ser compreensivel, testavel e adaptavel como classes, metodos e contratos C++ independentes de plataforma.
-**Current focus:** Planning next milestone from `01-HANDOFF.md`
+**Current focus:** Definir o roadmap de `v1.1 Core Foundation` usando `01-HANDOFF.md` como fonte operacional.
 
 ## Current Position
 
-Phase: None - between milestones
+Phase: 2 - Core Foundation
 Plan: None
-Status: `v1.0` archived; run `$gsd-new-milestone` to start the next cycle
-Last activity: 2026-04-04 -- archived v1.0 documentation-foundation; between milestones
+Status: `v1.1` aberto; requisitos definidos e roadmap pendente
+Last activity: 2026-04-05 -- started v1.1 Core Foundation and drafted milestone requirements
 
-Progress: [██████████] 100%
+Progress: [----------] 0%
 
 ## Performance Metrics
 
@@ -65,8 +65,9 @@ Recent decisions affecting current work:
 
 - `v1.0` consolidou o milestone documental como base oficial do projeto.
 - `01-GUIA-CANONICO.md` agora e a referencia central para framing, dominio, arquitetura e ordem didatica.
-- `01-HANDOFF.md` define o recorte e a ordem do primeiro milestone de implementacao.
-- A toolchain local necessaria para o proximo milestone foi confirmada como disponivel.
+- `01-HANDOFF.md` define o recorte, os guardrails e a ordem dos planos `02-01` a `02-04`.
+- A toolchain local necessaria para o milestone de implementacao foi confirmada como disponivel.
+- `v1.1` foi aberto como `Core Foundation`, preservando o recorte core-first e a `CLI estruturada` apenas como ferramenta de estudo.
 
 ### Pending Todos
 
@@ -74,12 +75,12 @@ None yet.
 
 ### Blockers/Concerns
 
-- `Estruturação.md` continua misturando core, expansoes e concerns de plataforma; ele deve seguir sendo tratado como fonte bruta.
-- O proximo milestone ainda precisa fechar formato inicial do catalogo, loader minimo e granularidade inicial de replay/logs.
-- `v1.0` foi arquivado sem um arquivo dedicado de milestone audit; a verificacao formal existente continua sendo de fase + UAT.
+- O milestone ainda precisa fechar formato inicial do catalogo, loader minimo e granularidade inicial de replay/logs sem desviar para parser definitivo.
+- O pacote inicial de conteudo precisa permanecer pequeno o suficiente para validar arquitetura e observabilidade antes de balanceamento.
+- A `CLI estruturada` nao pode virar pseudo-produto durante a implementacao do combate minimo.
 
 ## Session Continuity
 
-Last session: 2026-04-04T09:31:18Z
-Stopped at: Between milestones after archiving v1.0
+Last session: 2026-04-05T11:49:22Z
+Stopped at: Requirements drafted for `v1.1 Core Foundation`; roadmap creation is next
 Resume file: None
