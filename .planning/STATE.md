@@ -2,10 +2,10 @@
 gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: core-foundation
-status: defining requirements
-stopped_at: roadmap pending
-last_updated: 2026-04-05T11:49:22Z
-last_activity: 2026-04-05 -- started v1.1 Core Foundation and drafted milestone requirements
+status: roadmap created; phase 2 planning next
+stopped_at: "$gsd-plan-phase 2"
+last_updated: 2026-04-05T11:53:35Z
+last_activity: 2026-04-05 -- created roadmap for v1.1 Core Foundation; next step is $gsd-plan-phase 2
 progress:
   total_phases: 2
   completed_phases: 1
@@ -21,14 +21,14 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-05)
 
 **Core value:** O nucleo de regras precisa ser compreensivel, testavel e adaptavel como classes, metodos e contratos C++ independentes de plataforma.
-**Current focus:** Definir o roadmap de `v1.1 Core Foundation` usando `01-HANDOFF.md` como fonte operacional.
+**Current focus:** `$gsd-plan-phase 2`
 
 ## Current Position
 
 Phase: 2 - Core Foundation
 Plan: None
-Status: `v1.1` aberto; requisitos definidos e roadmap pendente
-Last activity: 2026-04-05 -- started v1.1 Core Foundation and drafted milestone requirements
+Status: `ROADMAP.md` criado; proximo passo e planejar a `Phase 2`
+Last activity: 2026-04-05 -- created roadmap for `v1.1 Core Foundation`; next step is `$gsd-plan-phase 2`
 
 Progress: [----------] 0%
 
@@ -68,6 +68,7 @@ Recent decisions affecting current work:
 - `01-HANDOFF.md` define o recorte, os guardrails e a ordem dos planos `02-01` a `02-04`.
 - A toolchain local necessaria para o milestone de implementacao foi confirmada como disponivel.
 - `v1.1` foi aberto como `Core Foundation`, preservando o recorte core-first e a `CLI estruturada` apenas como ferramenta de estudo.
+- `ROADMAP.md` consolidou o roadmap atual em duas fases totais, com todos os 16 requisitos v1 mapeados para a unica `Phase 2`.
 
 ### Pending Todos
 
@@ -82,5 +83,5 @@ None yet.
 ## Session Continuity
 
 Last session: 2026-04-05T11:49:22Z
-Stopped at: Requirements drafted for `v1.1 Core Foundation`; roadmap creation is next
+Stopped at: Roadmap created for `v1.1 Core Foundation`; next step is `$gsd-plan-phase 2`
 Resume file: None

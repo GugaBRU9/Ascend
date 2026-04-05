@@ -58,28 +58,28 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| CORE-01 | - | Pending |
-| CORE-02 | - | Pending |
-| CORE-03 | - | Pending |
-| CORE-04 | - | Pending |
-| RULE-01 | - | Pending |
-| RULE-02 | - | Pending |
-| RULE-03 | - | Pending |
-| RULE-04 | - | Pending |
-| CONT-01 | - | Pending |
-| CONT-02 | - | Pending |
-| CONT-03 | - | Pending |
-| CONT-04 | - | Pending |
-| FLOW-01 | - | Pending |
-| FLOW-02 | - | Pending |
-| FLOW-03 | - | Pending |
-| FLOW-04 | - | Pending |
+| CORE-01 | Phase 2 | Pending |
+| CORE-02 | Phase 2 | Pending |
+| CORE-03 | Phase 2 | Pending |
+| CORE-04 | Phase 2 | Pending |
+| RULE-01 | Phase 2 | Pending |
+| RULE-02 | Phase 2 | Pending |
+| RULE-03 | Phase 2 | Pending |
+| RULE-04 | Phase 2 | Pending |
+| CONT-01 | Phase 2 | Pending |
+| CONT-02 | Phase 2 | Pending |
+| CONT-03 | Phase 2 | Pending |
+| CONT-04 | Phase 2 | Pending |
+| FLOW-01 | Phase 2 | Pending |
+| FLOW-02 | Phase 2 | Pending |
+| FLOW-03 | Phase 2 | Pending |
+| FLOW-04 | Phase 2 | Pending |
 
 **Coverage:**
 - v1 requirements: 16 total
-- Mapped to phases: 0
-- Unmapped: 16
+- Mapped to phases: 16
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-04-05*
-*Last updated: 2026-04-05 after initializing v1.1 Core Foundation*
+*Last updated: 2026-04-05 after creating roadmap for v1.1 Core Foundation*
