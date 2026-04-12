@@ -1,89 +1,112 @@
-# Features Research: Ascend
+# Feature Research
 
-**Date:** 2026-04-03
-**Context:** v1 is a mechanics-validation prototype, not a polished player-facing product
+**Domain:** slice inicial de RPG por turnos 1x1
+**Researched:** 2026-04-12
+**Confidence:** MEDIUM
 
-## Table stakes for v1
+## Feature Landscape
 
-### Rules execution
+### Table Stakes (Users Expect These)
 
-- faithful execution of tests, modifiers, advantage/disadvantage and degrees of success
-- static defenses, resource handling, fixed damage, resistances and conditions
-- death/downed and recovery flows
+| Feature | Why Expected | Complexity | Notes |
+|---------|--------------|------------|-------|
+| Turnos claros com ordem de acao previsivel | Sem isso o combate nao e legivel nem ensinavel | LOW | Deve priorizar determinismo e texto observavel |
+| Atributos com impacto real nas regras | O usuario explicitou atributos como foco do primeiro combate | LOW | Melhor com poucos efeitos bem definidos do que muitos modificadores |
+| Habilidades com custo e efeito distinguiveis | Habilidades sem identidade viram apenas ataques com nomes diferentes | MEDIUM | O slice inicial precisa poucas habilidades, mas cada uma com papel claro |
+| Vida, derrota e fim de combate | O combate precisa ter condicao de sucesso/falha observavel | LOW | Importante para testes, UAT e replay |
 
-### Tactical combat
+### Differentiators (Competitive Advantage)
 
-- initiative and turn order
-- action, movement and reaction economy
-- zones, pressure attacks, cover and positioning
-- skill usage by players and enemies
-- support for common, elite and boss encounters
+| Feature | Value Proposition | Complexity | Notes |
+|---------|-------------------|------------|-------|
+| Replay textual deterministico do combate | Excelente para aprendizado e depuracao | MEDIUM | Diferencia o projeto como ferramenta didatica |
+| UAT guiado pelo estudante ao fim de cada phase | Fecha o loop de aprendizado com evidencia do proprio usuario | LOW | Deve estar no workflow, nao so na implementacao |
+| Separacao nitida entre conteudo e regra | Facilita evolucao futura sem reescrever o core | MEDIUM | Importante para a futura milestone de implementacao |
 
-### Non-combat scenes
+### Anti-Features (Commonly Requested, Often Problematic)
 
-- playable `Progress x Pressure` loop
-- visible objective, risk, ND and consequence
-- support for social, investigative and exploratory scene templates
+| Feature | Why Requested | Why Problematic | Alternative |
+|---------|---------------|-----------------|-------------|
+| Party completa com companheiros | Parece "mais RPG" desde o inicio | Multiplica IA, alvo, ordem de turno e gerenciamento cedo demais | Fechar 1x1 primeiro e usar NPCs/party apenas depois |
+| Sistema completo de 11 tipos de dano e dezenas de status | Passa sensacao de profundidade imediata | Dificulta explicar e validar contratos basicos | Comecar com dano fisico e um subconjunto minimo de efeitos |
+| Arvores de habilidade extensas logo no primeiro slice | Parece essencial para personalizacao | Introduz balanceamento e UI mental cedo demais | Usar poucas habilidades ativas/passivas com progressao futura registrada |
 
-### Character and content support
+## Feature Dependencies
 
-- load and run level 1 pregens
-- create or edit level 1 characters from canonical docs
-- load origins, trails, equipment, enemies and the starter adventure from canonical content
+```text
+Combate 1x1
+    |-requires-> ordem de turno
+    |-requires-> vida/derrota
+    |-requires-> atributos
+    `-requires-> habilidades
 
-### GM and playtest support
+Replay/UAT
+    `-requires-> resolucao deterministica
 
-- prepare scenes and encounters without inventing missing system rules
-- run the starter package repeatedly
-- record signals needed for balance iteration: PE use, turn duration, skill frequency, confusion points and dominant patterns
+Evolucao futura de buildcraft
+    `-enhances-> atributos + habilidades
 
-### Light persistence
+Party completa
+    --conflicts with early simplicity--> slice didatico inicial
+```
 
-- carry consequences between scenes inside the session
-- allow preparation choices to affect the boss encounter
+### Dependency Notes
 
-## Differentiators to keep in sight
+- **Combate 1x1 requires ordem de turno:** sem sequenciamento claro nao existe regra verificavel.
+- **Replay/UAT requires resolucao deterministica:** logs so sao confiaveis quando a mesma entrada gera a mesma saida.
+- **Buildcraft futuro enhances atributos + habilidades:** aprofundamento so faz sentido depois de os contratos basicos existirem.
+- **Party completa conflicts with early simplicity:** quebra o principal objetivo do milestone atual.
 
-- truly data-driven unified engine for combat and non-combat scenes
-- campaign consequence tracking for factions, NPCs and world state
-- richer telemetry for balancing and build comparison
-- short progression loop beyond level 1 after the first validation round
-- optional recurring ally module for small groups
-- later adapters beyond CLI, if derived from the same core
+## MVP Definition
 
-## Anti-features for v1
+### Launch With (v1)
 
-- polished final product UI
-- save system, codex, journal or lore archive
-- deep economy, shops and advanced crafting
-- solo mode with full companion management
-- tactical AI for companions
-- mandatory node map progression
-- mobile-session pacing constraints
-- exploration energy system
-- large-scale content expansion before the core loop is stable
+- [ ] Combate 1x1 por turnos com jogador e inimigo - e o menor corte que valida a ideia
+- [ ] Atributos com efeitos visiveis em ataque, defesa ou iniciativa - entrega aprendizado real de modelagem
+- [ ] Habilidades minimas com custo e efeito - diferencia escolhas de turno
+- [ ] UAT e logs/replay definidos - garantem observabilidade do comportamento
 
-## Dependencies
+### Add After Validation (v1.x)
 
-- rules core before any UI, analytics or automation layer
-- character model before builder and balance testing
-- combat runner depends on zones, actions, conditions, enemies and skills
-- non-combat runner depends on tests plus the `Progress x Pressure` protocol
-- starter adventure depends on both combat and non-combat execution plus light consequence tracking
-- deeper instrumentation only matters after the base loop runs end to end
+- [ ] Mais habilidades e variacoes de inimigo - quando o loop 1x1 estiver estavel
+- [ ] Status simples e recursos adicionais - quando o modelo base estiver claro para o estudante
 
-## Practical assumptions for roadmap input
+### Future Consideration (v2+)
 
-- v1 should support both pregens and level 1 custom character creation
-- first playable surface should be CLI plus automated simulation/test harness
-- first delivery should validate one end-to-end starter session, not the full 3-5 session campaign arc
+- [ ] Party, companheiros e funcoes taticas - somente depois do core 1x1
+- [ ] Exploracao, quests, crafting, economia e mapa - dependem de um combate base solido
+- [ ] Save, persistencia, multiplayer e infraestrutura online - fora do objetivo educacional inicial
 
-## Confidence
+## Feature Prioritization Matrix
 
-- High: mandatory v1 scope and exclusions
-- Medium: how much creator UX is needed in the first playable build
-- Medium: how much campaign progression enters before post-playtest iteration
+| Feature | User Value | Implementation Cost | Priority |
+|---------|------------|---------------------|----------|
+| Recorte 1x1 claro | HIGH | LOW | P1 |
+| Atributos com impacto | HIGH | LOW | P1 |
+| Habilidades minimas | HIGH | MEDIUM | P1 |
+| Replay/UAT observavel | HIGH | MEDIUM | P1 |
+| Status adicionais | MEDIUM | MEDIUM | P2 |
+| Party completa | LOW para o milestone atual | HIGH | P3 |
+
+**Priority key:**
+- P1: Must have for launch
+- P2: Should have, add when possible
+- P3: Nice to have, future consideration
+
+## Competitor Feature Analysis
+
+| Feature | Competitor A | Competitor B | Our Approach |
+|---------|--------------|--------------|--------------|
+| Progressao/build | Costuma crescer com varias classes e arvore extensa | Costuma usar muitas skills e status cedo | Adiar profundidade e priorizar compreensao |
+| Combate tatico | Muitas vezes envolve party inteira | Muitas vezes mistura UI, feedback visual e balanceamento desde cedo | Separar o core documental do resto |
+| Feedback ao jogador | Normalmente UX forte e tutoriais | Normalmente logs escondidos | Expor logs/replay como ferramenta de aprendizado |
 
 ## Sources
 
-- Project docs: `README.md`, `docs/00-visao-do-sistema.md`, `docs/03-guia-do-mestre-e-campanha.md`, `docs/04-conteudo-inicial.md`, `docs/05-playtest.md`, `.planning/PROJECT.md`
+- `Estruturação.md` - fonte primaria para a ideia ampla e os sistemas futuros
+- Contexto do usuario no pedido de inicializacao - recorte explicito para combate 1x1, atributos e habilidades
+- `PROJECT.md` - objetivo atual, limites e valor central do projeto
+
+---
+*Feature research for: slice inicial de RPG por turnos 1x1*
+*Researched: 2026-04-12*

@@ -1,7 +1,7 @@
 {
   "model_profile": "balanced",
   "commit_docs": true,
-  "parallelization": true,
+  "parallelization": false,
   "search_gitignored": false,
   "brave_search": false,
   "firecrawl": false,
@@ -22,16 +22,22 @@
     "node_repair_budget": 2,
     "ui_phase": true,
     "ui_safety_gate": true,
-    "text_mode": false,
+    "text_mode": true,
     "research_before_questions": false,
     "discuss_mode": "discuss",
-    "skip_discuss": false
+    "skip_discuss": false,
+    "code_review": true,
+    "code_review_depth": "standard",
+    "use_worktrees": false
   },
   "hooks": {
     "context_warnings": true
   },
+  "project_code": null,
+  "phase_naming": "sequential",
   "agent_skills": {},
   "resolve_model_ids": "omit",
-  "mode": "yolo",
-  "granularity": "standard"
+  "mode": "interactive",
+  "granularity": "coarse",
+  "response_language": "Portuguese"
 }

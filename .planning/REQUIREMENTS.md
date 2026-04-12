@@ -1,85 +1,100 @@
 # Requirements: Ascend
 
-**Defined:** 2026-04-05
-**Core Value:** O nucleo de regras precisa ser compreensivel, testavel e adaptavel como classes, metodos e contratos C++ independentes de plataforma.
+**Defined:** 2026-04-12
+**Core Value:** O primeiro slice de combate 1x1 precisa ser simples o bastante para um estudante entender, testar, reproduzir e corrigir sem depender de UI, engine ou infraestrutura pesada.
 
 ## v1 Requirements
 
-### Core Types
+### Scope & Vision
 
-- [ ] **CORE-01**: Developer can build the initial `domain` modules with explicit IDs and value objects for attributes, resource pools, effects/status, characters, enemies, and combat-relevant types without platform dependencies.
-- [ ] **CORE-02**: Developer can observe invalid domain construction as explicit validation failures instead of silent defaults.
-- [ ] **CORE-03**: Student can verify the main invariants of the base types through unit tests that run without CLI, parser, or product adapters.
-- [ ] **CORE-04**: Developer can distinguish `Definition` from `State` in the initial C++ modules and data contracts.
+- [ ] **SCOPE-01**: Documento define o milestone atual como base documental para um backend C++ educacional, nao como implementacao jogavel completa.
+- [ ] **SCOPE-02**: Documento delimita o primeiro slice futuro como combate 1x1 por turnos entre um jogador e um inimigo.
+- [ ] **SCOPE-03**: Documento registra atributos e habilidades como foco mecanico inicial do slice.
+- [ ] **SCOPE-04**: Documento explicita os principais sistemas fora de escopo do milestone atual e do primeiro slice jogavel.
 
-### Deterministic Rules
+### Combat Domain
 
-- [ ] **RULE-01**: Developer can execute deterministic resolution for cost, damage, and effect application or expiration and get the same outputs from the same inputs.
-- [ ] **RULE-02**: Student can inspect structured events and replay/log artifacts that explain `input -> resolution -> output` for the initial rules.
-- [ ] **RULE-03**: Developer can diagnose invalid rule execution through explicit validation or domain errors.
-- [ ] **RULE-04**: Scenario tests can cover the minimal rule flow for cost, damage, and effects without depending on a final UI.
+- [ ] **COMBAT-01**: O projeto descreve os atores minimos do duelo e o estado de runtime necessario para um combate 1x1.
+- [ ] **COMBAT-02**: O projeto define a ordem de turno, resolucao de acao e condicoes de encerramento de forma deterministica.
+- [ ] **COMBAT-03**: O projeto explicita entradas, saidas e invariantes observaveis das regras centrais do combate.
+- [ ] **COMBAT-04**: O projeto define os eventos/logs minimos necessarios para replay e diagnostico futuro.
 
-### Content and Character Creation
+### Attributes & Skills
 
-- [ ] **CONT-01**: Author can define the initial starter content in simple versioned `JSON` files stored in the repository.
-- [ ] **CONT-02**: Developer can load the minimal catalog through a dedicated content loader separated from runtime rules and receive explicit validation failures for malformed definitions.
-- [ ] **CONT-03**: Student can build a valid protagonist through `CharacterCreation` from catalog definitions without coupling authoring code to runtime state.
-- [ ] **CONT-04**: Developer can keep the starter content intentionally small: one protagonist template, a few skills and effects, and a small enemy set.
+- [ ] **ATTR-01**: O projeto define um conjunto inicial de atributos com efeito claro no combate 1x1.
+- [ ] **ATTR-02**: O projeto descreve habilidades com pelo menos custo, alvo, efeito e restricoes suficientes para o slice inicial.
+- [ ] **ATTR-03**: O projeto especifica como atributos e habilidades se relacionam sem exigir balanceamento completo do RPG.
+- [ ] **ATTR-04**: O projeto registra simplificacoes assumidas para manter a curva de aprendizado controlada.
 
-### Study CLI and Minimal Combat
+### Architecture & Stack
 
-- [ ] **FLOW-01**: Student can use a structured CLI to inspect catalog content, create a character, start a minimal encounter, and execute controlled actions.
-- [ ] **FLOW-02**: Developer can run a minimal protagonist-versus-enemies combat flow and inspect the resulting state, logs, and replay artifacts.
-- [ ] **FLOW-03**: End-to-end smoke or scenario tests can validate the path `tipos -> regras -> criacao de personagem -> combate minimo`.
-- [ ] **FLOW-04**: The CLI remains a study and inspection tool rather than a final game shell.
+- [ ] **ARCH-01**: A arquitetura alvo separa dominio, catalogos de conteudo, servicos de sessao e adapters.
+- [ ] **ARCH-02**: O projeto define stack de build, teste e analise estatica adequada a C++ moderno e portavel.
+- [ ] **ARCH-03**: O projeto define estrategia de testes com enfase em determinismo, unit tests e validacao incremental.
+- [ ] **ARCH-04**: O projeto documenta criterios para introducao ou rejeicao de dependencias externas.
+
+### Validation & Continuity
+
+- [ ] **VAL-01**: O projeto define como UAT sera conduzido pelo estudante ao final de cada phase relevante.
+- [ ] **VAL-02**: O roadmap atual cobre 100% dos requisitos v1 sem depender de UI, engine ou infraestrutura online.
+- [ ] **VAL-03**: O estado do projeto registra fase atual, foco, riscos e proximo passo de trabalho.
+- [ ] **VAL-04**: A Phase 1 termina com recomendacao explicita de abrir a proxima milestone de implementacao.
 
 ## v2 Requirements
 
-### Expansion
+### Implementation Slice
 
-- **EXPN-01**: Team can add `party`, companions, or tactical AI after the minimal combat loop is stable.
-- **EXPN-02**: Team can replace the initial `JSON` catalog and loader with a richer authoring pipeline without rewriting the core rules.
-- **EXPN-03**: Team can add real randomness with explicit `seed` input once replay and log contracts are stable.
-- **EXPN-04**: Team can add save systems, networking, persistence, or platform adapters after the core path is validated.
+- **IMPL-01**: O estudante consegue executar um combate 1x1 jogavel em interface textual ou harness equivalente.
+- **IMPL-02**: O jogador consegue escolher entre ataque basico e um conjunto minimo de habilidades.
+- **IMPL-03**: O inimigo possui comportamento simples e previsivel o bastante para testes e UAT.
+- **IMPL-04**: O combate produz replay/log suficiente para reproduzir resultados.
+
+### Expanded Systems
+
+- **EXP-01**: O projeto introduz progressao simples sem depender de sistema completo de party.
+- **EXP-02**: O projeto adiciona mais tipos de habilidade, inimigos ou efeitos apos o slice 1x1 estabilizar.
+- **EXP-03**: O projeto avalia status adicionais, recursos extras e catalogos externos depois da validacao do core.
 
 ## Out of Scope
 
 | Feature | Reason |
 |---------|--------|
-| `party`, companions, or tactical AI in this milestone | The current goal is to validate protagonist-only deterministic combat first |
-| UI, rendering, audio, engine integration, or product shell | These are platform concerns and would distort the core-first implementation path |
-| Definitive parser, DSL, or sophisticated authoring pipeline | The milestone only needs a minimal catalog and loader to validate the domain flow |
-| Broad content volume or deep balancing | The starter package must stay small enough to validate architecture rather than content scale |
-| Real randomness before replay contracts stabilize | Reproducibility must remain explicit and debuggable |
+| Party completa e companheiros | Escopo excessivo para um slice educacional inicial |
+| Exploracao, quests, crafting, economia e mundo | Nao contribuem diretamente para validar o combate base 1x1 |
+| UI final, audio, rendering e assets | O milestone atual e documental e core-first |
+| Multiplayer, networking e persistencia online | Complexidade alta e fora do objetivo de aprendizado atual |
+| Balanceamento completo do RPG descrito em `Estruturação.md` | O recorte atual prioriza contratos e compreensao, nao volume de conteudo |
 
 ## Traceability
 
-Which phases cover which requirements. Updated during roadmap creation.
-
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| CORE-01 | Phase 2 | Pending |
-| CORE-02 | Phase 2 | Pending |
-| CORE-03 | Phase 2 | Pending |
-| CORE-04 | Phase 2 | Pending |
-| RULE-01 | Phase 2 | Pending |
-| RULE-02 | Phase 2 | Pending |
-| RULE-03 | Phase 2 | Pending |
-| RULE-04 | Phase 2 | Pending |
-| CONT-01 | Phase 2 | Pending |
-| CONT-02 | Phase 2 | Pending |
-| CONT-03 | Phase 2 | Pending |
-| CONT-04 | Phase 2 | Pending |
-| FLOW-01 | Phase 2 | Pending |
-| FLOW-02 | Phase 2 | Pending |
-| FLOW-03 | Phase 2 | Pending |
-| FLOW-04 | Phase 2 | Pending |
+| SCOPE-01 | Phase 1 | Pending |
+| SCOPE-02 | Phase 1 | Pending |
+| SCOPE-03 | Phase 1 | Pending |
+| SCOPE-04 | Phase 1 | Pending |
+| COMBAT-01 | Phase 1 | Pending |
+| COMBAT-02 | Phase 1 | Pending |
+| COMBAT-03 | Phase 1 | Pending |
+| COMBAT-04 | Phase 1 | Pending |
+| ATTR-01 | Phase 1 | Pending |
+| ATTR-02 | Phase 1 | Pending |
+| ATTR-03 | Phase 1 | Pending |
+| ATTR-04 | Phase 1 | Pending |
+| ARCH-01 | Phase 1 | Pending |
+| ARCH-02 | Phase 1 | Pending |
+| ARCH-03 | Phase 1 | Pending |
+| ARCH-04 | Phase 1 | Pending |
+| VAL-01 | Phase 1 | Pending |
+| VAL-02 | Phase 1 | Pending |
+| VAL-03 | Phase 1 | Pending |
+| VAL-04 | Phase 1 | Pending |
 
 **Coverage:**
-- v1 requirements: 16 total
-- Mapped to phases: 16
-- Unmapped: 0
+- v1 requirements: 20 total
+- Mapped to phases: 20
+- Unmapped: 0 yes
 
 ---
-*Requirements defined: 2026-04-05*
-*Last updated: 2026-04-05 after creating roadmap for v1.1 Core Foundation*
+*Requirements defined: 2026-04-12*
+*Last updated: 2026-04-12 after initial definition*

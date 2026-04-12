@@ -1,103 +1,155 @@
-# Pitfalls Research: Ascend
+# Pitfalls Research
 
-**Date:** 2026-04-03
-**Context:** avoid building product surface area before proving the mechanics loop
+**Domain:** projeto educacional de combate por turnos em C++
+**Researched:** 2026-04-12
+**Confidence:** MEDIUM
 
-## Top pitfalls
+## Critical Pitfalls
 
-### 1. Coupling the prototype to the delivery medium
+### Pitfall 1: Tentar implementar o RPG inteiro desde o primeiro slice
 
-Starting with UI, persistence or product shell concerns turns every rule change into interface rework.
+**What goes wrong:**
+O projeto vira um amontoado de sistemas incompletos e o estudante deixa de aprender o essencial.
 
-### 2. Inflating scope before proving the loop
+**Why it happens:**
+`Estruturação.md` tem muitos subsistemas e todos parecem importantes.
 
-Adding crafting, economy, node maps, companions, saves or broad content expansion too early hides the main risk: whether the core system actually works.
+**How to avoid:**
+Congelar o recorte em combate 1x1, atributos e habilidades ate que esse nucleo esteja documentado, implementado e validado.
 
-### 3. Letting deterministic combat become solved and repetitive
+**Warning signs:**
+Roadmap incluindo party, exploracao, economia ou save antes de existir um duelo reproduzivel.
 
-If positioning, PE pressure, reactions, cover and enemy roles are weak, fixed damage can collapse into one dominant pattern.
+**Phase to address:**
+Phase 1
 
-### 4. Claiming one unified engine but only validating combat
+---
 
-If social, investigative and exploratory scenes remain improvised or trivial, the project only validates half of the design.
+### Pitfall 2: Misturar conteudo com estado de runtime
 
-### 5. Pushing missing rigor onto the GM
+**What goes wrong:**
+Fica dificil entender o que e definicao fixa e o que mudou durante o combate.
 
-Unclear timing, triggers, condition semantics and exception handling turn the GM into a live patch layer instead of a user of the system.
+**Why it happens:**
+Projetos pequenos tentam "ser praticos" e colocam tudo no mesmo objeto.
 
-### 6. Balancing from intuition instead of evidence
+**How to avoid:**
+Separar catalogos de atributos/habilidades/inimigos do `CombatState` e dos eventos de turno.
 
-Without structured logs, seed replay and playtest metrics, balance discussions stay subjective.
+**Warning signs:**
+Mesma estrutura guardando base stats, HP atual, cooldown, descricao de skill e resultado de turno.
 
-### 7. Using starter content that does not stress the hypotheses
+**Phase to address:**
+Phase 1
 
-If the starter adventure does not force PE spending, positioning, condition play and meaningful non-combat resolution, a passing playtest says little.
+---
 
-## Warning signs
+### Pitfall 3: Regras pouco observaveis
 
-- rule changes require UI or persistence changes
-- roadmap conversations drift toward deferred modules before one full session works
-- players hoard PE and repeat the same optimal action
-- non-combat scenes resolve in one roll or do not alter the group's state
-- the GM keeps inventing rule clarifications every few minutes
-- balance tweaks happen without logs, timing or usage data
-- pregens look different on paper but occupy the same role in play
+**What goes wrong:**
+O estudante nao consegue dizer por que um ataque causou determinado resultado.
 
-## Prevention strategies
+**Why it happens:**
+Logs e replay sao tratados como detalhe posterior.
 
-### Core first
+**How to avoid:**
+Exigir desde ja entradas, saidas e invariantes visiveis para cada regra central.
 
-Start with canonical rule models, deterministic execution and a harness for testing/playtesting.
+**Warning signs:**
+Documentos descrevendo apenas "sistema de combate" sem eventos, snapshots ou criterios de verificacao.
 
-### Explicit scope gates
+**Phase to address:**
+Phase 1
 
-Do not pull deferred modules into scope until cycle 1 validation criteria pass.
+---
 
-### Tactical sandbox before content breadth
+### Pitfall 4: Overengineering arquitetural cedo demais
 
-Validate combat in focused encounters before expanding adventure breadth.
+**What goes wrong:**
+Abstracoes genericas escondem o dominio real e tornam o estudo mais confuso.
 
-### Make `Progress x Pressure` genuinely playable
+**Why it happens:**
+C++ convida a desenhar frameworks proprios antes de existir um caso real.
 
-Implement social, investigative and exploratory scene templates with real cost and consequence.
+**How to avoid:**
+Modelar primeiro o vocabulario do dominio e usar composicao simples.
 
-### Formalize rule semantics early
+**Warning signs:**
+Framework de ECS, event bus generico ou hierarquia profunda aparecendo antes do primeiro turno 1x1.
 
-Every skill and condition should have explicit fields for trigger, target, cost, duration and resolution behavior.
+**Phase to address:**
+Phase 1
 
-### Instrument playtests
+## Technical Debt Patterns
 
-Track turn time, skill usage, PE spending, confusion points and structural GM interventions.
+| Shortcut | Immediate Benefit | Long-term Cost | When Acceptable |
+|----------|-------------------|----------------|-----------------|
+| Colocar toda regra em uma funcao unica de combate | Implementa rapido no primeiro dia | Dificulta evolucao, teste e replay | Apenas em rascunhos descartaveis fora do repositorio principal |
+| Usar numeros magicos em habilidades | Menos estrutura inicial | Fica impossivel explicar balanceamento e UAT | Nunca no contrato canonico |
+| Pular UAT ate "ter algo visual" | Menos trabalho no curto prazo | O estudante perde feedback continuo | Nunca, porque conflita com o objetivo do projeto |
 
-### Use content as a hypothesis vehicle
+## Integration Gotchas
 
-Every starter scene should exist to test a mechanic, a role or a pacing assumption.
+| Integration | Common Mistake | Correct Approach |
+|-------------|----------------|------------------|
+| CLI futura | Acoplar parser direto nas regras | Criar comandos simples e adapter fino |
+| Replay | Registrar texto insuficiente para reexecucao | Definir eventos com dados minimos e ordenacao clara |
+| Bibliotecas de terceiros | Introduzir dependencia antes de haver dor real | Adicionar apenas com criterio e justificativa escrita |
 
-## Phase mapping
+## Performance Traps
 
-| Pitfall | Primary Phase | Reinforcement |
-|---------|---------------|---------------|
-| Medium coupling | Phase 1 | Phase 5 |
-| Scope inflation | Phase 1 | Phase 5 |
-| Solved combat loop | Phase 2 | Phase 5 |
-| Non-unified engine | Phase 3 | Phase 4 |
-| GM carrying the system | Phase 1 | Phase 4 |
-| Evidence-free balancing | Phase 4 | Phase 5 |
-| Weak starter content | Phase 3 | Phase 5 |
+| Trap | Symptoms | Prevention | When It Breaks |
+|------|----------|------------|----------------|
+| Otimizar microperformance cedo | Codigo obscuro sem ganho real | Priorizar clareza e testes antes de benchmark | Quase sempre antes do primeiro slice |
+| Serializar demais em toda chamada | Logs gigantes e lentos | Registrar somente eventos de fronteira relevantes | Quando o replay crescer alem do necessario |
+| Copiar estado inteiro sem criterio | API fica verbosa e lenta | Usar snapshots pequenos e value objects claros | Quando mais sistemas forem adicionados |
 
-## Confidence
+## Security Mistakes
 
-- High: pitfalls tied to Ascend's documented strategy
-- Medium: external generalization from game design practice
+| Mistake | Risk | Prevention |
+|---------|------|------------|
+| Confiar em dados externos sem validacao | Fixtures ou catalogos inconsistentes contaminam o core | Validar entrada de conteudo e comandos |
+| Rodar sanitizers como se fossem runtime de producao | Dependencia indevida em instrumentacao de debug | Limitar sanitizers ao fluxo de teste |
+| Expor caminhos internos em mensagens futuras de adapter | Vazamento de detalhe de infraestrutura | Normalizar erros na borda do sistema |
+
+## UX Pitfalls
+
+| Pitfall | User Impact | Better Approach |
+|---------|-------------|-----------------|
+| Documentacao abstrata demais | O estudante nao consegue imaginar o combate | Usar exemplos concretos de turno e efeito |
+| Muitas mecanicas ao mesmo tempo | A aprendizagem vira confusa | Introduzir poucas regras observaveis e evoluir depois |
+| UAT sem roteiro | Feedback vira opiniatico e pouco acionavel | Definir perguntas e checks por phase |
+
+## "Looks Done But Isn't" Checklist
+
+- [ ] **Slice 1x1:** ainda falta declarar condicoes de vitoria, derrota e encerramento
+- [ ] **Atributos:** ainda falta explicar onde cada atributo influencia o combate
+- [ ] **Habilidades:** ainda falta registrar custo, alvo, efeito e restricoes
+- [ ] **Replay/UAT:** ainda falta definir quais eventos precisam ser observados
+
+## Recovery Strategies
+
+| Pitfall | Recovery Cost | Recovery Steps |
+|---------|---------------|----------------|
+| Escopo explodiu | HIGH | Cortar sistemas nao essenciais, atualizar requisitos e roadmap |
+| Conteudo misturado ao runtime | MEDIUM | Separar definicoes estaticas, revisar contratos e ajustar exemplos |
+| Regra pouco observavel | MEDIUM | Adicionar eventos, logs e casos de teste/replay antes de seguir |
+
+## Pitfall-to-Phase Mapping
+
+| Pitfall | Prevention Phase | Verification |
+|---------|------------------|--------------|
+| Escopo explodido | Phase 1 | Out of Scope e roadmap permanecem centrados em 1x1 |
+| Conteudo misturado ao runtime | Phase 1 | Arquitetura separa `content` de `domain` |
+| Regras pouco observaveis | Phase 1 | Estrategia de replay/UAT aparece nos artefatos |
+| Overengineering | Phase 1 | Stack e arquitetura privilegiam composicao e regras claras |
 
 ## Sources
 
-- Project docs: `README.md`, `docs/00-visao-do-sistema.md`, `docs/01-nucleo-de-regras.md`, `docs/05-playtest.md`, `docs/07-modulos-adiados.md`, `.planning/PROJECT.md`
-- Supplemental reading used by research agent:
-  - `https://www.gamedeveloper.com/design/howto-develop-a-prototyping-mindset`
-  - `https://www.gamedeveloper.com/design/building-an-rpg-battle-system---part-2`
-  - `https://www.gamedeveloper.com/design/criteria-for-strategy-game-design`
-  - `https://www.gamedeveloper.com/design/developing-a-tabletop-game`
-  - `https://www.gamedeveloper.com/game-platforms/reflections-on-playtesting-and-puzzledorf`
-  - `https://www.gamedeveloper.com/design/the-logic-behind-violence-a-primer-on-combat-system-design`
-  - `https://thealexandrian.net/wordpress/1118/roleplaying-games/three-clue-rule`
+- `Estruturação.md` - lista de sistemas futuros que precisam ser recortados
+- `PROJECT.md` - direcao arquitetural e restricoes do milestone
+- Experiencia conhecida de projetos pequenos que escalam escopo cedo demais
+
+---
+*Pitfalls research for: projeto educacional de combate por turnos em C++*
+*Researched: 2026-04-12*
