@@ -1,14 +1,16 @@
 ---
-gsd_state_version: 1.0
-milestone: v1.1
-milestone_name: core-foundation
-status: roadmap created; phase 2 planning next
-stopped_at: "$gsd-plan-phase 2"
-last_updated: 2026-04-05T11:53:35Z
-last_activity: 2026-04-05 -- created roadmap for v1.1 Core Foundation; next step is $gsd-plan-phase 2
+gsd_state_version: "1.0"
+milestone: "v1.0"
+milestone_name: "Base Documental"
+current_phase: "1"
+current_phase_name: "Base Documental do Combate 1x1"
+current_plan: "0"
+status: "planning"
+last_updated: "2026-04-12T00:00:00Z"
+last_activity: "2026-04-12 - Projeto inicializado com contexto, requisitos e roadmap base"
 progress:
-  total_phases: 2
-  completed_phases: 1
+  total_phases: 1
+  completed_phases: 0
   total_plans: 4
   completed_plans: 0
   percent: 0
@@ -18,43 +20,43 @@ progress:
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-04-05)
+See: .planning/PROJECT.md (updated 2026-04-12)
 
-**Core value:** O nucleo de regras precisa ser compreensivel, testavel e adaptavel como classes, metodos e contratos C++ independentes de plataforma.
-**Current focus:** `$gsd-plan-phase 2`
+**Core value:** O primeiro slice de combate 1x1 precisa ser simples o bastante para um estudante entender, testar, reproduzir e corrigir sem depender de UI, engine ou infraestrutura pesada.
+**Current focus:** Base Documental do Combate 1x1
 
 ## Current Position
 
-Phase: 2 - Core Foundation
-Plan: None
-Status: `ROADMAP.md` criado; proximo passo e planejar a `Phase 2`
-Last activity: 2026-04-05 -- created roadmap for `v1.1 Core Foundation`; next step is `$gsd-plan-phase 2`
+Phase: 1 of 1 (Base Documental do Combate 1x1)
+Plan: 0 of 4 in current phase
+Current Phase: 1
+Current Phase Name: Base Documental do Combate 1x1
+Total Phases: 1
+Current Plan: 0
+Total Plans in Phase: 4
+Status: Ready to plan
+Last Activity: 2026-04-12 - Projeto inicializado com contexto, requisitos e roadmap base
 
-Progress: [----------] 0%
+Progress: [..........] 0%
 
 ## Performance Metrics
 
 **Velocity:**
-
-- Total plans completed: 4
-- Average duration: 3 min 38s
-- Total execution time: 14 min 33s
+- Total plans completed: 0
+- Average duration: -
+- Total execution time: 0.0 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| Phase 01 | 4 | 14 min 33s | 3 min 38s |
+| 1 | 0 | - | - |
 
 **Recent Trend:**
-
-- Last 5 plans: 01-01 (4 min), 01-02 (3 min), 01-03 (3 min 50s), 01-04 (3 min 43s)
+- Last 5 plans: none yet
 - Trend: Stable
 
-| Phase 01-guia-canonico-de-implementacao P01 | 4min | 2 tasks | 4 files |
-| Phase 01-guia-canonico-de-implementacao P02 | 3 min | 3 tasks | 4 files |
-| Phase 01-guia-canonico-de-implementacao P03 | 3 min 50s | 3 tasks | 4 files |
-| Phase 01-guia-canonico-de-implementacao P04 | 3 min 43s | 2 tasks | 4 files |
+*Updated after each plan completion*
 
 ## Accumulated Context
 
@@ -63,12 +65,8 @@ Progress: [----------] 0%
 Decisions are logged in PROJECT.md Key Decisions table.
 Recent decisions affecting current work:
 
-- `v1.0` consolidou o milestone documental como base oficial do projeto.
-- `01-GUIA-CANONICO.md` agora e a referencia central para framing, dominio, arquitetura e ordem didatica.
-- `01-HANDOFF.md` define o recorte, os guardrails e a ordem dos planos `02-01` a `02-04`.
-- A toolchain local necessaria para o milestone de implementacao foi confirmada como disponivel.
-- `v1.1` foi aberto como `Core Foundation`, preservando o recorte core-first e a `CLI estruturada` apenas como ferramenta de estudo.
-- `ROADMAP.md` consolidou o roadmap atual em duas fases totais, com todos os 16 requisitos v1 mapeados para a unica `Phase 2`.
+- [Phase 1]: O milestone atual permanece documental e core-first.
+- [Phase 1]: O primeiro slice futuro foi congelado como combate 1x1 com atributos e habilidades.
 
 ### Pending Todos
 
@@ -76,12 +74,10 @@ None yet.
 
 ### Blockers/Concerns
 
-- O milestone ainda precisa fechar formato inicial do catalogo, loader minimo e granularidade inicial de replay/logs sem desviar para parser definitivo.
-- O pacote inicial de conteudo precisa permanecer pequeno o suficiente para validar arquitetura e observabilidade antes de balanceamento.
-- A `CLI estruturada` nao pode virar pseudo-produto durante a implementacao do combate minimo.
+- Worktree do repositorio esta com delecoes pre-existentes fora do escopo desta inicializacao; tratar essas mudancas separadamente antes de misturar com codigo futuro.
 
 ## Session Continuity
 
-Last session: 2026-04-05T11:49:22Z
-Stopped at: Roadmap created for `v1.1 Core Foundation`; next step is `$gsd-plan-phase 2`
+Last session: 2026-04-12 00:00
+Stopped at: Inicializacao do projeto concluida; proximo passo e discutir/planejar a Phase 1
 Resume file: None
