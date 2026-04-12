@@ -17,14 +17,14 @@
 - [x] **COMBAT-01**: O projeto descreve os atores minimos do duelo e o estado de runtime necessario para um combate 1x1.
 - [x] **COMBAT-02**: O projeto define a ordem de turno, resolucao de acao e condicoes de encerramento de forma deterministica.
 - [x] **COMBAT-03**: O projeto explicita entradas, saidas e invariantes observaveis das regras centrais do combate.
-- [ ] **COMBAT-04**: O projeto define os eventos/logs minimos necessarios para replay e diagnostico futuro.
+- [x] **COMBAT-04**: O projeto define os eventos/logs minimos necessarios para replay e diagnostico futuro.
 
 ### Attributes & Skills
 
-- [ ] **ATTR-01**: O projeto define um conjunto inicial de atributos com efeito claro no combate 1x1.
-- [ ] **ATTR-02**: O projeto descreve habilidades com pelo menos custo, alvo, efeito e restricoes suficientes para o slice inicial.
-- [ ] **ATTR-03**: O projeto especifica como atributos e habilidades se relacionam sem exigir balanceamento completo do RPG.
-- [ ] **ATTR-04**: O projeto registra simplificacoes assumidas para manter a curva de aprendizado controlada.
+- [x] **ATTR-01**: O projeto define um conjunto inicial de atributos com efeito claro no combate 1x1.
+- [x] **ATTR-02**: O projeto descreve habilidades com pelo menos custo, alvo, efeito e restricoes suficientes para o slice inicial.
+- [x] **ATTR-03**: O projeto especifica como atributos e habilidades se relacionam sem exigir balanceamento completo do RPG.
+- [x] **ATTR-04**: O projeto registra simplificacoes assumidas para manter a curva de aprendizado controlada.
 
 ### Architecture & Stack
 
@@ -35,7 +35,7 @@
 
 ### Validation & Continuity
 
-- [ ] **VAL-01**: O projeto define como UAT sera conduzido pelo estudante ao final de cada phase relevante.
+- [x] **VAL-01**: O projeto define como UAT sera conduzido pelo estudante ao final de cada phase relevante.
 - [x] **VAL-02**: O roadmap atual cobre 100% dos requisitos v1 sem depender de UI, engine ou infraestrutura online.
 - [ ] **VAL-03**: O estado do projeto registra fase atual, foco, riscos e proximo passo de trabalho.
 - [ ] **VAL-04**: A Phase 1 termina com recomendacao explicita de abrir a proxima milestone de implementacao.
@@ -76,16 +76,16 @@
 | COMBAT-01 | Phase 1 | Complete |
 | COMBAT-02 | Phase 1 | Complete |
 | COMBAT-03 | Phase 1 | Complete |
-| COMBAT-04 | Phase 1 | Pending |
-| ATTR-01 | Phase 1 | Pending |
-| ATTR-02 | Phase 1 | Pending |
-| ATTR-03 | Phase 1 | Pending |
-| ATTR-04 | Phase 1 | Pending |
+| COMBAT-04 | Phase 1 | Complete |
+| ATTR-01 | Phase 1 | Complete |
+| ATTR-02 | Phase 1 | Complete |
+| ATTR-03 | Phase 1 | Complete |
+| ATTR-04 | Phase 1 | Complete |
 | ARCH-01 | Phase 1 | Pending |
 | ARCH-02 | Phase 1 | Pending |
 | ARCH-03 | Phase 1 | Pending |
 | ARCH-04 | Phase 1 | Pending |
-| VAL-01 | Phase 1 | Pending |
+| VAL-01 | Phase 1 | Complete |
 | VAL-02 | Phase 1 | Complete |
 | VAL-03 | Phase 1 | Pending |
 | VAL-04 | Phase 1 | Pending |

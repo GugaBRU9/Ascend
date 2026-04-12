@@ -4,17 +4,17 @@ milestone: v1.0
 milestone_name: Base Documental
 current_phase: 01
 current_phase_name: base-documental-do-combate-1x1
-current_plan: 3
+current_plan: 4
 status: executing
-stopped_at: Completed 01-base-documental-do-combate-1x1-02-PLAN.md
-last_updated: "2026-04-12T22:16:06.578Z"
+stopped_at: Completed 01-base-documental-do-combate-1x1-03-PLAN.md
+last_updated: "2026-04-12T22:24:14.349Z"
 last_activity: 2026-04-12
 progress:
   total_phases: 1
   completed_phases: 0
   total_plans: 4
-  completed_plans: 2
-  percent: 50
+  completed_plans: 3
+  percent: 75
 ---
 
 # Project State
@@ -29,14 +29,14 @@ See: .planning/PROJECT.md (updated 2026-04-12)
 ## Current Position
 
 Phase: 01 (base-documental-do-combate-1x1) — EXECUTING
-Plan: 3 of 4
+Plan: 4 of 4
 Current Phase: 01
 Current Phase Name: base-documental-do-combate-1x1
 Total Phases: 1
-Current Plan: 3
+Current Plan: 4
 Total Plans in Phase: 4
-Status: Ready to execute plan 01-03
-Last activity: 2026-04-12 -- Completed plan 01-02
+Status: Ready to execute
+Last activity: 2026-04-12
 
 Progress: [█████░░░░░] 50%
 
@@ -64,6 +64,7 @@ Progress: [█████░░░░░] 50%
 |------|----------|-------|-------|
 | Phase 01-base-documental-do-combate-1x1 P01 | 4min | 3 tasks | 7 files |
 | Phase 01-base-documental-do-combate-1x1 P02 | 2min | 2 tasks | 6 files |
+| Phase 01-base-documental-do-combate-1x1 P03 | 2min | 3 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -80,6 +81,8 @@ Recent decisions affecting current work:
 - [Phase 01-base-documental-do-combate-1x1]: O runtime minimo do duelo expone campos nomeados e observaveis por ator para log, teste e harness futuro.
 - [Phase 01-base-documental-do-combate-1x1]: A iniciativa do combate 1x1 usa desempate fixo por AGI decrescente, depois player, depois actor_id.
 - [Phase 01-base-documental-do-combate-1x1]: Acao com recurso insuficiente gera action_rejected_insufficient_resource, nao consome recurso e encerra a vez do ator.
+- [Phase 01-base-documental-do-combate-1x1]: Observabilidade minima do duelo exige campos de log e eventos nomeados antes do replay completo.
+- [Phase 01-base-documental-do-combate-1x1]: O UAT desta phase continua documental e pode ser executado apenas por leitura dos artefatos.
 
 ### Pending Todos
 
@@ -91,6 +94,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-12T22:16:06.576Z
-Stopped at: Completed 01-base-documental-do-combate-1x1-02-PLAN.md
-Resume file: .planning/phases/01-base-documental-do-combate-1x1/01-03-PLAN.md
+Last session: 2026-04-12T22:24:14.347Z
+Stopped at: Completed 01-base-documental-do-combate-1x1-03-PLAN.md
+Resume file: None
