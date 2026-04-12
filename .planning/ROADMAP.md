@@ -37,7 +37,7 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 4 plans
 
 Plans:
-- [ ] 01-01: Consolidar visao, recortes e glossario do slice 1x1
+- [x] 01-01: Consolidar visao, recortes e glossario do slice 1x1
 - [ ] 01-02: Definir dominio do combate, fluxo de turno e invariantes
 - [ ] 01-03: Fechar contratos de atributos, habilidades, replay e UAT
 - [ ] 01-04: Fechar stack, validacao, riscos e recomendacao do proximo milestone
@@ -49,4 +49,4 @@ Phases execute in numeric order: 1
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Base Documental do Combate 1x1 | 0/4 | Not started | - |
+| 1. Base Documental do Combate 1x1 | 1/4 | In Progress | - |

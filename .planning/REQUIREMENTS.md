@@ -7,10 +7,10 @@
 
 ### Scope & Vision
 
-- [ ] **SCOPE-01**: Documento define o milestone atual como base documental para um backend C++ educacional, nao como implementacao jogavel completa.
-- [ ] **SCOPE-02**: Documento delimita o primeiro slice futuro como combate 1x1 por turnos entre um jogador e um inimigo.
-- [ ] **SCOPE-03**: Documento registra atributos e habilidades como foco mecanico inicial do slice.
-- [ ] **SCOPE-04**: Documento explicita os principais sistemas fora de escopo do milestone atual e do primeiro slice jogavel.
+- [x] **SCOPE-01**: Documento define o milestone atual como base documental para um backend C++ educacional, nao como implementacao jogavel completa.
+- [x] **SCOPE-02**: Documento delimita o primeiro slice futuro como combate 1x1 por turnos entre um jogador e um inimigo.
+- [x] **SCOPE-03**: Documento registra atributos e habilidades como foco mecanico inicial do slice.
+- [x] **SCOPE-04**: Documento explicita os principais sistemas fora de escopo do milestone atual e do primeiro slice jogavel.
 
 ### Combat Domain
 
@@ -36,7 +36,7 @@
 ### Validation & Continuity
 
 - [ ] **VAL-01**: O projeto define como UAT sera conduzido pelo estudante ao final de cada phase relevante.
-- [ ] **VAL-02**: O roadmap atual cobre 100% dos requisitos v1 sem depender de UI, engine ou infraestrutura online.
+- [x] **VAL-02**: O roadmap atual cobre 100% dos requisitos v1 sem depender de UI, engine ou infraestrutura online.
 - [ ] **VAL-03**: O estado do projeto registra fase atual, foco, riscos e proximo passo de trabalho.
 - [ ] **VAL-04**: A Phase 1 termina com recomendacao explicita de abrir a proxima milestone de implementacao.
 
@@ -69,10 +69,10 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| SCOPE-01 | Phase 1 | Pending |
-| SCOPE-02 | Phase 1 | Pending |
-| SCOPE-03 | Phase 1 | Pending |
-| SCOPE-04 | Phase 1 | Pending |
+| SCOPE-01 | Phase 1 | Complete |
+| SCOPE-02 | Phase 1 | Complete |
+| SCOPE-03 | Phase 1 | Complete |
+| SCOPE-04 | Phase 1 | Complete |
 | COMBAT-01 | Phase 1 | Pending |
 | COMBAT-02 | Phase 1 | Pending |
 | COMBAT-03 | Phase 1 | Pending |
@@ -86,7 +86,7 @@
 | ARCH-03 | Phase 1 | Pending |
 | ARCH-04 | Phase 1 | Pending |
 | VAL-01 | Phase 1 | Pending |
-| VAL-02 | Phase 1 | Pending |
+| VAL-02 | Phase 1 | Complete |
 | VAL-03 | Phase 1 | Pending |
 | VAL-04 | Phase 1 | Pending |
 
