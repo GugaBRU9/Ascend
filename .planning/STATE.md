@@ -5,16 +5,16 @@ milestone_name: Base Documental
 current_phase: 01
 current_phase_name: base-documental-do-combate-1x1
 current_plan: 4
-status: executing
-stopped_at: Completed 01-base-documental-do-combate-1x1-03-PLAN.md
-last_updated: "2026-04-12T22:24:14.349Z"
+status: verifying
+stopped_at: Completed 01-base-documental-do-combate-1x1-04-PLAN.md
+last_updated: "2026-04-12T22:31:12.584Z"
 last_activity: 2026-04-12
 progress:
   total_phases: 1
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 4
-  completed_plans: 3
-  percent: 75
+  completed_plans: 4
+  percent: 100
 ---
 
 # Project State
@@ -28,35 +28,35 @@ See: .planning/PROJECT.md (updated 2026-04-12)
 
 ## Current Position
 
-Phase: 01 (base-documental-do-combate-1x1) — EXECUTING
+Phase: 01 (base-documental-do-combate-1x1) — VERIFYING
 Plan: 4 of 4
 Current Phase: 01
 Current Phase Name: base-documental-do-combate-1x1
 Total Phases: 1
 Current Plan: 4
 Total Plans in Phase: 4
-Status: Ready to execute
+Status: Phase complete — ready for verification
 Last activity: 2026-04-12
 
-Progress: [█████░░░░░] 50%
+Progress: [██████████] 100%
 
 ## Performance Metrics
 
 **Velocity:**
 
-- Total plans completed: 2
-- Average duration: 3 min
-- Total execution time: 0.1 hours
+- Total plans completed: 4
+- Average duration: 2.5 min
+- Total execution time: 0.2 hours
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 1 | 2 | 6 min | 3 min |
+| 1 | 4 | 10 min | 2.5 min |
 
 **Recent Trend:**
 
-- Last 5 plans: 01-02 (2min), 01-01 (4min)
+- Last 5 plans: 01-04 (2min), 01-03 (2min), 01-02 (2min), 01-01 (4min)
 - Trend: Stable
 
 *Updated after each plan completion*
@@ -65,6 +65,7 @@ Progress: [█████░░░░░] 50%
 | Phase 01-base-documental-do-combate-1x1 P01 | 4min | 3 tasks | 7 files |
 | Phase 01-base-documental-do-combate-1x1 P02 | 2min | 2 tasks | 6 files |
 | Phase 01-base-documental-do-combate-1x1 P03 | 2min | 3 tasks | 7 files |
+| Phase 01-base-documental-do-combate-1x1 P04 | 2min | 3 tasks | 7 files |
 
 ## Accumulated Context
 
@@ -83,6 +84,9 @@ Recent decisions affecting current work:
 - [Phase 01-base-documental-do-combate-1x1]: Acao com recurso insuficiente gera action_rejected_insufficient_resource, nao consome recurso e encerra a vez do ator.
 - [Phase 01-base-documental-do-combate-1x1]: Observabilidade minima do duelo exige campos de log e eventos nomeados antes do replay completo.
 - [Phase 01-base-documental-do-combate-1x1]: O UAT desta phase continua documental e pode ser executado apenas por leitura dos artefatos.
+- [Phase 01-base-documental-do-combate-1x1]: A baseline da v1.1 fica travada em C++20, CMake, CTest, clang-format, clang-tidy, AddressSanitizer e UBSan.
+- [Phase 01-base-documental-do-combate-1x1]: Dependencias externas da v1.1 entram apenas sob necessidade justificada; Catch2, fmt e nlohmann/json continuam opcionais.
+- [Phase 01-base-documental-do-combate-1x1]: A v1.1 fica limitada a CombatState, TurnResolver, catalogo inicial, harness textual e testes basicos.
 
 ### Pending Todos
 
@@ -94,6 +98,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-12T22:24:14.347Z
-Stopped at: Completed 01-base-documental-do-combate-1x1-03-PLAN.md
+Last session: 2026-04-12T22:31:12.581Z
+Stopped at: Completed 01-base-documental-do-combate-1x1-04-PLAN.md
 Resume file: None

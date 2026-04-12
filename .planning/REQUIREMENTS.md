@@ -28,17 +28,17 @@
 
 ### Architecture & Stack
 
-- [ ] **ARCH-01**: A arquitetura alvo separa dominio, catalogos de conteudo, servicos de sessao e adapters.
-- [ ] **ARCH-02**: O projeto define stack de build, teste e analise estatica adequada a C++ moderno e portavel.
-- [ ] **ARCH-03**: O projeto define estrategia de testes com enfase em determinismo, unit tests e validacao incremental.
-- [ ] **ARCH-04**: O projeto documenta criterios para introducao ou rejeicao de dependencias externas.
+- [x] **ARCH-01**: A arquitetura alvo separa dominio, catalogos de conteudo, servicos de sessao e adapters.
+- [x] **ARCH-02**: O projeto define stack de build, teste e analise estatica adequada a C++ moderno e portavel.
+- [x] **ARCH-03**: O projeto define estrategia de testes com enfase em determinismo, unit tests e validacao incremental.
+- [x] **ARCH-04**: O projeto documenta criterios para introducao ou rejeicao de dependencias externas.
 
 ### Validation & Continuity
 
 - [x] **VAL-01**: O projeto define como UAT sera conduzido pelo estudante ao final de cada phase relevante.
 - [x] **VAL-02**: O roadmap atual cobre 100% dos requisitos v1 sem depender de UI, engine ou infraestrutura online.
-- [ ] **VAL-03**: O estado do projeto registra fase atual, foco, riscos e proximo passo de trabalho.
-- [ ] **VAL-04**: A Phase 1 termina com recomendacao explicita de abrir a proxima milestone de implementacao.
+- [x] **VAL-03**: O estado do projeto registra fase atual, foco, riscos e proximo passo de trabalho.
+- [x] **VAL-04**: A Phase 1 termina com recomendacao explicita de abrir a proxima milestone de implementacao.
 
 ## v2 Requirements
 
@@ -81,14 +81,14 @@
 | ATTR-02 | Phase 1 | Complete |
 | ATTR-03 | Phase 1 | Complete |
 | ATTR-04 | Phase 1 | Complete |
-| ARCH-01 | Phase 1 | Pending |
-| ARCH-02 | Phase 1 | Pending |
-| ARCH-03 | Phase 1 | Pending |
-| ARCH-04 | Phase 1 | Pending |
+| ARCH-01 | Phase 1 | Complete |
+| ARCH-02 | Phase 1 | Complete |
+| ARCH-03 | Phase 1 | Complete |
+| ARCH-04 | Phase 1 | Complete |
 | VAL-01 | Phase 1 | Complete |
 | VAL-02 | Phase 1 | Complete |
-| VAL-03 | Phase 1 | Pending |
-| VAL-04 | Phase 1 | Pending |
+| VAL-03 | Phase 1 | Complete |
+| VAL-04 | Phase 1 | Complete |
 
 **Coverage:**
 - v1 requirements: 20 total

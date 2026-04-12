@@ -6,7 +6,7 @@ O milestone atual nao implementa o jogo. Ele fecha a base documental que permiti
 
 ## Milestones
 
-- [IN PROGRESS] **v1.0 Base Documental** - Phase 1 (milestone atual)
+- [COMPLETE] **v1.0 Base Documental** - Phase 1 concluida com recomendacao explicita da v1.1
 - [PLANNED] **v1.1 Slice de Implementacao 1x1** - proxima milestone recomendada apos a conclusao da fase documental
 
 ## v1.0 Base Documental
@@ -19,7 +19,7 @@ O milestone atual nao implementa o jogo. Ele fecha a base documental que permiti
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: Base Documental do Combate 1x1** - Fechar recorte, contratos, stack, validacao e ponte para a proxima milestone
+- [x] **Phase 1: Base Documental do Combate 1x1** - Fechar recorte, contratos, stack, validacao e ponte para a proxima milestone
 
 ## Phase Details
 
@@ -40,7 +40,7 @@ Plans:
 - [x] 01-01: Consolidar visao, recortes e glossario do slice 1x1
 - [x] 01-02: Definir dominio do combate, fluxo de turno e invariantes
 - [x] 01-03: Fechar contratos de atributos, habilidades, replay e UAT
-- [ ] 01-04: Fechar stack, validacao, riscos e recomendacao do proximo milestone
+- [x] 01-04: Fechar stack, validacao, riscos e recomendacao do proximo milestone
 
 ## Progress
 
@@ -49,4 +49,4 @@ Phases execute in numeric order: 1
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Base Documental do Combate 1x1 | 2/4 | In Progress | - |
+| 1. Base Documental do Combate 1x1 | 4/4 | Complete | 2026-04-12 |
