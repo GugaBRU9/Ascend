@@ -14,9 +14,9 @@
 
 ### Combat Domain
 
-- [ ] **COMBAT-01**: O projeto descreve os atores minimos do duelo e o estado de runtime necessario para um combate 1x1.
-- [ ] **COMBAT-02**: O projeto define a ordem de turno, resolucao de acao e condicoes de encerramento de forma deterministica.
-- [ ] **COMBAT-03**: O projeto explicita entradas, saidas e invariantes observaveis das regras centrais do combate.
+- [x] **COMBAT-01**: O projeto descreve os atores minimos do duelo e o estado de runtime necessario para um combate 1x1.
+- [x] **COMBAT-02**: O projeto define a ordem de turno, resolucao de acao e condicoes de encerramento de forma deterministica.
+- [x] **COMBAT-03**: O projeto explicita entradas, saidas e invariantes observaveis das regras centrais do combate.
 - [ ] **COMBAT-04**: O projeto define os eventos/logs minimos necessarios para replay e diagnostico futuro.
 
 ### Attributes & Skills
@@ -73,9 +73,9 @@
 | SCOPE-02 | Phase 1 | Complete |
 | SCOPE-03 | Phase 1 | Complete |
 | SCOPE-04 | Phase 1 | Complete |
-| COMBAT-01 | Phase 1 | Pending |
-| COMBAT-02 | Phase 1 | Pending |
-| COMBAT-03 | Phase 1 | Pending |
+| COMBAT-01 | Phase 1 | Complete |
+| COMBAT-02 | Phase 1 | Complete |
+| COMBAT-03 | Phase 1 | Complete |
 | COMBAT-04 | Phase 1 | Pending |
 | ATTR-01 | Phase 1 | Pending |
 | ATTR-02 | Phase 1 | Pending |
