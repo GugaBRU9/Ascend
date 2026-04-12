@@ -1,61 +1,52 @@
 # Roadmap: Ascend
 
+## Overview
+
+O milestone atual nao implementa o jogo. Ele fecha a base documental que permitira, no milestone seguinte, implementar um combate 1x1 simples em C++ com jogador, inimigo, atributos e habilidades sob validacao constante.
+
 ## Milestones
 
-- [x] **v1.0 Documentation Foundation** - Milestone documental concluido em 2026-04-04 com a `Phase 1` arquivada em `.planning/milestones/v1.0-ROADMAP.md`.
-- [ ] **v1.1 Core Foundation** - Milestone atual que abre o primeiro caminho de codigo do core C++ como uma unica `Phase 2`.
+- [IN PROGRESS] **v1.0 Base Documental** - Phase 1 (milestone atual)
+- [PLANNED] **v1.1 Slice de Implementacao 1x1** - proxima milestone recomendada apos a conclusao da fase documental
 
-<details>
-<summary>✅ v1.0 Documentation Foundation (Phase 1) - SHIPPED 2026-04-04</summary>
+## v1.0 Base Documental
 
-- [x] **Phase 1: Guia Canonico de Implementacao** - Fechou framing, arquitetura, validacao e handoff do milestone documental.
+## Phases
 
-### Phase 1: Guia Canonico de Implementacao
-**Goal**: Fechar um guia completo, direto e didatico que transforme o rascunho atual em base de implementacao C++ agnostica de plataforma.
+**Phase Numbering:**
+- Integer phases (1, 2, 3): Planned milestone work
+- Decimal phases (2.1, 2.2): Urgent insertions (marked with INSERTED)
+
+Decimal phases appear between their surrounding integers in numeric order.
+
+- [ ] **Phase 1: Base Documental do Combate 1x1** - Fechar recorte, contratos, stack, validacao e ponte para a proxima milestone
+
+## Phase Details
+
+### Phase 1: Base Documental do Combate 1x1
+**Goal**: Transformar a ideia ampla do RPG em uma base documental coerente para um backend C++ educacional que possa, no milestone seguinte, implementar um primeiro combate 1x1 com atributos e habilidades.
 **Depends on**: Nothing (first phase)
-**Requirements**: FRAM-01, FRAM-02, DOMN-01, DOMN-02, DOMN-03, DOMN-04, ARCH-01, ARCH-02, ARCH-03, EDUC-01, EDUC-02, EDUC-03, HNDF-01, HNDF-02
+**Requirements**: [SCOPE-01, SCOPE-02, SCOPE-03, SCOPE-04, COMBAT-01, COMBAT-02, COMBAT-03, COMBAT-04, ATTR-01, ATTR-02, ATTR-03, ATTR-04, ARCH-01, ARCH-02, ARCH-03, ARCH-04, VAL-01, VAL-02, VAL-03, VAL-04]
+**UI hint**: no
 **Success Criteria** (what must be TRUE):
-  1. O projeto define claramente o que este milestone faz e o que nao faz.
-  2. Os sistemas centrais do rascunho sao reorganizados em modulos, classes, value objects, servicos e contratos de regra.
-  3. O leitor entende como o futuro backend vai separar dominio, catalogo de conteudo, sessao e adaptadores.
-  4. O estudante recebe uma orientacao objetiva de stack, validacao e ordem de aprendizado para a implementacao.
-  5. As pendencias e cortes para a proxima milestone ficam registradas sem ambiguidades.
-**Plans**:
-- [x] 01-01: Consolidar visao, publico, cortes de escopo e linguagem do milestone
-- [x] 01-02: Mapear sistemas core para modulos, classes e contratos agnosticos de plataforma
-- [x] 01-03: Definir arquitetura C++, fluxo de build/teste e estrategia de validacao educativa
-- [x] 01-04: Registrar pendencias, riscos e proposta da proxima milestone de implementacao
+  1. O repositorio descreve com clareza o recorte atual e o slice futuro de combate 1x1 sem confundir milestone documental com implementacao.
+  2. Os contratos de turno, atributos, habilidades, logs/replay e estado de runtime estao explicados por entradas, saidas e invariantes observaveis.
+  3. A arquitetura alvo separa dominio, conteudo, sessao e adapters sem acoplamento a UI, engine, rede ou persistencia.
+  4. A estrategia de stack, testes, sanitizers e UAT foi definida de forma compativel com um projeto C++ educacional simples.
+  5. A fase termina com riscos, pendencias e recomendacao explicita da milestone `v1.1 Slice de Implementacao 1x1`.
+**Plans**: 4 plans
 
-</details>
-
-## 🚧 v1.1 Core Foundation
-
-**Milestone Goal:** Abrir o primeiro caminho implementado e estudavel do backend C++ sem reabrir framing, escopo ou o papel da `CLI estruturada`.
-
-- [ ] **Phase 2: Core Foundation** - Implementa o caminho `tipos -> regras -> criacao de personagem -> combate minimo`, com `CLI estruturada` apenas para estudo e inspecao.
-
-### Phase 2: Core Foundation
-**Goal**: Abrir um caminho implementado e estudavel do backend C++ com tipos e invariantes explicitos, resolutores deterministicos observaveis, catalogo minimo, criacao de personagem e combate minimo acessiveis por uma `CLI estruturada` de estudo.
-**Depends on**: Phase 1
-**Requirements**: CORE-01, CORE-02, CORE-03, CORE-04, RULE-01, RULE-02, RULE-03, RULE-04, CONT-01, CONT-02, CONT-03, CONT-04, FLOW-01, FLOW-02, FLOW-03, FLOW-04
-**Success Criteria** (what must be TRUE):
-  1. Desenvolvedor consegue compilar e testar tipos base do core com IDs explicitos, value objects, separacao `Definition`/`State` e falhas de validacao rastreaveis para construcoes invalidas.
-  2. Estudante consegue repetir o mesmo cenario de custo, dano e efeitos e obter a mesma saida, com eventos, logs e replay suficientes para explicar `input -> resolution -> output`.
-  3. Autor consegue definir um catalogo inicial pequeno em arquivos `JSON` versionados no repositorio, e o loader dedicado falha de forma explicita quando encontra definicoes invalidas.
-  4. Estudante consegue criar um protagonista valido a partir do catalogo minimo e usa-lo em um encontro simples contra inimigos, inspecionando o estado resultante do fluxo `tipos -> regras -> criacao de personagem -> combate minimo`.
-  5. Estudante consegue usar a `CLI estruturada` para inspecionar catalogo, criar personagem, iniciar encontro e consultar logs/replay como ferramenta de estudo, sem que ela precise funcionar como shell de jogo final.
-**Plans**:
-- [ ] 02-01: Fundacao de Tipos e Invariantes
-- [ ] 02-02: Regras Deterministicas e Resolutores
-- [ ] 02-03: Criacao de Personagem e Catalogo Minimo
-- [ ] 02-04: Combate Minimo e CLI de Estudo
+Plans:
+- [ ] 01-01: Consolidar visao, recortes e glossario do slice 1x1
+- [ ] 01-02: Definir dominio do combate, fluxo de turno e invariantes
+- [ ] 01-03: Fechar contratos de atributos, habilidades, replay e UAT
+- [ ] 01-04: Fechar stack, validacao, riscos e recomendacao do proximo milestone
 
 ## Progress
 
+**Execution Order:**
+Phases execute in numeric order: 1
+
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. Guia Canonico de Implementacao | 4/4 | Completed | 2026-04-04 |
-| 2. Core Foundation | 0/4 | Not started | - |
-
----
-*Last updated: 2026-04-05 after creating roadmap for v1.1 Core Foundation*
+| 1. Base Documental do Combate 1x1 | 0/4 | Not started | - |
