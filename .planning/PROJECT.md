@@ -14,15 +14,17 @@ O primeiro slice de combate 1x1 precisa ser simples o bastante para um estudante
 
 ### Validated
 
-(None yet - ship to validate)
+- [x] Phase 01 validou o milestone atual como base documental para um backend C++ educacional, nao como implementacao jogavel.
+- [x] Phase 01 fechou o slice futuro como combate 1x1 entre `player` e `enemy`, com foco em atributos, habilidades e observabilidade.
+- [x] Phase 01 documentou contratos de runtime, turno, atributos, habilidades, log textual e fronteira de replay observavel.
+- [x] Phase 01 fixou a fundacao tecnica da `v1.1` em `C++20`, `CMake`, `CTest`, `clang-format`, `clang-tidy`, `AddressSanitizer` e `UBSan`.
+- [x] Phase 01 terminou com riscos, decisoes adiadas e recomendacao explicita da milestone `v1.1 Slice de Implementacao 1x1`.
 
 ### Active
 
-- [ ] Delimitar com clareza o slice alvo como combate 1x1 por turnos entre jogador e inimigo.
-- [ ] Mapear contratos de dominio para atributos, habilidades, turno, resolucao e estado de runtime.
-- [ ] Definir uma direcao de stack C++ moderna, portavel e apropriada para estudo.
-- [ ] Especificar estrategia de testes, replay/log e UAT continuo orientado pelo proprio estudante.
-- [ ] Registrar recortes, riscos e recomendacao explicita da proxima milestone de implementacao.
+- [ ] Abrir a milestone `v1.1 Slice de Implementacao 1x1` usando `docs/roadmap/v1.1-slice-de-implementacao-1x1.md` como contrato inicial.
+- [ ] Implementar o primeiro slice C++ com `CombatState`, `TurnResolver`, catalogo inicial, harness textual e testes basicos.
+- [ ] Materializar o log textual e a base minima de replay observavel sem reabrir o escopo documental da phase 1.
 
 ### Out of Scope
 
@@ -52,12 +54,16 @@ O primeiro slice de combate 1x1 precisa ser simples o bastante para um estudante
 
 | Decision | Rationale | Outcome |
 |----------|-----------|---------|
-| Tratar `Estruturação.md` como fonte bruta de ideacao, nao como backlog executavel | O documento descreve um RPG muito maior que o recorte atual | - Pending |
-| Reduzir o futuro slice implementavel para combate 1x1 por turnos | Permite aprender modelagem e validacao sem explodir o escopo | - Pending |
-| Manter atributos e habilidades como foco mecanico inicial | O usuario marcou esses fatores como prioritarios para o primeiro combate | - Pending |
-| Fechar contratos de dominio antes de qualquer adapter de UI ou engine | O projeto precisa nascer testavel e explicavel | - Pending |
-| Tornar testes, logs e replay parte da arquitetura desde o inicio | O objetivo e que o estudante consiga verificar e diagnosticar o sistema constantemente | - Pending |
-| Encerrar a Phase 1 com recomendacao explicita da proxima milestone | O milestone atual prepara implementacao futura, nao tenta entrega-la inteira | - Pending |
+| Tratar `Estruturação.md` como fonte bruta de ideacao, nao como backlog executavel | O documento descreve um RPG muito maior que o recorte atual | Validated in Phase 01 |
+| Reduzir o futuro slice implementavel para combate 1x1 por turnos | Permite aprender modelagem e validacao sem explodir o escopo | Validated in Phase 01 |
+| Manter atributos e habilidades como foco mecanico inicial | O usuario marcou esses fatores como prioritarios para o primeiro combate | Validated in Phase 01 |
+| Fechar contratos de dominio antes de qualquer adapter de UI ou engine | O projeto precisa nascer testavel e explicavel | Validated in Phase 01 |
+| Tornar testes, logs e replay parte da arquitetura desde o inicio | O objetivo e que o estudante consiga verificar e diagnosticar o sistema constantemente | Validated in Phase 01 |
+| Encerrar a Phase 1 com recomendacao explicita da proxima milestone | O milestone atual prepara implementacao futura, nao tenta entrega-la inteira | Validated in Phase 01 |
+
+## Current State
+
+Phase 01 foi concluida e verificada. O repositorio agora tem uma base documental publica em `README.md` e `docs/`, cobrindo framing, contratos de combate 1x1, atributos, habilidades, observabilidade, stack C++ e a ponte para a milestone `v1.1 Slice de Implementacao 1x1`.
 
 ## Evolution
 
@@ -77,4 +83,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-12 after initialization*
+*Last updated: 2026-04-13 after phase 01 completion*
