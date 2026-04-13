@@ -5,10 +5,10 @@ milestone_name: Base Documental
 current_phase: 01
 current_phase_name: base-documental-do-combate-1x1
 current_plan: 4
-status: verifying
-stopped_at: Completed 01-base-documental-do-combate-1x1-04-PLAN.md
-last_updated: "2026-04-12T22:31:12.584Z"
-last_activity: 2026-04-12
+status: phase complete
+stopped_at: Phase 01 verified and marked complete
+last_updated: "2026-04-13T01:57:15Z"
+last_activity: 2026-04-13
 progress:
   total_phases: 1
   completed_phases: 1
@@ -21,22 +21,22 @@ progress:
 
 ## Project Reference
 
-See: .planning/PROJECT.md (updated 2026-04-12)
+See: .planning/PROJECT.md (updated 2026-04-13)
 
 **Core value:** O primeiro slice de combate 1x1 precisa ser simples o bastante para um estudante entender, testar, reproduzir e corrigir sem depender de UI, engine ou infraestrutura pesada.
-**Current focus:** Phase 01 — base-documental-do-combate-1x1
+**Current focus:** Milestone v1.0 wrap-up - phase 01 complete
 
 ## Current Position
 
-Phase: 01 (base-documental-do-combate-1x1) — VERIFYING
+Phase: 01 (base-documental-do-combate-1x1) — COMPLETE
 Plan: 4 of 4
 Current Phase: 01
 Current Phase Name: base-documental-do-combate-1x1
 Total Phases: 1
 Current Plan: 4
 Total Plans in Phase: 4
-Status: Phase complete — ready for verification
-Last activity: 2026-04-12
+Status: Phase 01 verified and complete; next work should start from `docs/roadmap/v1.1-slice-de-implementacao-1x1.md`
+Last activity: 2026-04-13 -- Phase 01 verified and marked complete
 
 Progress: [██████████] 100%
 
@@ -87,6 +87,7 @@ Recent decisions affecting current work:
 - [Phase 01-base-documental-do-combate-1x1]: A baseline da v1.1 fica travada em C++20, CMake, CTest, clang-format, clang-tidy, AddressSanitizer e UBSan.
 - [Phase 01-base-documental-do-combate-1x1]: Dependencias externas da v1.1 entram apenas sob necessidade justificada; Catch2, fmt e nlohmann/json continuam opcionais.
 - [Phase 01-base-documental-do-combate-1x1]: A v1.1 fica limitada a CombatState, TurnResolver, catalogo inicial, harness textual e testes basicos.
+- [Phase 01-base-documental-do-combate-1x1]: A v1.1 explicita log textual e base minima de replay observavel como parte do slice implementavel.
 
 ### Pending Todos
 
