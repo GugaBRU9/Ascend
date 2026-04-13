@@ -6,9 +6,4 @@ target_include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
-target_link_libraries(
-  ascend_domain
-  PUBLIC
-    ascend_build_options
-    ascend_build_warnings
-)
+target_link_libraries(ascend_domain PUBLIC ascend_build_options ascend_build_warnings)
