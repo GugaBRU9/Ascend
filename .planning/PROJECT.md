@@ -4,7 +4,7 @@
 
 Ascend e um backend C++ educacional, agnostico de plataforma, pensado para estudar modelagem de regras de RPG por turnos com foco em clareza e testabilidade.
 
-Neste milestone inicial, o projeto nao implementa o jogo amplo descrito em `Estruturação.md`. O objetivo atual e transformar essa ideia-base em uma fundacao documental para um primeiro slice futuro de combate 1x1 entre jogador e inimigo, com enfase em atributos e habilidades.
+O milestone `v1.0 Base Documental`, arquivado em 2026-04-13, nao implementou o jogo amplo descrito em `Estruturação.md`. Ele transformou essa ideia-base em uma fundacao documental para o primeiro slice futuro de combate 1x1 entre jogador e inimigo, com enfase em atributos, habilidades e observabilidade.
 
 ## Core Value
 
@@ -14,15 +14,15 @@ O primeiro slice de combate 1x1 precisa ser simples o bastante para um estudante
 
 ### Validated
 
-- [x] Phase 01 validou o milestone atual como base documental para um backend C++ educacional, nao como implementacao jogavel.
-- [x] Phase 01 fechou o slice futuro como combate 1x1 entre `player` e `enemy`, com foco em atributos, habilidades e observabilidade.
-- [x] Phase 01 documentou contratos de runtime, turno, atributos, habilidades, log textual e fronteira de replay observavel.
-- [x] Phase 01 fixou a fundacao tecnica da `v1.1` em `C++20`, `CMake`, `CTest`, `clang-format`, `clang-tidy`, `AddressSanitizer` e `UBSan`.
-- [x] Phase 01 terminou com riscos, decisoes adiadas e recomendacao explicita da milestone `v1.1 Slice de Implementacao 1x1`.
+- [x] Phase 01 validou o milestone atual como base documental para um backend C++ educacional, nao como implementacao jogavel - `v1.0`.
+- [x] Phase 01 fechou o slice futuro como combate 1x1 entre `player` e `enemy`, com foco em atributos, habilidades e observabilidade - `v1.0`.
+- [x] Phase 01 documentou contratos de runtime, turno, atributos, habilidades, log textual e fronteira de replay observavel - `v1.0`.
+- [x] Phase 01 fixou a fundacao tecnica da `v1.1` em `C++20`, `CMake`, `CTest`, `clang-format`, `clang-tidy`, `AddressSanitizer` e `UBSan` - `v1.0`.
+- [x] Phase 01 terminou com riscos, decisoes adiadas e recomendacao explicita da milestone `v1.1 Slice de Implementacao 1x1` - `v1.0`.
 
 ### Active
 
-- [ ] Abrir a milestone `v1.1 Slice de Implementacao 1x1` usando `docs/roadmap/v1.1-slice-de-implementacao-1x1.md` como contrato inicial.
+- [ ] Recriar `.planning/REQUIREMENTS.md` para a `v1.1 Slice de Implementacao 1x1`, usando `docs/roadmap/v1.1-slice-de-implementacao-1x1.md` como contrato inicial.
 - [ ] Implementar o primeiro slice C++ com `CombatState`, `TurnResolver`, catalogo inicial, harness textual e testes basicos.
 - [ ] Materializar o log textual e a base minima de replay observavel sem reabrir o escopo documental da phase 1.
 
@@ -63,7 +63,15 @@ O primeiro slice de combate 1x1 precisa ser simples o bastante para um estudante
 
 ## Current State
 
-Phase 01 foi concluida e verificada. O repositorio agora tem uma base documental publica em `README.md` e `docs/`, cobrindo framing, contratos de combate 1x1, atributos, habilidades, observabilidade, stack C++ e a ponte para a milestone `v1.1 Slice de Implementacao 1x1`.
+O milestone `v1.0 Base Documental` foi arquivado. O repositorio agora tem uma base documental publica em `README.md` e `docs/`, cobrindo framing, contratos de combate 1x1, atributos, habilidades, observabilidade, stack C++ e a ponte para a milestone `v1.1 Slice de Implementacao 1x1`.
+
+O debt remanescente aceito neste fechamento e processual: `01-VALIDATION.md` continua em `status: draft` e `nyquist_compliant: false`, embora `01-REVIEW.md`, `01-VERIFICATION.md`, `01-UAT.md` e `01-SECURITY.md` tenham fechado a phase com review limpo, verificacao aprovada, `8 passed, 0 issues` e `threats_open: 0`.
+
+## Next Milestone Goals
+
+- Reabrir os artifacts ativos de planejamento para a `v1.1` com requirements fresh e a primeira phase implementavel.
+- Materializar `CombatState`, `TurnResolver`, catalogo inicial, harness textual e testes basicos sem reabrir multiplayer, party, UI final ou persistencia online.
+- Preservar a fronteira de observabilidade definida em `docs/combat-1x1/observability.md` enquanto o slice passa de documental para executavel.
 
 ## Evolution
 
@@ -83,4 +91,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-13 after phase 01 completion*
+*Last updated: 2026-04-13 after v1.0 milestone archival*

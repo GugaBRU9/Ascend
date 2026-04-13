@@ -1,19 +1,18 @@
 # Milestones
 
-## v1.0 Documentation Foundation (Shipped: 2026-04-04)
+## v1.0 Base Documental (Shipped: 2026-04-13)
 
-**Phases completed:** 1 phase, 4 plans, 10 tasks
+**Phases completed:** 1 phases, 4 plans, 11 tasks
 
 **Key accomplishments:**
 
-- Framing canonico do milestone documental com cortes de escopo e matriz de normalizacao para o backend C++ educacional.
-- Mapa canonico de namespaces, tipos representativos, fronteiras `Definition`/`State` e regras deterministicas para o core minimo do backend C++.
-- Fechamento das fronteiras arquiteturais, baseline C++ e trilha didatica que orienta o primeiro milestone de implementacao.
-- Handoff executavel da milestone 02 com guardrails, `Definition of Ready` e faseamento `02-01` a `02-04`.
+- README canonico do milestone documental, overview publico do combate 1x1 e glossario compartilhado para os proximos documentos da fase
+- Contrato documental para atores, estado de runtime e resolucao deterministica do turno no combate 1x1
+- Attribute and skill contracts, minimum combat log fields, and a student UAT checklist for the 1x1 duel slice
+- C++ foundation, milestone risk register, and explicit v1.1 scope for a textual and testable 1x1 combat implementation
 
-**Notes:**
+**Technical debt carried forward:**
 
-- UAT da fase 01 concluida com `5/5` testes aprovados.
-- O milestone foi arquivado sem um arquivo dedicado de milestone audit; a base de aceitacao ficou em verificacao de fase + UAT.
+- `01-VALIDATION.md` permanece parcial (`status: draft`, `nyquist_compliant: false`) e precisa ser resolvido antes de tratar a validacao Nyquist da phase como encerrada.
 
 ---
