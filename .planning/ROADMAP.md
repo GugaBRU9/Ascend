@@ -18,7 +18,7 @@ O roadmap ativo saiu da base documental e passa a guiar a `v1.1 Slice de Impleme
 - O milestone `v1.1` comeca na `Phase 2` porque `v1.0` terminou na `Phase 1`.
 - Decimal phases continuam reservadas para insercoes urgentes entre fases inteiras.
 
-- [ ] **Phase 2: Bootstrap da Fundacao C++ 1x1** - abrir o workspace compilavel com toolchain, modulos e baseline de validacao
+- [x] **Phase 2: Bootstrap da Fundacao C++ 1x1** - abrir o workspace compilavel com toolchain, modulos e baseline de validacao (complete 2026-04-13)
 - [ ] **Phase 3: CombatState e Catalogo Inicial** - materializar runtime minimo e conteudo canonico separados entre si
 - [ ] **Phase 4: TurnResolver e Harness Textual** - fazer o duelo rodar com ordem deterministica, rejeicao de acao invalida e log minimo
 - [ ] **Phase 5: Replay Observavel e Testes Basicos** - fechar evidencias textuais, suite basica de testes e reproducao do duelo simples
@@ -37,9 +37,9 @@ O roadmap ativo saiu da base documental e passa a guiar a `v1.1 Slice de Impleme
 **Plans**: 3 plans
 
 Plans:
-- [ ] 02-01: Bootstrap de build, presets e alvos basicos em C++20
-- [ ] 02-02: Estruturar modulos `domain`, `content`, `session` e `adapters`
-- [ ] 02-03: Fechar baseline de testes e configuracoes instrumentadas
+- [x] 02-01: Bootstrap de build, presets e alvos basicos em C++20
+- [x] 02-02: Estruturar modulos `domain`, `content`, `session` e `adapters`
+- [x] 02-03: Fechar baseline de testes e configuracoes instrumentadas
 
 ### Phase 3: CombatState e Catalogo Inicial
 **Goal**: Implementar o estado minimo do duelo 1x1 e o catalogo inicial de jogador/inimigo sem misturar conteudo estatico com runtime mutavel.
@@ -95,7 +95,7 @@ Phases execute in numeric order: 2 -> 3 -> 4 -> 5
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 2. Bootstrap da Fundacao C++ 1x1 | 0/3 | Not started | - |
+| 2. Bootstrap da Fundacao C++ 1x1 | 3/3 | Complete | 2026-04-13 |
 | 3. CombatState e Catalogo Inicial | 0/3 | Not started | - |
 | 4. TurnResolver e Harness Textual | 0/3 | Not started | - |
 | 5. Replay Observavel e Testes Basicos | 0/2 | Not started | - |

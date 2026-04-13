@@ -2,16 +2,16 @@
 gsd_state_version: 1.0
 milestone: v1.1
 milestone_name: Slice de Implementacao 1x1
-current_phase: 02
-current_phase_name: bootstrap-da-fundacao-cpp-1x1
-current_plan: none
-status: Ready to execute
-stopped_at: Phase 2 planning complete
-last_updated: "2026-04-13T12:17:22Z"
-last_activity: 2026-04-13 -- Phase 02 planning complete
+current_phase: 3
+current_phase_name: combatstate-e-catalogo-inicial
+current_plan: Not started
+status: ready_to_discuss
+stopped_at: Phase 02 verification passed
+last_updated: "2026-04-13T12:35:59Z"
+last_activity: 2026-04-13 -- Phase 02 completed and verified
 progress:
   total_phases: 4
-  completed_phases: 0
+  completed_phases: 1
   total_plans: 3
   completed_plans: 0
   percent: 0
@@ -24,19 +24,19 @@ progress:
 See: .planning/PROJECT.md (updated 2026-04-13)
 
 **Core value:** O primeiro slice de combate 1x1 precisa ser simples o bastante para um estudante entender, testar, reproduzir e corrigir sem depender de UI, engine ou infraestrutura pesada.
-**Current focus:** Executar a `Phase 2` e abrir a fundacao C++ do slice 1x1
+**Current focus:** Phase 03 — combatstate-e-catalogo-inicial
 
 ## Current Position
 
-Phase: 02 (bootstrap-da-fundacao-cpp-1x1) — PLANNED
-Plan: 3 plans ready
-Current Phase: 02
-Current Phase Name: bootstrap-da-fundacao-cpp-1x1
+Phase: 03 (combatstate-e-catalogo-inicial) — NOT STARTED
+Plan: Not started
+Current Phase: 3
+Current Phase Name: combatstate-e-catalogo-inicial
 Total Phases in Milestone: 4
-Current Plan: none
+Current Plan: Not started
 Total Plans in Phase: 3
-Status: Ready to execute
-Last activity: 2026-04-13 -- Phase 02 planning complete
+Status: Ready to discuss Phase 03
+Last activity: 2026-04-13 -- Phase 02 completed and verified
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -53,10 +53,11 @@ Progress: [░░░░░░░░░░] 0%
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
 | 1 | 4 | 10 min | 2.5 min |
+| 02 | 3 | 6 min | 2.0 min |
 
 **Recent Trend:**
 
-- Last completed plans: 01-04 (2min), 01-03 (2min), 01-02 (2min), 01-01 (4min)
+- Last completed plans: 02-03 (1min), 02-02 (2min), 02-01 (3min), 01-04 (2min)
 - Trend: Stable
 
 ## Accumulated Context
@@ -77,6 +78,9 @@ Recent decisions affecting current work:
 - [Phase 01-base-documental-do-combate-1x1]: Observabilidade minima do duelo exige campos de log e eventos nomeados antes do replay completo.
 - [Phase 01-base-documental-do-combate-1x1]: A baseline da v1.1 fica travada em C++20, CMake, CTest, clang-format, clang-tidy, AddressSanitizer e UBSan.
 - [Milestone v1.1]: A nova milestone continua a numeracao de phases a partir da phase 2 e reaproveita os contratos publicados como fonte de verdade funcional.
+- [Phase 02]: O bootstrap do slice usa um workspace CMake unico com presets `dev`, `asan-ubsan` e `release`.
+- [Phase 02]: Os modulos `domain`, `content`, `session` e `adapters` nascem como targets separados com headers publicos.
+- [Phase 02]: A baseline inicial de teste fica em `CTest` com smoke test framework-free.
 
 ### Pending Todos
 
@@ -89,6 +93,6 @@ None yet.
 
 ## Session Continuity
 
-Last session: 2026-04-13T12:17:22Z
-Stopped at: Phase 2 planning complete
-Resume file: .planning/phases/02-bootstrap-da-fundacao-c-1x1/02-01-PLAN.md
+Last session: 2026-04-13T12:33:12.029Z
+Stopped at: Phase 02 verification passed
+Resume file: None

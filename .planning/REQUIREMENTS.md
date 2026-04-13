@@ -7,9 +7,9 @@
 
 ### Foundation
 
-- [ ] **ARCH-05**: O estudante consegue configurar e compilar o projeto do slice 1x1 com `CMake` em uma estrutura C++20 minima e portavel.
-- [ ] **ARCH-06**: O codigo do slice nasce separado entre `domain`, `content`, `session` e `adapters`, sem acoplamento do core a UI, engine, rede, banco ou persistencia de produto.
-- [ ] **VAL-05**: O estudante consegue executar uma baseline de verificacao com `CTest` e configuracoes de debug/teste instrumentadas com sanitizers.
+- [x] **ARCH-05**: O estudante consegue configurar e compilar o projeto do slice 1x1 com `CMake` em uma estrutura C++20 minima e portavel.
+- [x] **ARCH-06**: O codigo do slice nasce separado entre `domain`, `content`, `session` e `adapters`, sem acoplamento do core a UI, engine, rede, banco ou persistencia de produto.
+- [x] **VAL-05**: O estudante consegue executar uma baseline de verificacao com `CTest` e configuracoes de debug/teste instrumentadas com sanitizers.
 
 ### Combat Runtime
 
@@ -59,9 +59,9 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| ARCH-05 | Phase 2 | Pending |
-| ARCH-06 | Phase 2 | Pending |
-| VAL-05 | Phase 2 | Pending |
+| ARCH-05 | Phase 2 | Complete |
+| ARCH-06 | Phase 2 | Complete |
+| VAL-05 | Phase 2 | Complete |
 | COMBAT-05 | Phase 3 | Pending |
 | COMBAT-06 | Phase 3 | Pending |
 | ATTR-05 | Phase 3 | Pending |
@@ -80,4 +80,4 @@
 
 ---
 *Requirements defined: 2026-04-13*
-*Last updated: 2026-04-13 after initial v1.1 definition*
+*Last updated: 2026-04-13 after phase 2 completion*
