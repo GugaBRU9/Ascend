@@ -1,0 +1,5 @@
+if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/bootstrap_smoke.cpp")
+  message(STATUS "bootstrap_smoke.cpp exists but phase 3 has not wired tests/CMakeLists.txt yet")
+else()
+  message(STATUS "No phase-2 tests registered yet")
+endif()

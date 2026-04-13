@@ -1,5 +1,9 @@
-node_modules/
-dist/
-coverage/
-*.tsbuildinfo
+/build/
+/compile_commands.json
+/.cache/
 
+# Common editor noise
+/.idea/
+/.vscode/
+*.swp
+*.tmp
