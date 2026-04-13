@@ -30,13 +30,16 @@ O primeiro slice de combate 1x1 precisa ser simples o bastante para um estudante
 - [x] Phase 01 documentou contratos de runtime, turno, atributos, habilidades, log textual e fronteira de replay observavel - `v1.0`.
 - [x] Phase 01 fixou a fundacao tecnica da `v1.1` em `C++20`, `CMake`, `CTest`, `clang-format`, `clang-tidy`, `AddressSanitizer` e `UBSan` - `v1.0`.
 - [x] Phase 01 terminou com riscos, decisoes adiadas e recomendacao explicita da milestone `v1.1 Slice de Implementacao 1x1` - `v1.0`.
+- [x] Phase 02 abriu um workspace compilavel em `C++20` com `CMake`, `CTest`, presets `dev` / `asan-ubsan` / `release` e tooling leve - `v1.1`.
+- [x] Phase 02 materializou a separacao `domain` / `content` / `session` / `adapters` em targets, headers publicos e linkagem unidirecional - `v1.1`.
+- [x] Phase 02 fechou a baseline automatizada com `CTest` e smoke test executado com sucesso em `dev` e `asan-ubsan` - `v1.1`.
 
 ### Active
 
-- [ ] Entregar a fundacao compilavel em C++20 com `CMake`, `CTest`, sanitizers e separacao `domain` / `content` / `session` / `adapters`.
-- [ ] Implementar `CombatState`, `TurnResolver` e o bootstrap do duelo 1x1 usando os contratos documentados.
-- [ ] Materializar catalogo inicial, harness textual, log minimo e base de replay observavel sem reabrir party, multiplayer ou UI final.
-- [ ] Cobrir o slice com testes basicos e saidas deterministicas suficientes para estudo, depuracao e reproducao.
+- [ ] Implementar `CombatState` e o bootstrap minimo do duelo 1x1 usando os contratos documentados.
+- [ ] Materializar o catalogo inicial separado de runtime com atributos, habilidades, passivas e prioridades canonicas.
+- [ ] Implementar `TurnResolver`, harness textual, log minimo e base de replay observavel sem reabrir party, multiplayer ou UI final.
+- [ ] Expandir a suite com testes basicos e saidas deterministicas para estudo, depuracao e reproducao do slice.
 
 ### Out of Scope
 
@@ -71,11 +74,14 @@ O primeiro slice de combate 1x1 precisa ser simples o bastante para um estudante
 | Manter atributos e habilidades como foco mecanico inicial | O usuario marcou esses fatores como prioritarios para o primeiro combate | Validated in Phase 01 |
 | Fechar contratos de dominio antes de qualquer adapter de UI ou engine | O projeto precisa nascer testavel e explicavel | Validated in Phase 01 |
 | Tornar testes, logs e replay parte da arquitetura desde o inicio | O objetivo e que o estudante consiga verificar e diagnosticar o sistema constantemente | Validated in Phase 01 |
-| Continuar a numeracao de phases no novo milestone a partir da phase 2 | Preserva rastreabilidade historica entre milestones sem reiniciar indices | — Pending |
+| Continuar a numeracao de phases no novo milestone a partir da phase 2 | Preserva rastreabilidade historica entre milestones sem reiniciar indices | Validated in Phase 02 |
+| Usar um workspace CMake unico com targets separados por modulo | Reduz carga cognitiva sem esconder fronteiras arquiteturais cedo demais | Validated in Phase 02 |
+| Manter presets `dev`, `asan-ubsan` e `release` com postura `std`-first | Preserva um bootstrap didatico, portavel e facil de reproduzir | Validated in Phase 02 |
+| Fechar a baseline inicial de teste com `CTest` e `assert` sem framework externo | Garante feedback real cedo sem adicionar dependencia prematura | Validated in Phase 02 |
 
 ## Current State
 
-O milestone `v1.1 Slice de Implementacao 1x1` foi inicializado no planejamento. O historico executado da phase documental foi movido para o archive do milestone anterior, e os artifacts ativos agora voltam a apontar para implementacao: requirements fresh, roadmap novo e proxima phase pronta para discussao.
+A `Phase 02` fechou o bootstrap da `v1.1 Slice de Implementacao 1x1` com workspace compilavel em `C++20`, presets `dev` / `asan-ubsan` / `release`, quatro modulos reais (`domain`, `content`, `session`, `adapters`) e um smoke test registrado em `CTest`. A proxima etapa passa a ser a `Phase 03`, que implementa `CombatState` e o catalogo inicial sobre essa base executavel.
 
 O debt remanescente carregado do fechamento anterior continua processual: `01-VALIDATION.md` permaneceu em `status: draft` e `nyquist_compliant: false`, embora `01-REVIEW.md`, `01-VERIFICATION.md`, `01-UAT.md` e `01-SECURITY.md` tenham fechado a phase documental com review limpo, verificacao aprovada, `8 passed, 0 issues` e `threats_open: 0`.
 
@@ -97,4 +103,4 @@ This document evolves at phase transitions and milestone boundaries.
 4. Update Context with current state
 
 ---
-*Last updated: 2026-04-13 after starting milestone v1.1*
+*Last updated: 2026-04-13 after phase 2 completion*
