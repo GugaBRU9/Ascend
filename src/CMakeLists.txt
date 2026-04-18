@@ -1,5 +1,0 @@
-foreach(module IN ITEMS domain content session adapters)
-  if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/${module}/CMakeLists.txt")
-    add_subdirectory(${module})
-  endif()
-endforeach()

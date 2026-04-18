@@ -1,5 +1,0 @@
-add_executable(ascend_bootstrap_smoke bootstrap_smoke.cpp)
-
-target_link_libraries(ascend_bootstrap_smoke PRIVATE ascend_build_options ascend_build_warnings ascend_domain ascend_content ascend_session ascend_adapters)
-
-add_test(NAME bootstrap_smoke COMMAND ascend_bootstrap_smoke)
